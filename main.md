@@ -24,132 +24,201 @@ Het efficient en effectief verwerken van inmetingen door de landmeter.
 
 <img src="media/Schema Inmeetproject.jpg" style="width:100%;height:50%" />
 
+## Gegevens in het deelmodel GWSW-Revisies
+
+Bij een inmeetproject worden de volgende gegevens uitgewisseld (aangeduid met de URI):
+
+**Algemeen**  
+
+| Veldnaam            | Waarde in RDF-termen                 | Opmerking                                  |
+|---------------------|--------------------------------------|--------------------------------------------|
+| Projectnaam         | rdfs:label bij rev:Inmeetproject     | in Opera Project_Id                        |
+| Opdrachtgever       | rdfs:label bij gwsw:Opdrachtgever    |                                            |
+| Contractnummer      | gwsw:hasValue bij rev:Contractnummer |                                            |
+| Projectomschrijving | rdfs:comment bij rev:Inmeetproject   |                                            |
+| Contactpersoon      | rdfs:label bij gwsw:Contactpersoon   | in Opera ProjectAdministratorOpdrachtgever |
+
+**Deksel**  
+
+| Veldnaam            | Waarde in RDF-termen                       | Opmerking             |
+|---------------------|--------------------------------------------|-----------------------|
+| Knooppuntreferentie | rdfs:label bij gwsw:Knooppunt              |                       |
+| TypeDeksel          | rdf:type bij subtype van gwsw:Afdekking    | in Opera SoortDeksel  |
+| VormDeksel          | gwsw:hasReference bij gwsw:VormDeksel      |                       |
+| LengteDeksel        | gwsw:hasValue bij gwsw:LengteDeksel        |                       |
+| BreedteDeksel       | gwsw:hasValue bij gwsw:BreedteDeksel       |                       |
+| MateriaalDeksel     | gwsw:hasReference bij gwsw:MateriaalDeksel |                       |
+| MeldingDeksel       | gwsw:hasReference bij rev:MeldingDeksel    |                       |
+| Opmerking           | gwsw:hasValue bij gwsw:Opmerking           | in Opera rdfs:comment |
+
+**Knooppunt** (Put of Bouwwerk)  
+
+| Veldnaam             | Waarde in RDF-termen                                              | Opmerking                    |
+|----------------------|-------------------------------------------------------------------|------------------------------|
+| TypeKnooppunt        | rdf:type bij subtype van gwsw:Put of gwsw:Bouwwerk                | in Opera SoortPut            |
+| VormPut              | gwsw:hasReference bij gwsw:VormPut of gwsw:VormBouwwerk           |                              |
+| BreedtePut           | gwsw:hasValue bij gwsw:BreedtePut of gwsw:BreedteBouwwerk         |                              |
+| LengtePut            | gwsw:hasValue bij gwsw:LengtePut of gwsw:LengteBouwwerk           |                              |
+| MateriaalPut         | gwsw:hasReference bij gwsw:MateriaalPut of gwsw:MateriaalBouwwerk |                              |
+| Stroomprofiel        | gwsw:hasReference bij gwsw:Stroomprofiel                          |                              |
+| Knooppuntreferentie  | rdfs:label bij gwsw:Knooppunt                                     | in Opera Knooppuntreferentie |
+| X_coordinaat         | gwsw:hasValue bij gwsw:Punt                                       |                              |
+| Y_coordinaat         | gwsw:hasValue bij gwsw:Punt                                       |                              |
+| Z_coordinaat         | gwsw:hasValue bij gwsw:Punt                                       |                              |
+| HoogtePut            | gwsw:hasValue bij gwsw:HoogtePut of gwsw:HoogteBouwwerk           |                              |
+| StatusFunctioneren   | gwsw:hasReference bij gwsw:StatusFunctioneren                     |                              |
+| Stelsel              | rdf:type bij gwsw:Stelsel                                         |                              |
+| Constructieonderdeel | rdf:type bij gwsw:Constructieonderdeel                            |                              |
+| Drempelniveau        | gwsw:hasValue bijgwsw:Drempelniveau                               |                              |
+| MeldingKnooppunt     | gwsw:hasReference bij rev:MeldingKnooppunt                        | in opera MeldingPut          |
+| WijzeVanInwinning    | gwsw:hasReference bij gwsw:WijzeVanInwinning                      |                              |
+| DatumInwinning       | gwsw:hasValue bij gwsw:DatumInwinning                             |                              |
+| Waterstand           | gwsw:hasValue bij rev:Waterstand                                  |                              |
+| HoogteStellaag       | gwsw:hasValue van gwsw:HoogteStellaag                             |                              |
+| Fotoreferentie       | gwsw:seeAlso bij URI-knooppunt                                    |                              |
+| Opmerking            | gwsw:hasValue bij gwsw:Opmerking                                  | in Opera rdfs:comment        |
+
+**Leiding**  
+
+| Veldnaam             | Waarde in RDF-termen                          | Opmerking             |
+|----------------------|-----------------------------------------------|-----------------------|
+| Leidingnaam          | rdfs:label bij gwsw:Leiding                   | in opera Leiding_id   |
+| Knooppuntreferentie1 | gwsw:hasConnection met URI-BeginpuntLeiding   |                       |
+| Knooppuntreferentie2 | gwsw:hasConnection met URI-EindpuntLeiding    |                       |
+| BobBeginpuntLeiding  | hasValue van gwsw:BobBeginpuntLeiding         |                       |
+| BobEindpuntLeiding   | hasValue van gwsw:BobEindpuntLeiding          |                       |
+| BbbBeginpuntLeiding  | hasValue van rev:BbbBeginpuntLeiding          |                       |
+| BbbEindpuntLeiding   | hasValue van rev:BbbEindpuntLeiding           |                       |
+| StatusFunctioneren   | gwsw:hasReference bij gwsw:StatusFunctioneren |                       |
+| Stelsel              | rdf:type bij gwsw:Stelsel                     |                       |
+| Leidingtype          | rdf:type bij subtype van gwsw:Leiding         |                       |
+| VormLeiding          | gwsw:hasReference bij gwsw:Vorm               |                       |
+| HoogteLeiding        | gwsw:hasValue bij gwsw:Hoogte                 |                       |
+| BreedteLeiding       | gwsw:hasValue bij gwsw:Breedte                |                       |
+| MateriaalLeiding     | gwsw:hasReference bij gwsw:Materiaal          |                       |
+| MeldingLeiding       | gwsw:hasReference bij rev:MeldingKnooppunt    |                       |
+| Fotoreferentie       | gwsw:seeAlso bij URI-knooppunt                |                       |
+| WijzeVanInwinning    | gwsw:hasReference bij gwsw:WijzeVanInwinning  |                       |
+| DatumInwinning       | gwsw:hasValue bij gwsw:DatumInwinning         |                       |
+| Opmerking            | gwsw:hasValue bij gwsw:Opmerking              | in Opera rdfs:comment |
 
 
-## Nieuwe GWSW-concepten voor het deelmodel GWSW-Revisies
-
-| Naam | URI | Definitie | Opmerking |
-|------|-----|-----------|-----------|
-| a    | b   | c         |           |
+Veel URI's staan al in het GWSW datamodel, de volgende URI's zijn nieuw:
 
 
-  Definitie datamodel Inmeetproject GWSW-Opera (20240115)
-
-  - Algemeen.csv
-    - Project_Id Opdrachtgever Contractnummer Projectomschrijving ProjectAdministratorOpdrachtgever
-
-  - Deksel.csv
-    - Knooppuntreferentie SoortDeksel VormDeksel LengteDeksel BreedteDeksel MateriaalDeksel MeldingDeksel Opmerking
-
-  -  Knooppunt.csv
-    - SoortPut VormPut BreedtePut LengtePut MateriaalPut Stroomprofiel Knooppuntreferentie X_coordinaat Y_coordinaat Z_coordinaat HoogtePut
-    - StatusFunctioneren Stelsel Constructieonderdeel MeldingPut WijzeVanInwinning DatumInwinning Waterstand Stellaag Fotoreferentie Drempelniveau Opmerking
-
-  -  Leiding.csv
-    - Leiding_id BeginpuntLeiding EindpuntLeiding BobBeginpuntLeiding BobEindpuntLeiding BbbBeginpuntLeiding BbbEindpuntLeiding StatusFunctioneren Stelsel 
-    - Leidingtype VormLeiding HoogteLeiding BreedteLeiding MateriaalLeiding MeldingLeiding Fotoreferentie WijzeVanInwinning DatumInwinning Opmerking
+| URI           | Naam          | Definitie | Opmerking |
+|---------------|---------------|-----------|-----------|
+| Inmeetproject | Inmeetproject | c         |           |
 
 
 <div class="example-dataset"><div class="example-title marker">Dataset: Voorbeeld inmeetproject</div><pre>
 
-# Algemeen: heen en terug
-<i01> rdfs:label <Algemeen.Project_id> ;
+{i01} \# Algemeen heen en terug
+      rdfs:label {Algemeen.Projectnaam} ;
       rdf:type opera:Inmeetproject ;
-      gwsw:isOutputOf [ rdf:type gwsw:Opdrachtgever ; rdfs:label <Algemeen.Opdrachtgever> ; ] ;
-      gwsw:hasAspect [ rdf:type opera:Contractnummer ; gwsw:hasValue <Algemeen.Contractnummer> ; ] ;
-      gwsw:isOutputOf [ rdf:type gwsw:Contactpersoon ; rdfs:label <Algemeen.ProjectAdministratorOpdrachtgever> ; ] ;
-      rdfs:comment <Algemeen.Projectomschrijving> .
-
-# MetingKnooppunt: heen en terug
-<i10> gwsw:isPartOf <i01> ; 
-      rdf:type opera:MetingKnooppunt .
-
-# MetingKnooppunt: heen
-<i10> gwsw:hasInput <i11> .
-
-# MetingKnooppunt: terug (gebruik een andere URI voor i11, ook bij hetzelfde knooppunt) 
-<i10> gwsw:hasOutput <i11> ;
-      gwsw:hasAspect [ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference <Knooppunt.WijzeVanInwinning>; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:DatumInwinning ; gwsw:hasValue <Knooppunt.DatumInwinning> ; ] ;
-      rdfs:seeAlso <Knooppunt.FotoReferentie> .
-
-# Knooppunt heen en terug
-<i11> rdf:type <Knooppunt.SoortPut> ;
-      rdfs:label <Knooppunt.Knooppuntreferentie> ;
-      gwsw:hasAspect [ rdf:type gwsw:VormPut ; gwsw:hasReference <Knooppunt.VormPut> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:BreedtePut ; gwsw:hasValue <Knooppunt.BreedtePut> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:LengtePut ; gwsw:hasValue <Knooppunt.LengtePut> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:MateriaalPut ; gwsw:hasReference <Knooppunt.MateriaalPut> ; ] ;
-      gwsw:hasPart [ rdf:type gwsw:Stroomprofiel; gwsw:hasAspect [ rdf:type gwsw:VormStroomprofiel ; gwsw:hasReference <Knooppunt.Stroomprofiel> ; ] ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:HoogtePut ; gwsw:hasValue <Knooppunt.HoogtePut> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference <Knooppunt.StatusFunctioneren> ; ] ;
-      gwsw:isPartOf [ rdf:type <Knooppunt.Stelsel>; ] ;
-      gwsw:hasPart [ rdf:type <Knooppunt.Constructieonderdeel>; gwsw:hasAspect [ rdf:type gwsw:Drempelniveau ; gwsw:hasValue <Knooppunt.Drempelniveau> ; ]] .
-
-# Knooppunt heen en terug: de verbinding
-<i11> gwsw:hasAspect <i12> .
-<i12> rdf:type gwsw:Putorientatie ;
-      gwsw:hasAspect [ rdf:type gwsw:Punt ; gwsw:hasValue "gml:Point <Knooppunt.X_coordinaat> <Knooppunt.Y_coordinaat> <Knooppunt.Z_coordinaat>" ; ] .
-
-# Knooppunt terug
-<i11> gwsw:hasAspect [ rdf:type opera:Waterstand ; gwsw:hasValue <Knooppunt.Waterstand> ; ] ;
-      gwsw:hasPart [ rdf:type opera:Stellaag; gwsw:hasAspect [ rdf:type opera:HoogteStellaag ; gwsw:hasValue <Knooppunt.Stellaag> ; ]] ;
-      gwsw:hasAspect [ rdf:type opera:MeldingKnooppunt ; gwsw:hasValue <Knooppunt.MeldingPut> ; ] ;
-      rdfs:comment <Knooppunt.Opmerking> .
-
-# Deksel heen en terug 
-<i13> rdf:type <Deksel.SoortDeksel> ;
-      gwsw:isPartOf <i11> ; # Afleiden uit <Deksel.Knooppuntreferentie>
-      gwsw:hasAspect [ rdf:type gwsw:VormDeksel ; gwsw:hasReference <Deksel.VormDeksel> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:BreedteDeksel ; gwsw:hasValue <Deksel.BreedteDeksel> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:LengteDeksel ; gwsw:hasValue <Deksel.LengteDeksel> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:MateriaalDeksel ; gwsw:hasReference <Deksel.MateriaaDeksel> ; ] ;
-      gwsw:hasAspect [ rdf:type opera:MeldingDeksel ; gwsw:hasValue <Deksel.MeldingDeksel> ; ] ;
-      rdfs:comment <Deksel.Opmerking> .
-
-# MetingLeiding: heen en terug
-<i20> gwsw:isPartOf <i01> ; 
-      rdf:type opera:MetingLeiding .
-
-# MetingLeidingt: heen
-<i20> gwsw:hasInput <i21> .
-
-# MetingLeiding: terug (gebruik een andere URI voor i21, ook bij dezelfde leiding) 
-<i20> gwsw:hasOutput <i21> ;
-      gwsw:hasAspect [ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference <Leiding.WijzeVanInwinning>; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:DatumInwinning ; gwsw:hasValue <Leiding.DatumInwinning> ; ] ;
-      rdfs:seeAlso <Leiding.FotoReferentie> .
-
-# Leiding heen en terug
-<i21> rdf:type <Leiding.Leidingtype> ;
-      rdfs:label <Leiding.Leiding_id> ;
-      gwsw:hasAspect [ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference <Leiding.StatusFunctioneren> ; ] ;
-      gwsw:isPartOf [ rdf:type <Leiding.Stelsel>; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:VormLeiding ; gwsw:hasReference <Leiding.VormLeiding> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:HoogteLeiding ; gwsw:hasValue <Leiding.HoogteLeiding> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:BreedteLeiding ; gwsw:hasValue <Leiding.BreedteLeiding> ; ] ;
-      gwsw:hasAspect [ rdf:type gwsw:MateriaalLeiding ; gwsw:hasReference <Leiding.MateriaalLeiding> ; ] .
-
-# Leiding heen en terug: de verbinding
-<i21> gwsw:hasAspect <i22> .
-<i22> rdf:type gwsw:Leidingorientatie ;
-      # Afleiden uit <Leiding.BeginpuntLeiding> en <Leiding.EindpuntLeiding> 
-      gwsw:hasAspect [ rdf:type gwsw:Lijn ; gwsw:hasValue "gml:LineString <Knooppunt.X_coordinaat> <Knooppunt.Y_coordinaat> <Knooppunt.Z_coordinaat>, <Knooppunt.X_coordinaat> <Knooppunt.Y_coordinaat> <Knooppunt.Z_coordinaat>" ; ] ;
-      gwsw:hasPart <i23> ;
-      gwsw:hasPart <i24> .
-<i23> rdf:type gwsw:BeginpuntLeiding ; 
-      gwsw:hasConnection <i12> ; # Afleiden uit <Leiding.BeginpuntLeiding>
-      gwsw:hasAspect [ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue <Leiding.BobBeginpuntLeiding> ; ] ;
-      gwsw:hasAspect [ rdf:type opera:BbbBeginpuntLeiding ; gwsw:hasValue <Leiding.BbbBeginpuntLeiding> ; ] .
-<i24> rdf:type gwsw:EindpuntLeiding ; 
-      gwsw:hasConnection <i12> ; # Afleiden uit <Leiding.EindpuntLeiding> <i12> is natuurlijk een andere put
-      gwsw:hasAspect [ rdf:type gwsw:BobEindpuntLeiding ; gwsw:hasValue <Leiding.BobEindpuntLeiding> ; ] ;
-      gwsw:hasAspect [ rdf:type opera:BbbEindpuntLeiding ; gwsw:hasValue <Leiding.BbbEindpuntLeiding> ; ] .
-
-  # Leiding terug
-<i21> gwsw:hasAspect [ rdf:type opera:MeldingLeiding ; gwsw:hasValue <Leiding.MeldingLeiding> ; ] ;
-      rdfs:comment <Leiding.Opmerking> .
- </pre></div>
+      gwsw:isOutputOf \[ rdf:type gwsw:Opdrachtgever ; rdfs:label {Algemeen.Opdrachtgever} ; ] ;
+      gwsw:hasAspect \[ rdf:type opera:Contractnummer ; gwsw:hasValue {Algemeen.Contractnummer} ; ] ;
+      gwsw:isOutputOf \[ rdf:type gwsw:Contactpersoon ; rdfs:label {Algemeen.ProjectAdministratorOpdrachtgever} ; ] ;
+      rdfs:comment {Algemeen.Projectomschrijving} ;
+.
+{i10} \# MetingKnooppunt: heen en terug
+      gwsw:isPartOf {i01} ; 
+      rdf:type opera:MetingKnooppunt ;
+.
+{i10} \# MetingKnooppunt: heen
+      gwsw:hasInput {i11} ;
+.
+{i10} \# MetingKnooppunt: terug (gebruik een andere URI voor i11, ook bij hetzelfde knooppunt) 
+      gwsw:hasOutput {i11} ;
+      gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {Knooppunt.WijzeVanInwinning}; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {Knooppunt.DatumInwinning} ; ] ;
+      rdfs:seeAlso {Knooppunt.FotoReferentie} ;
+.
+{i11} \# Knooppunt heen en terug
+      rdf:type {Knooppunt.SoortPut} ;
+      rdfs:label {Knooppunt.Knooppuntreferentie} ;
+      gwsw:hasAspect \[ rdf:type gwsw:VormPut ; gwsw:hasReference {Knooppunt.VormPut} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:BreedtePut ; gwsw:hasValue {Knooppunt.BreedtePut} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:LengtePut ; gwsw:hasValue {Knooppunt.LengtePut} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:MateriaalPut ; gwsw:hasReference {Knooppunt.MateriaalPut} ; ] ;
+      gwsw:hasPart \[ rdf:type gwsw:Stroomprofiel; gwsw:hasAspect \[ rdf:type gwsw:VormStroomprofiel ; gwsw:hasReference {Knooppunt.Stroomprofiel} ; ] ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:HoogtePut ; gwsw:hasValue {Knooppunt.HoogtePut} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference {Knooppunt.StatusFunctioneren} ; ] ;
+      gwsw:isPartOf \[ rdf:type {Knooppunt.Stelsel}; ] ;
+      gwsw:hasPart \[ rdf:type {Knooppunt.Constructieonderdeel}; gwsw:hasAspect \[ rdf:type gwsw:Drempelniveau ; gwsw:hasValue {Knooppunt.Drempelniveau} ; ] ; ] ;
+.
+{i11} \# Knooppunt heen en terug: de verbinding
+      gwsw:hasAspect {i12} ;
+.
+{i12} 
+      rdf:type gwsw:Putorientatie ;
+      gwsw:hasAspect \[ rdf:type gwsw:Punt ; gwsw:hasValue "gml:Point {Knooppunt.X_coordinaat} {Knooppunt.Y_coordinaat} {Knooppunt.Z_coordinaat}" ; ] ;
+.
+{i11} \# Knooppunt terug
+      gwsw:hasAspect \[ rdf:type opera:Waterstand ; gwsw:hasValue {Knooppunt.Waterstand} ; ] ;
+      gwsw:hasPart \[ rdf:type opera:Stellaag; gwsw:hasAspect \[ rdf:type opera:HoogteStellaag ; gwsw:hasValue {Knooppunt.Stellaag} ; ] ; ] ;
+      gwsw:hasAspect \[ rdf:type opera:MeldingKnooppunt ; gwsw:hasValue {Knooppunt.MeldingPut} ; ] ;
+      rdfs:comment {Knooppunt.Opmerking} ;
+.
+{i13} \# Deksel heen en terug 
+      rdf:type {Deksel.SoortDeksel} ;
+      gwsw:isPartOf {i11} ; # Afleiden uit {Deksel.Knooppuntreferentie}
+      gwsw:hasAspect \[ rdf:type gwsw:VormDeksel ; gwsw:hasReference {Deksel.VormDeksel} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:BreedteDeksel ; gwsw:hasValue {Deksel.BreedteDeksel} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:LengteDeksel ; gwsw:hasValue {Deksel.LengteDeksel} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:MateriaalDeksel ; gwsw:hasReference {Deksel.MateriaaDeksel} ; ] ;
+      gwsw:hasAspect \[ rdf:type opera:MeldingDeksel ; gwsw:hasValue {Deksel.MeldingDeksel} ; ] ;
+      rdfs:comment {Deksel.Opmerking} ;
+.
+{i20} \# MetingLeiding: heen en terug
+      gwsw:isPartOf {i01} ; 
+      rdf:type opera:MetingLeiding ;
+.
+{i20} \# MetingLeiding: heen
+      gwsw:hasInput {i21} ;
+.
+{i20} \# MetingLeiding: terug (gebruik een andere URI voor i21, ook bij dezelfde leiding) 
+      gwsw:hasOutput {i21} ;
+      gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {Leiding.WijzeVanInwinning}; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {Leiding.DatumInwinning} ; ] ;
+      rdfs:seeAlso {Leiding.FotoReferentie} ;
+.
+{i21} \# Leiding heen en terug
+      rdf:type {Leiding.Leidingtype} ;
+      rdfs:label {Leiding.Leiding_id} ;
+      gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference {Leiding.StatusFunctioneren} ; ] ;
+      gwsw:isPartOf \[ rdf:type {Leiding.Stelsel}; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:VormLeiding ; gwsw:hasReference {Leiding.VormLeiding} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:HoogteLeiding ; gwsw:hasValue {Leiding.HoogteLeiding} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:BreedteLeiding ; gwsw:hasValue {Leiding.BreedteLeiding} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:MateriaalLeiding ; gwsw:hasReference {Leiding.MateriaalLeiding} ; ] ;
+.
+{i21} \# Leiding heen en terug: de verbinding
+      gwsw:hasAspect {i22} ;
+.
+{i22} 
+      rdf:type gwsw:Leidingorientatie ; \# Afleiden uit {Leiding.BeginpuntLeiding} en {Leiding.EindpuntLeiding} 
+      gwsw:hasAspect \[ rdf:type gwsw:Lijn ; gwsw:hasValue "gml:LineString {Knooppunt.X_coordinaat} {Knooppunt.Y_coordinaat} {Knooppunt.Z_coordinaat}, {Knooppunt.X_coordinaat} {Knooppunt.Y_coordinaat} {Knooppunt.Z_coordinaat}" ; ] ;
+      gwsw:hasPart {i23} ;
+      gwsw:hasPart {i24} ;
+.
+{i23} 
+      rdf:type gwsw:BeginpuntLeiding ; 
+      gwsw:hasConnection {i12} ; \# Afleiden uit {Leiding.BeginpuntLeiding}
+      gwsw:hasAspect \[ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue {Leiding.BobBeginpuntLeiding} ; ] ;
+      gwsw:hasAspect \[ rdf:type opera:BbbBeginpuntLeiding ; gwsw:hasValue {Leiding.BbbBeginpuntLeiding} ; ] ;
+.
+{i24} 
+      rdf:type gwsw:EindpuntLeiding ; 
+      gwsw:hasConnection {i12} ; \# Afleiden uit {Leiding.EindpuntLeiding} {i12} is natuurlijk een andere put
+      gwsw:hasAspect \[ rdf:type gwsw:BobEindpuntLeiding ; gwsw:hasValue {Leiding.BobEindpuntLeiding} ; ] ;
+      gwsw:hasAspect \[ rdf:type opera:BbbEindpuntLeiding ; gwsw:hasValue {Leiding.BbbEindpuntLeiding} ; ] ;
+.
+{i21} \# Leiding terug
+      gwsw:hasAspect \[ rdf:type opera:MeldingLeiding ; gwsw:hasValue {Leiding.MeldingLeiding} ; ] ;
+      rdfs:comment {Leiding.Opmerking} ;
+.
+ </pre> </div>
 
 
 
