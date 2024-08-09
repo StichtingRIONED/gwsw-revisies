@@ -1,2 +1,2 @@
-# gwsw-maatregelen
-GWSW Maatregelen - Deelmodel en toepassingen
+# gwsw-revisies
+GWSW Revisies - Deelmodel en toepassingen
