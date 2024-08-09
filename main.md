@@ -103,21 +103,23 @@ Bij een inmeetproject worden de volgende gegevens uitgewisseld:
 | Opmerking            | gwsw:hasValue bij gwsw:Opmerking               | in Opera rdfs:comment         |
 
 Veel URI's staan al in het GWSW datamodel, voor het deelmodel Revisies zijn een aantal nieuwe concepten uitgewerkt.
-In de vorige tabellen zijn al enkele nieuwe concepten opgenomen, herkenbaar aan de prefix rev: .
+In de vorige tabellen staan al enkele nieuwe concepten, herkenbaar aan de prefix rev: .
 
 Een overzicht van de nieuwe concepten (exclusief in deelmodel GWSW-Revisies ):
 
-| URI                    | Naam                              | Definitie                                                         | Opmerking |
-|------------------------|-----------------------------------|-------------------------------------------------------------------|-----------|
-| Inmeetproject          | Inmeetproject                     |                                                                   |           |
-| Contractnummer         | Contractnummer                    |                                                                   |           |
-| MetingKnooppunt        | Meting knooppunt                  | Een meting van een put of bouwwerk                                |           |
-| Waterstand             | Waterstand                        | De gemeten waterstand tov de bodem                                | \[mm]     |
-| MeldingMetingKnooppunt | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk |           |
-| MeldingMetingDeksel    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel          |           |
-| MeldingMetingLeiding   | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een leiding         |           |
-| BbbBeginpuntLeiding    | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant                                 | \[m.nap]  |
-| BbbEindpuntLeiding     | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant                                 | \[m.nap]  |
+| URI                    | Naam                              | Definitie                                                             | Opmerking |
+|------------------------|-----------------------------------|-----------------------------------------------------------------------|-----------|
+| Inmeetproject          | Inmeetproject                     |                                                                       |           |
+| Contractnummer         | Contractnummer                    |                                                                       |           |
+| MetingKnooppunt        | Meting knooppunt                  | Een meting van een put of bouwwerk (deelactiviteit van InmeetProject) |           |
+| MetingDeksel           | Meting deksel                     | Een meting van een deksel (deelactiviteit van InmeetProject)          |           |
+| MetingLeiding          | Meting leiding                    | Een meting van een leiding (deelactiviteit van InmeetProject)         |           |
+| Waterstand             | Waterstand                        | De gemeten waterstand tov de constructiebodem                         | \[mm]     |
+| MeldingMetingKnooppunt | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk     |           |
+| MeldingMetingDeksel    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel              |           |
+| MeldingMetingLeiding   | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een leiding             |           |
+| BbbBeginpuntLeiding    | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt      | \[m.nap]  |
+| BbbEindpuntLeiding     | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt       | \[m.nap]  |
 
 ## Projectmodel met inmeetgegevens in een GWSW-dataset
 
