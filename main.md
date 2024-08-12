@@ -85,8 +85,8 @@ Groepsgewijs (per CSV-bestand of JSON-Object) gaat het om de volgende gegevens :
 | Veldnaam              | Waarde in RDF-termen                            | Opmerking                     |
 |-----------------------|-------------------------------------------------|-------------------------------|
 | NaamLeiding           | rdfs:label bij gwsw:Leiding                     | in Opera Leiding_id           |
-| NaamKnooppunt1        | gwsw:hasConnection met URI-BeginpuntLeiding     | in Opera Knooppuntreferentie1 |
-| NaamKnooppunt2        | gwsw:hasConnection met URI-EindpuntLeiding      | in Opera Knooppuntreferentie2 |
+| NaamKnooppuntBegin    | gwsw:hasConnection met URI-BeginpuntLeiding     | in Opera Knooppuntreferentie1 |
+| NaamKnooppuntEind     | gwsw:hasConnection met URI-EindpuntLeiding      | in Opera Knooppuntreferentie2 |
 | BobBeginpuntLeiding   | hasValue van gwsw:BobBeginpuntLeiding           |                               |
 | BobEindpuntLeiding    | hasValue van gwsw:BobEindpuntLeiding            |                               |
 | BbbBeginpuntLeiding   | hasValue van rev:BbbBeginpuntLeiding            |                               |
