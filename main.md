@@ -122,12 +122,12 @@ In de volgende tabellen staan de uitwisselgegevens per groep, de veldcode identi
 | Veldcode           | Omschrijving            | Waarde in RDF-termen                            | Opmerking                     |
 |--------------------|-------------------------|-------------------------------------------------|-------------------------------|
 | Naam               | Naam leiding            | rdfs:label bij gwsw:Leiding                     | in Opera Leiding_id           |
-| NaamKnooppunt1     | Naam knooppunt 1        | gwsw:hasConnection met URI-BeginpuntLeiding     | in Opera Knooppuntreferentie1 |
-| NaamKnooppunt2     | Naam knooppunt 2        | gwsw:hasConnection met URI-EindpuntLeiding      | in Opera Knooppuntreferentie2 |
-| BobKnooppunt1      | Bob bij knooppunt 1     | hasValue van gwsw:BobBeginpuntLeiding           | in Opera BobBeginpuntLeiding  |
-| BobKnooppunt2      | Bob bij knooppunt 2     | hasValue van gwsw:BobEindpuntLeiding            | in Opera BobEindpuntLeiding   |
-| BbbKnooppunt1      | Bbb bij knooppunt 1     | hasValue van rev:BbbBeginpuntLeiding            | in Opera BbbBeginpuntLeiding  |
-| BbbKnooppunt2      | Bbb bij knooppunt 2     | hasValue van rev:BbbEindpuntLeiding             | in Opera BbbEindpuntLeiding   |
+| NaamKnooppuntBegin | Naam knooppunt begin    | gwsw:hasConnection met URI-BeginpuntLeiding     | in Opera Knooppuntreferentie1 |
+| NaamKnooppuntEind  | Naam knooppunt eind     | gwsw:hasConnection met URI-EindpuntLeiding      | in Opera Knooppuntreferentie2 |
+| BobKnooppuntBegin  | Bob bij knooppunt begin | hasValue van gwsw:BobBeginpuntLeiding           | in Opera BobBeginpuntLeiding  |
+| BobKnooppuntEind   | Bob bij knooppunt eind  | hasValue van gwsw:BobEindpuntLeiding            | in Opera BobEindpuntLeiding   |
+| BbbKnooppuntBegin  | Bbb bij knooppunt begin | hasValue van rev:BbbBeginpuntLeiding            | in Opera BbbBeginpuntLeiding  |
+| BbbKnooppuntEind   | Bbb bij knooppunt eind  | hasValue van rev:BbbEindpuntLeiding             | in Opera BbbEindpuntLeiding   |
 | StatusFunctioneren | Status functioneren     | gwsw:hasReference bij gwsw:StatusFunctioneren   |                               |
 | TypeStelsel        | Type stelsel            | rdf:type van gwsw:Stelsel                       |                               |
 | Type               | Type leiding            | rdf:type van gwsw:Leiding                       | in Opera Leidingtype          |
@@ -257,22 +257,22 @@ Het ziet er dan als volgt uit:
       gwsw:hasAspect {ex:22} ;
 .
 {ex:22} 
-      rdf:type gwsw:Leidingorientatie ; \# Afleiden uit {Leiding.Knooppunt1} en {Leiding.Knooppunt2} 
+      rdf:type gwsw:Leidingorientatie ; \# Afleiden uit {Leiding.KnooppuntBegin} en {Leiding.KnooppuntEind} 
       gwsw:hasAspect \[ rdf:type gwsw:Lijn ; gwsw:hasValue "gml:LineString {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}, {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}" ; ] ;
       gwsw:hasPart {ex:23} ;
       gwsw:hasPart {ex:24} ;
 .
 {ex:23} 
       rdf:type gwsw:BeginpuntLeiding ; 
-      gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.Knooppunt1}
-      gwsw:hasAspect \[ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue {Leiding.BoKnooppunt1} ; ] ;
-      gwsw:hasAspect \[ rdf:type rev:BbbBeginpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppunt1} ; ] ;
+      gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntBegin}
+      gwsw:hasAspect \[ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue {Leiding.BoKnooppuntBegin} ; ] ;
+      gwsw:hasAspect \[ rdf:type rev:BbbBeginpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntBegin} ; ] ;
 .
 {ex:24} 
       rdf:type gwsw:EindpuntLeiding ; 
-      gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.Knooppunt2} {ex:12} is natuurlijk een andere put
-      gwsw:hasAspect \[ rdf:type gwsw:BobEindpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppunt2} ; ] ;
-      gwsw:hasAspect \[ rdf:type rev:BbbEindpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppunt2} ; ] ;
+      gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntEind} {ex:12} is natuurlijk een andere put
+      gwsw:hasAspect \[ rdf:type gwsw:BobEindpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppuntEind} ; ] ;
+      gwsw:hasAspect \[ rdf:type rev:BbbEindpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntEind} ; ] ;
 .
 {ex:21o} \# Leiding terug
       gwsw:hasAspect \[ rdf:type rev:MeldingRevisieLeiding ; gwsw:hasValue {Leiding.Melding} ; ] ;
