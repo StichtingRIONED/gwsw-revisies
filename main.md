@@ -396,110 +396,110 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
 \# rdf:/rdfs: - generieke RDF-concepten
 
 {ex:01} \# Revisieproject
-      rdfs:label {Project.Naam} ;
-      rdf:type rev:Revisieproject ;
-      gwsw:isOutputOf \[ rdf:type gwsw:Opdrachtgever ; rdfs:label {Project.Opdrachtgever} ; ] ;
-      gwsw:hasAspect \[ rdf:type rev:Contractnummer ; gwsw:hasValue {Project.Contractnummer} ; ] ;
-      gwsw:isOutputOf \[ rdf:type gwsw:Contactpersoon ; rdfs:label {Project.Contactpersoon} ; ] ;
-      rdfs:comment {Project.Omschrijving} ;
+  rdfs:label {Project.Naam} ;
+  rdf:type rev:Revisieproject ;
+  gwsw:isOutputOf \[ rdf:type gwsw:Opdrachtgever ; rdfs:label {Project.Opdrachtgever} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:Contractnummer ; gwsw:hasValue {Project.Contractnummer} ; ] ;
+  gwsw:isOutputOf \[ rdf:type gwsw:Contactpersoon ; rdfs:label {Project.Contactpersoon} ; ] ;
+  rdfs:comment {Project.Omschrijving} ;
 .
 {ex:10} \# Revisie knooppunt - activiteit
-      gwsw:isPartOf {ex:01} ; 
-      rdf:type rev:RevisieKnooppunt ;
+  gwsw:isPartOf {ex:01} ; 
+  rdf:type rev:RevisieKnooppunt ;
 .
 {ex:10} \# Revisie knooppunt - projectdefinitie (heen)
-      gwsw:hasInput {ex:11i} ;
+  gwsw:hasInput {ex:11i} ;
 .
 {ex:10} \# Revisie knooppunt - resultaat (terug)
-      gwsw:hasOutput {ex:11o} ; \# Gebruik een andere URI dan ex:11i, ook bij hetzelfde knooppunt (houdt dezelfde naam)
-      gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {RevisieKnooppunt.WijzeVanInwinning}; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {RevisieKnooppunt.DatumInwinning} ; ] ;
-      rdfs:seeAlso {RevisieKnooppunt.FotoReferentie} ;
-      gwsw:hasAspect \[ rdf:type rev:MeldingRevisieKnooppunt ; gwsw:hasValue {Knooppunt.Melding} ; ] ;
-      gwsw:hasAspect \[ rdf:type rev:MeldingRevisieDeksel ; gwsw:hasValue {Deksel.Melding} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {RevisieKnooppunt.Opmerking} ; ] ;
+  gwsw:hasOutput {ex:11o} ; \# Gebruik een andere URI dan ex:11i, ook bij hetzelfde knooppunt (houdt dezelfde naam)
+  gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {RevisieKnooppunt.WijzeVanInwinning}; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {RevisieKnooppunt.DatumInwinning} ; ] ;
+  rdfs:seeAlso {RevisieKnooppunt.FotoReferentie} ;
+  gwsw:hasAspect \[ rdf:type rev:MeldingRevisieKnooppunt ; gwsw:hasValue {Knooppunt.Melding} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:MeldingRevisieDeksel ; gwsw:hasValue {Deksel.Melding} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {RevisieKnooppunt.Opmerking} ; ] ;
 .
 {ex:11i/ex:11o} \# Knooppunt heen en terug
-      rdf:type {Knooppunt.Type} ; /# Ga hier uit van supertype gwsw:Put 
-      rdfs:label {Knooppunt.Naam} ;
-      gwsw:hasAspect \[ rdf:type gwsw:VormPut ; gwsw:hasReference {Knooppunt.Vorm} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:BreedtePut ; gwsw:hasValue {Knooppunt.Breedte} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:LengtePut ; gwsw:hasValue {Knooppunt.Lengte} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:MateriaalPut ; gwsw:hasReference {Knooppunt.Materiaal} ; ] ;
-      gwsw:hasPart \[ rdf:type gwsw:Stroomprofiel; gwsw:hasAspect \[ rdf:type gwsw:VormStroomprofiel ; gwsw:hasReference {Knooppunt.Stroomprofiel} ; ] ; ] ;
-      gwsw:hasPart \[ rdf:type gwsw:Stellaag; gwsw:hasAspect \[ rdf:type gwsw:HoogteStellaag ; gwsw:hasValue {Knooppunt.Stellaag} ; ] ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:HoogtePut ; gwsw:hasValue {Knooppunt.Hoogte} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference {Knooppunt.StatusFunctioneren} ; ] ;
-      gwsw:isPartOf \[ rdf:type {Knooppunt.TypeStelsel}; ] ;
-      gwsw:hasPart \[ rdf:type {Knooppunt.Constructieonderdeel}; gwsw:hasAspect \[ rdf:type gwsw:Drempelniveau ; gwsw:hasValue {Knooppunt.Drempelniveau} ; ] ; ] ;
+  rdf:type {Knooppunt.Type} ; /# Ga hier uit van supertype gwsw:Put 
+  rdfs:label {Knooppunt.Naam} ;
+  gwsw:hasAspect \[ rdf:type gwsw:VormPut ; gwsw:hasReference {Knooppunt.Vorm} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:BreedtePut ; gwsw:hasValue {Knooppunt.Breedte} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:LengtePut ; gwsw:hasValue {Knooppunt.Lengte} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:MateriaalPut ; gwsw:hasReference {Knooppunt.Materiaal} ; ] ;
+  gwsw:hasPart \[ rdf:type gwsw:Stroomprofiel; gwsw:hasAspect \[ rdf:type gwsw:VormStroomprofiel ; gwsw:hasReference {Knooppunt.Stroomprofiel} ; ] ; ] ;
+  gwsw:hasPart \[ rdf:type gwsw:Stellaag; gwsw:hasAspect \[ rdf:type gwsw:HoogteStellaag ; gwsw:hasValue {Knooppunt.Stellaag} ; ] ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:HoogtePut ; gwsw:hasValue {Knooppunt.Hoogte} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference {Knooppunt.StatusFunctioneren} ; ] ;
+  gwsw:isPartOf \[ rdf:type {Knooppunt.TypeStelsel}; ] ;
+  gwsw:hasPart \[ rdf:type {Knooppunt.Constructieonderdeel}; gwsw:hasAspect \[ rdf:type gwsw:Drempelniveau ; gwsw:hasValue {Knooppunt.Drempelniveau} ; ] ; ] ;
 .
 {ex:11i/ex:11o} \# Knooppunt heen en terug: de verbinding
-      gwsw:hasAspect {ex:12i/ex:12o} ;
+  gwsw:hasAspect {ex:12i/ex:12o} ;
 .
 {ex:12i/ex:12o} 
-      rdf:type gwsw:Putorientatie ;
-      gwsw:hasAspect \[ rdf:type gwsw:Punt ; gwsw:hasValue "gml:Point {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}" ; ] ;
+  rdf:type gwsw:Putorientatie ;
+  gwsw:hasAspect \[ rdf:type gwsw:Punt ; gwsw:hasValue "gml:Point {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}" ; ] ;
 .
 {ex:11o} \# Knooppunt terug
-      gwsw:hasAspect \[ rdf:type rev:RevisieWaterstand ; gwsw:hasValue {Knooppunt.RevisieWaterstand} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:RevisieWaterstand ; gwsw:hasValue {Knooppunt.RevisieWaterstand} ; ] ;
 .
 {ex:13i/ex:13o} \# Deksel heen en terug 
-      rdf:type {Deksel.Type} ;
-      gwsw:isPartOf {ex:11i/i11o} ; # Afleiden uit {Deksel.NaamKnooppunt}
-      gwsw:hasAspect \[ rdf:type gwsw:VormDeksel ; gwsw:hasReference {Deksel.Vorm} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:BreedteDeksel ; gwsw:hasValue {Deksel.Breedte} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:LengteDeksel ; gwsw:hasValue {Deksel.Lengte} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:MateriaalDeksel ; gwsw:hasReference {Deksel.Materiaal} ; ] ;
-
+  rdf:type {Deksel.Type} ;
+  gwsw:isPartOf {ex:11i/i11o} ; # Afleiden uit {Deksel.NaamKnooppunt}
+  gwsw:hasAspect \[ rdf:type gwsw:VormDeksel ; gwsw:hasReference {Deksel.Vorm} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:BreedteDeksel ; gwsw:hasValue {Deksel.Breedte} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:LengteDeksel ; gwsw:hasValue {Deksel.Lengte} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:MateriaalDeksel ; gwsw:hasReference {Deksel.Materiaal} ; ] ;
 .
 {ex:20} \# Revisie Leiding - activiteit
-      gwsw:isPartOf {ex:01} ; 
-      rdf:type rev:RevisieLeiding ;
+  gwsw:isPartOf {ex:01} ; 
+  rdf:type rev:RevisieLeiding ;
 .
 {ex:20} \# Revisie Leiding - projectdefinitie (heen)
-      gwsw:hasInput {ex:21i} ;
+  gwsw:hasInput {ex:21i} ;
 .
 {ex:20} \# RevisieLeiding: - resultaat (terug)
-      gwsw:hasOutput {ex:21o} ; \# Gebruik een andere URI dan ex:21i, ook bij dezelfde leiding (houdt dezelfde naam)
-      gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {Leiding.WijzeVanInwinning}; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {Leiding.DatumInwinning} ; ] ;
-      gwsw:hasAspect \[ rdf:type rev:MeldingRevisieLeiding ; gwsw:hasValue {Leiding.Melding} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {Leiding.Opmerking} ; ] ;
-      rdfs:seeAlso {Leiding.FotoReferentie} ;
+  gwsw:hasOutput {ex:21o} ; \# Gebruik een andere URI dan ex:21i, ook bij dezelfde leiding (houdt dezelfde naam)
+  gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {Leiding.WijzeVanInwinning}; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {Leiding.DatumInwinning} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:MeldingRevisieLeiding ; gwsw:hasValue {Leiding.Melding} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {Leiding.Opmerking} ; ] ;
+  rdfs:seeAlso {Leiding.FotoReferentie} ;
 .
 {ex:21i/ex:21o} \# Leiding heen en terug
-      rdf:type {Leiding.Type} ;
-      rdfs:label {Leiding.Naam} ;
-      gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference {Leiding.StatusFunctioneren} ; ] ;
-      gwsw:isPartOf \[ rdf:type {Leiding.TypeStelsel}; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:VormLeiding ; gwsw:hasReference {Leiding.Vorm} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:HoogteLeiding ; gwsw:hasValue {Leiding.Hoogte} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:BreedteLeiding ; gwsw:hasValue {Leiding.Breedte} ; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:MateriaalLeiding ; gwsw:hasReference {Leiding.Materiaal} ; ] ;
+  rdf:type {Leiding.Type} ;
+  rdfs:label {Leiding.Naam} ;
+  gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference {Leiding.StatusFunctioneren} ; ] ;
+  gwsw:isPartOf \[ rdf:type {Leiding.TypeStelsel}; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:VormLeiding ; gwsw:hasReference {Leiding.Vorm} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:HoogteLeiding ; gwsw:hasValue {Leiding.Hoogte} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:BreedteLeiding ; gwsw:hasValue {Leiding.Breedte} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:MateriaalLeiding ; gwsw:hasReference {Leiding.Materiaal} ; ] ;
 .
 {ex:21i/ex:21o} \# Leiding heen en terug: de verbinding
-      gwsw:hasAspect {ex:22} ;
+  gwsw:hasAspect {ex:22} ;
 .
 {ex:22} 
-      rdf:type gwsw:Leidingorientatie ; \# Afleiden uit {Leiding.KnooppuntBegin} en {Leiding.KnooppuntEind} 
-      gwsw:hasAspect \[ rdf:type gwsw:Lijn ; gwsw:hasValue "gml:LineString {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}, {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}" ; ] ;
-      gwsw:hasPart {ex:23} ;
-      gwsw:hasPart {ex:24} ;
+  rdf:type gwsw:Leidingorientatie ; \# Afleiden uit {Leiding.KnooppuntBegin} en {Leiding.KnooppuntEind} 
+  gwsw:hasAspect \[ rdf:type gwsw:Lijn ; gwsw:hasValue "gml:LineString {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}, {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}" ; ] ;
+  gwsw:hasPart {ex:23} ;
+  gwsw:hasPart {ex:24} ;
 .
 {ex:23} \# Leiding heen en terug: beginpunt
-      rdf:type gwsw:BeginpuntLeiding ; 
-      gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntBegin}
-      gwsw:hasAspect \[ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppuntBegin} ; ] ;
+  rdf:type gwsw:BeginpuntLeiding ; 
+  gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntBegin}
+  gwsw:hasAspect \[ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppuntBegin} ; ] ;
 .
 {ex:24} \# Leiding heen en terug: eindpunt 
-      rdf:type gwsw:EindpuntLeiding ; 
-      gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntEind} {ex:12} is natuurlijk een andere put
-      gwsw:hasAspect \[ rdf:type gwsw:BobEindpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppuntEind} ; ] ;
+  rdf:type gwsw:EindpuntLeiding ; 
+  gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntEind} {ex:12} is natuurlijk een andere put
+  gwsw:hasAspect \[ rdf:type gwsw:BobEindpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppuntEind} ; ] ;
 .
 {ex:241} \# Beginpunt terug
-      gwsw:hasAspect \[ rdf:type rev:BbbBeginpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntBegin} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:BbbBeginpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntBegin} ; ] ;
+.
 {ex:24o} \# Eindpunt terug
-      gwsw:hasAspect \[ rdf:type rev:BbbEindpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntEind} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:BbbEindpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntEind} ; ] ;
 .
  </pre> </div>
 
