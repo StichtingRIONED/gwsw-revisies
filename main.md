@@ -22,6 +22,14 @@ Het efficient en effectief verwerken van inrevisieen door de landmeter.
 
 ## Projectmodel
 
+Het projectmodel beschrijft globaal het activiteiten-schema van een revisieproject.
+Algemene kenmerken zoals meldingen, opmerkingen, en wijze van inwinning worden als kenmerken bij de deelactiviteit (revisie knooppunt, revisie leiging) geregistreerd.
+
+De objectmetingen zoals afmetingen, hoogteligging en waterstand worden als kenmerken bij het fysieke object geregistreerd.
+
+Hetzelfde fysieke object kan in twee vormen (met bijbehorende kenmerken) voorkomen: als input (definitie) en/of als output (resultaat) bij de activiteit.
+In RDF-formaat hebben die input- en output-vorm dezelfde objectnaam (rdfs:label) maar een eigen URI, daardoor hebben de bijbehorende kenmerken ook een input- en output-vorm.
+
 <img src="media/Schema Revisieproject.png" style="width:100%;height:50%" />
 
 ## Gegevensuitwisseling
@@ -31,7 +39,7 @@ Die gegevens zijn gebundeld in zogenaamde heen- en terug-bestanden (analoog aan 
 
 Bij een revisieproject worden de gegevens via CSV of JSON uitgewisseld in aparte heen- en terug-bestanden.
 
-Er zijn vier groepen: Project, Knooppunt, Deksel en Algemeen. 
+Er zijn vier groepen: Project, Knooppunt, Deksel en Leiding. 
 Elk uitwisselgegeven wordt geïdentificeerd door groep + veldcode (zie hierna).  
 
 **CSV**
@@ -152,19 +160,233 @@ Een overzicht van de nieuwe concepten (exclusief in deelmodel GWSW-Revisies):
 | Contractnummer          | Contractnummer                    |                                                                         |           |
 | RevisieKnooppunt        | Revisie knooppunt                 | Een revisie van een put of bouwwerk (deelactiviteit van Revisieproject) |           |
 | RevisieLeiding          | Revisie leiding                   | Een revisie van een leiding (deelactiviteit van Revisieproject)         |           |
-| Waterstand              | Waterstand                        | De gemeten waterstand tov de constructiebodem                           | \[mm]     |
+| RevisieWaterstand       | Revisie waterstand                | De gemeten waterstand tov de constructiebodem                           | \[mm]     |
 | MeldingRevisieKnooppunt | Melding bij revisie knooppunt     | Voorgedefinieerde meldingen bij de revisie van een put of bouwwerk      |           |
 | MeldingRevisieDeksel    | Melding bij revisie deksel        | Voorgedefinieerde meldingen bij de revisie van een deksel               |           |
 | MeldingRevisieLeiding   | Melding bij revisie leiding       | Voorgedefinieerde meldingen bij de revisie van een leiding              |           |
 | BbbBeginpuntLeiding     | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt        | \[m.nap]  |
 | BbbEindpuntLeiding      | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt         | \[m.nap]  |
 
-## Projectmodel met revisiegegevens in één GWSW-dataset
+## Datamodel revisiegegevens in RDF
+
+Hieronder staat het eerste concept model met daarin alleen de toegevoegde revisie-concepten (in de uitgewerkte versies wordt de prefix rev: vervangen door gwsw:).  
+
+De uitwerking van het complete deelmodel GWSW-Revisies staat onder https://data.gwsw.nl/Revisies.
+
+<div class="example"><div class="example-title marker">Datamodel: Revisiegegevens</div><pre>
+
+rev:Revisieproject rdf:type owl:Class ; 
+  rdfs:subClassOf gwsw:Project ;
+  rdfs:label "Revisieproject";
+  skos:definition "Revisieproject" ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit RevisieKnooppunt (min=0)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:RevisieKnooppunt ;
+    owl:onProperty gwsw:hasPart ;
+    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit RevisieLeiding (min=0)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:RevisieLeiding ;
+    owl:onProperty gwsw:hasPart ;
+    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+  ] ;
+  skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
+.
+rev:RevisieKnooppunt rdf:type owl:Class ;
+  rdfs:subClassOf gwsw:Meting ;
+  rdfs:label "Revisie knooppunt" ;
+  skos:definition "Landmeetkundige inmeting van een put of bouwwerk" ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit Revisieproject (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:Revisieproject ;
+    owl:onProperty gwsw:isPartOf ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op kenmerk WijzeVanInwinning (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:WijzeVanInwinning ;
+    owl:onProperty gwsw:hasAspect ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op kenmerk DatumInwinning (exact=1)
+    rdf:type owl:Restriction;
+    owl:onClass gwsw:DatumInwinning;
+    owl:onProperty gwsw:hasAspect;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op fysiek object Put (projectdefinitie) (max=1)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:Put ;
+    owl:onProperty gwsw:hasInput ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op fysiek object Bouwwerk (projectdefinitie) (max=1)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:Bouwwerk ;
+    owl:onProperty gwsw:hasInput ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op fysiek object Put (projectresultaat) (max=1, kan ook Bouwwerk zijn)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:Put ;
+    owl:onProperty gwsw:hasOutput ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op fysiek object Bouwwerk (projectresultaat) (max=1, kan ook Put zijn)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:Bouwwerk ;
+    owl:onProperty gwsw:hasOutput ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op kenmerk MeldingRevisieKnooppunt (max=1)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:MeldingRevisieKnooppunt ;
+    owl:onProperty gwsw:hasAspect ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op kenmerk MeldingRevisieDeksel (min=0, er kunnen meerdere (niet geïdentificeerde) deksels zijn)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:MeldingRevisieDeksel ;
+    owl:onProperty gwsw:hasAspect ;
+    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op kenmerk Opmerking (min=0, er kunnen er meerdere zijn)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:Opmerking ;
+    owl:onProperty gwsw:hasAspect ;
+    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+  ] ;
+  skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
+.
+rev:RevisieLeiding rdf:type owl:Class ;
+  rdfs:subClassOf gwsw:Meting ;
+  rdfs:label "Revisie leiding" ;
+  skos:definition "Landmeetkundige inmeting van een leiding" ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit Revisieproject (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:Revisieproject ;
+    owl:onProperty gwsw:isPartOf ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op kenmerk WijzeVanInwinning (exact=1)
+    rdf:type owl:Restriction;
+    owl:onClass gwsw:WijzeVanInwinning;
+    owl:onProperty gwsw:hasAspect ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op kenmerk DatumInwinning (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:DatumInwinning ;
+    owl:onProperty gwsw:hasAspect ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op fysiek object Leiding (projectdefinitie) (max=1)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:Leiding ;
+    owl:onProperty gwsw:hasInput ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op fysiek object Leiding (projectresultaat) (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:Leiding ;
+    owl:onProperty gwsw:hasOutput ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op kenmerk MeldingRevisieLeiding (max=1)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:MeldingRevisieLeiding ;
+    owl:onProperty gwsw:hasAspect ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op kenmerk Opmerking (min=0, er kunnen er meerdere zijn)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:Opmerking ;
+    owl:onProperty gwsw:hasAspect ;
+    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+  ] ;
+  skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
+.
+rev:MeldingRevisieKnooppunt rdf:type owl:Class ; 
+  rdfs:subClassOf gwsw:Kenmerk ;
+  rdfs:label "Melding revisie knooppunt";
+  skos:definition "Melding bij revisie van put of bouwwerk";
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit RevisieKnooppunt (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:RevisieKnooppunt ;
+    owl:onProperty gwsw:isAspectOf ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
+.
+rev:MeldingRevisieDeksel rdf:type owl:Class ; 
+  rdfs:subClassOf gwsw:Kenmerk ;
+  rdfs:label "Melding revisie deksel" ;
+  skos:definition "Melding bij revisie van putdeksel" ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit RevisieKnooppunt (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:RevisieKnooppunt ;
+    owl:onProperty gwsw:isAspectOf ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
+.
+rev:MeldingRevisieLeiding rdf:type owl:Class ; 
+  rdfs:subClassOf gwsw:Kenmerk ;
+  rdfs:label "Melding revisie leiding" ;
+  skos:definition "Melding bij revisie van leiding" ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit RevisieLeiding (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass rev:RevisieLeiding ;
+    owl:onProperty gwsw:isAspectOf ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
+.
+rev:RevisieWaterstand rdf:type owl:Class ; 
+  rdfs:subClassOf gwsw:Kenmerk ;
+  rdfs:label "Gemeten waterstand bij revisie-object" ;
+  skos:definition "Gemeten waterstand bij de revisie van een object, de hoogte tov de bodem";
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit RevisieKnooppunt (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:Put ;
+    owl:onProperty gwsw:isAspectOf ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
+.
+rev:BbbBeginpuntLeiding rdf:type owl:Class ; 
+  rdfs:subClassOf gwsw:Kenmerk ;
+  rdfs:label "B.b.b. beginpunt leiding" ;
+  skos:definition "Niveau binnenbovenkant buis ter plaatse van het beginpunt" ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op topologisch element BeginpuntLeiding (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:BeginpuntLeiding ;
+    owl:onProperty gwsw:isAspectOf ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
+.
+rev:BbbEindpuntLeiding rdf:type owl:Class ; 
+  rdfs:subClassOf gwsw:Kenmerk ;
+  rdfs:label "B.b.b. eindpunt leiding" ;
+  skos:definition "Niveau binnenbovenkant buis ter plaatse van het eindpunt" ;
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op topologisch element EinduntLeiding (exact=1)
+    rdf:type owl:Restriction ;
+    owl:onClass gwsw:EindpuntLeiding ;
+    owl:onProperty gwsw:isAspectOf ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  ] ;
+  skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
+.
+</pre> </div>
+
+## Projectmodel revisiegegevens in RDF
 
 Als we de meetgegevens combineren met het eerder beschreven projectmodel kan een GWSW-dataset worden opgebouwd.
 Zo'n GWSW-dataset omvat de uitwisseling binnen het volledige project, dus zowel de gegevens van de heen- als van de terug-levering.  
 
-Het ziet er dan als volgt uit:
+Het ziet er dan als volgt uit (in één GWSW-dataset):
 
 <div class="example-dataset"><div class="example-title marker">Dataset: Voorbeeld revisieproject</div><pre>
 
@@ -190,9 +412,12 @@ Het ziet er dan als volgt uit:
 .
 {ex:10} \# Revisie knooppunt - resultaat (terug)
       gwsw:hasOutput {ex:11o} ; \# Gebruik een andere URI dan ex:11i, ook bij hetzelfde knooppunt (houdt dezelfde naam)
-      gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {Knooppunt.WijzeVanInwinning}; ] ;
-      gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {Knooppunt.DatumInwinning} ; ] ;
-      rdfs:seeAlso {Knooppunt.FotoReferentie} ;
+      gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {RevisieKnooppunt.WijzeVanInwinning}; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {RevisieKnooppunt.DatumInwinning} ; ] ;
+      rdfs:seeAlso {RevisieKnooppunt.FotoReferentie} ;
+      gwsw:hasAspect \[ rdf:type rev:MeldingRevisieKnooppunt ; gwsw:hasValue {Knooppunt.Melding} ; ] ;
+      gwsw:hasAspect \[ rdf:type rev:MeldingRevisieDeksel ; gwsw:hasValue {Deksel.Melding} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {RevisieKnooppunt.Opmerking} ; ] ;
 .
 {ex:11i/ex:11o} \# Knooppunt heen en terug
       rdf:type {Knooppunt.Type} ; /# Ga hier uit van supertype gwsw:Put 
@@ -202,6 +427,7 @@ Het ziet er dan als volgt uit:
       gwsw:hasAspect \[ rdf:type gwsw:LengtePut ; gwsw:hasValue {Knooppunt.Lengte} ; ] ;
       gwsw:hasAspect \[ rdf:type gwsw:MateriaalPut ; gwsw:hasReference {Knooppunt.Materiaal} ; ] ;
       gwsw:hasPart \[ rdf:type gwsw:Stroomprofiel; gwsw:hasAspect \[ rdf:type gwsw:VormStroomprofiel ; gwsw:hasReference {Knooppunt.Stroomprofiel} ; ] ; ] ;
+      gwsw:hasPart \[ rdf:type gwsw:Stellaag; gwsw:hasAspect \[ rdf:type gwsw:HoogteStellaag ; gwsw:hasValue {Knooppunt.Stellaag} ; ] ; ] ;
       gwsw:hasAspect \[ rdf:type gwsw:HoogtePut ; gwsw:hasValue {Knooppunt.Hoogte} ; ] ;
       gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference {Knooppunt.StatusFunctioneren} ; ] ;
       gwsw:isPartOf \[ rdf:type {Knooppunt.TypeStelsel}; ] ;
@@ -215,10 +441,7 @@ Het ziet er dan als volgt uit:
       gwsw:hasAspect \[ rdf:type gwsw:Punt ; gwsw:hasValue "gml:Point {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}" ; ] ;
 .
 {ex:11o} \# Knooppunt terug
-      gwsw:hasAspect \[ rdf:type rev:Waterstand ; gwsw:hasValue {Knooppunt.Waterstand} ; ] ;
-      gwsw:hasPart \[ rdf:type gwsw:Stellaag; gwsw:hasAspect \[ rdf:type gwsw:HoogteStellaag ; gwsw:hasValue {Knooppunt.Stellaag} ; ] ; ] ;
-      gwsw:hasAspect \[ rdf:type rev:MeldingRevisieKnooppunt ; gwsw:hasValue {Knooppunt.Melding} ; ] ;
-      gwsw:Opmerking {Knooppunt.Opmerking} ;
+      gwsw:hasAspect \[ rdf:type rev:RevisieWaterstand ; gwsw:hasValue {Knooppunt.RevisieWaterstand} ; ] ;
 .
 {ex:13i/ex:13o} \# Deksel heen en terug 
       rdf:type {Deksel.Type} ;
@@ -227,8 +450,7 @@ Het ziet er dan als volgt uit:
       gwsw:hasAspect \[ rdf:type gwsw:BreedteDeksel ; gwsw:hasValue {Deksel.Breedte} ; ] ;
       gwsw:hasAspect \[ rdf:type gwsw:LengteDeksel ; gwsw:hasValue {Deksel.Lengte} ; ] ;
       gwsw:hasAspect \[ rdf:type gwsw:MateriaalDeksel ; gwsw:hasReference {Deksel.Materiaal} ; ] ;
-      gwsw:hasAspect \[ rdf:type rev:MeldingRevisieDeksel ; gwsw:hasValue {Deksel.Melding} ; ] ;
-      gwsw:Opmerking {Deksel.Opmerking} ;
+
 .
 {ex:20} \# Revisie Leiding - activiteit
       gwsw:isPartOf {ex:01} ; 
@@ -241,6 +463,8 @@ Het ziet er dan als volgt uit:
       gwsw:hasOutput {ex:21o} ; \# Gebruik een andere URI dan ex:21i, ook bij dezelfde leiding (houdt dezelfde naam)
       gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {Leiding.WijzeVanInwinning}; ] ;
       gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {Leiding.DatumInwinning} ; ] ;
+      gwsw:hasAspect \[ rdf:type rev:MeldingRevisieLeiding ; gwsw:hasValue {Leiding.Melding} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {Leiding.Opmerking} ; ] ;
       rdfs:seeAlso {Leiding.FotoReferentie} ;
 .
 {ex:21i/ex:21o} \# Leiding heen en terug
@@ -262,21 +486,20 @@ Het ziet er dan als volgt uit:
       gwsw:hasPart {ex:23} ;
       gwsw:hasPart {ex:24} ;
 .
-{ex:23} 
+{ex:23} \# Leiding heen en terug: beginpunt
       rdf:type gwsw:BeginpuntLeiding ; 
       gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntBegin}
-      gwsw:hasAspect \[ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue {Leiding.BoKnooppuntBegin} ; ] ;
-      gwsw:hasAspect \[ rdf:type rev:BbbBeginpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntBegin} ; ] ;
+      gwsw:hasAspect \[ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppuntBegin} ; ] ;
 .
-{ex:24} 
+{ex:24} \# Leiding heen en terug: eindpunt 
       rdf:type gwsw:EindpuntLeiding ; 
       gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntEind} {ex:12} is natuurlijk een andere put
       gwsw:hasAspect \[ rdf:type gwsw:BobEindpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppuntEind} ; ] ;
-      gwsw:hasAspect \[ rdf:type rev:BbbEindpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntEind} ; ] ;
 .
-{ex:21o} \# Leiding terug
-      gwsw:hasAspect \[ rdf:type rev:MeldingRevisieLeiding ; gwsw:hasValue {Leiding.Melding} ; ] ;
-      gwsw:Opmerking {Leiding.Opmerking} ;
+{ex:241} \# Beginpunt terug
+      gwsw:hasAspect \[ rdf:type rev:BbbBeginpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntBegin} ; ] ;
+{ex:24o} \# Eindpunt terug
+      gwsw:hasAspect \[ rdf:type rev:BbbEindpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntEind} ; ] ;
 .
  </pre> </div>
 
