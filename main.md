@@ -40,12 +40,12 @@ Waargenomen toestandsgegevens (een soort meting) zoals "meting waterstand" worde
 Hetzelfde fysieke object kan dus (met bijbehorende kenmerken) in twee vormen voorkomen: als invoer (definitie) en/of als uitvoer (resultaat) bij de activiteit.
 Volgens het GWSW Datamoel hebben die invoer- en uitvoer-vorm dezelfde objectnaam (rdfs:label) maar een eigen URI, daardoor hebben de bijbehorende kenmerken ook een invoer- en uitvoer-vorm.
 
-<img src="media/Schema Revisieproject.png" style="width:100%;height:100%" />
+<img src="media/Schema Revisieproject.png" style="width:80%;height:80%" />
 
 # Gegevensuitwisseling
 Een revisieproject gebruikt gegevens met de projectdefinitie (de beschrijving van de in te meten objecten) en levert gegevens met de projectresultaten (de inmetingen) met veelal ook een verschilanalyse en een rapportage daarvan. 
 
-<img src="media/Proces uitwisseling.png" style="width:75%;height:75%" />
+<img src="media/Proces uitwisseling.png" style="width:80%;height:80%" />
 
 ## GWSW-OroX formaat
 Beheersystemen kunnen veelal omgaan met een GWSW-datasets, ze exporteren of importeren dan een dataset (bestand) conform het GWSW-OroX protocol. 
