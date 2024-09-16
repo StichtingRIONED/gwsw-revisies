@@ -43,7 +43,7 @@ Volgens het GWSW Datamoel hebben die invoer- en uitvoer-vorm dezelfde objectnaam
 <img src="media/Schema Revisieproject.png" style="width:100%;height:100%" />
 
 # Gegevensuitwisseling
-Een revisieproject gebruikt gegevens met de projectdefinitie (de beschrijving van de in te meten objecten) en levert gegevens met de projectresultaten (de inmetingen). 
+Een revisieproject gebruikt gegevens met de projectdefinitie (de beschrijving van de in te meten objecten) en levert gegevens met de projectresultaten (de inmetingen) met veelal ook een verschilanalyse en een rapportage daarvan. 
 
 <img src="media/Proces uitwisseling.png" style="width:75%;height:75%" />
 
