@@ -103,7 +103,7 @@ In de volgende tabellen staan de uitwisselgegevens per groep, de veldcode identi
 |----------------|----------------------|--------------------------------------|--------------------------------------------|
 | Naam           | Naam project         | rdfs:label bij rev:Revisieproject    | in Opera Project_Id                        |
 | Opdrachtgever  | Opdrachtgever        | rdfs:label bij gwsw:Opdrachtgever    |                                            |
-| Contractnummer | Contractnummer       | gwsw:hasValue bij rev:Contractnummer |                                            |
+| Contractnummer | Contractnummer       | gwsw:hasValue bij gwsw:ProjectreferentieOpdrachtnemer |                                            |
 | Omschrijving   | Omschrijving project | rdfs:comment bij rev:Revisieproject  | in Opera Projectomschrijving               |
 | Contactpersoon | Contactpersoon       | rdfs:label bij gwsw:Contactpersoon   | in Opera ProjectAdministratorOpdrachtgever |
 
@@ -179,7 +179,6 @@ Een overzicht van de nieuwe concepten (exclusief in deelmodel GWSW-Revisies):
 | URI                    | Naam                              | Definitie                                                                                   | Opmerking |
 |------------------------|-----------------------------------|---------------------------------------------------------------------------------------------|-----------|
 | Revisieproject         | Revisieproject                    |                                                                                             |           |
-| Contractnummer         | Contractnummer                    |                                                                                             |           |
 | InmetingKnooppunt      | Inmeting knooppunt                | Een meting van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) |           |
 | InmetingLeiding        | Inmeting leiding                  | Een meting van een leiding (deelactiviteit van Revisieproject)                              |           |
 | MetingWaterstand       | Meting waterstand                 | De gemeten waterstand tov de constructiebodem                                               | \[mm]     |
