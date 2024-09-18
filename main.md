@@ -116,7 +116,7 @@ In de volgende tabellen staan de uitwisselgegevens per groep, de veldcode identi
 | Breedte              | Breedte put of bouwwerk   | gwsw:hasValue bij gwsw:BreedtePut of gwsw:BreedteBouwwerk         | in Opera BreedtePut          |
 | Lengte               | Lengte put of bouwwerk    | gwsw:hasValue bij gwsw:LengtePut of gwsw:LengteBouwwerk           | in Opera LengtePut           |
 | Materiaal            | Materiaal put of bouwwerk | gwsw:hasReference bij gwsw:MateriaalPut of gwsw:MateriaalBouwwerk | in Opera MateriaalPut        |
-| Stroomprofiel        | Stroomprofiel             | gwsw:hasReference bij gwsw:Stroomprofiel                          |                              |
+| Bodemprofiel         | Bodemprofiel              | gwsw:hasReference bij gwsw:Bodemprofiel                           | Vanaf GWSW 1.6.1             |
 | Naam                 | Naam put of bouwwerk      | rdfs:label bij gwsw:Knooppunt                                     | in Opera Knooppuntreferentie |
 | X                    | X coördinaat              | gwsw:hasValue bij gwsw:Punt                                       | in Opera X_coordinaat        |
 | Y                    | Y coördinaat              | gwsw:hasValue bij gwsw:Punt                                       | in Opera Y_coordinaat        |
@@ -129,9 +129,9 @@ In de volgende tabellen staan de uitwisselgegevens per groep, de veldcode identi
 | Melding              | Melding meting knooppunt  | gwsw:hasReference bij rev:MeldingMetingKnooppunt                  | in Opera MeldingPut          |
 | WijzeVanInwinning    | Wijze van inwinning       | gwsw:hasReference bij gwsw:WijzeVanInwinning                      |                              |
 | DatumInwinning       | Datum inwinning           | gwsw:hasValue bij gwsw:DatumInwinning                             |                              |
-| Waterstand           | Waterstand                | gwsw:hasValue bij rev:Waterstand                                  |                              |
+| Waterstand           | Meting waterstand         | gwsw:hasValue bij rev:MetingWaterstand                            |                              |
 | HoogteStellaag       | Hoogte stellaag           | gwsw:hasValue van gwsw:HoogteStellaag                             | Vanaf GWSW 1.6.1             |
-| Fotoreferentie       | Fotoreferentie            | gwsw:seeAlso bij URI-knooppunt                                    |                              |
+| Fotoreferentie       | Fotoreferentie            | rdfs:seeAlso bij URI-knooppunt                                    |                              |
 | Opmerking            | Opmerking                 | gwsw:hasValue bij gwsw:Opmerking                                  | in Opera rdfs:comment        |
 
 **Deksel**  
@@ -166,7 +166,7 @@ In de volgende tabellen staan de uitwisselgegevens per groep, de veldcode identi
 | Breedte            | Breedte leiding         | gwsw:hasValue bij gwsw:Breedte                 | in Opera BreedteLeiding       |
 | Materiaal          | Materiaal leiding       | gwsw:hasReference bij gwsw:Materiaal           | in Opera MateriaalLeiding     |
 | Melding            | Melding meting leiding  | gwsw:hasReference bij rev:MeldingMetingLeiding | in Opera MeldingLeiding       |
-| Fotoreferentie     | Fotoreferentie          | gwsw:seeAlso bij URI-knooppunt                 |                               |
+| Fotoreferentie     | Fotoreferentie          | rdfs:seeAlso bij URI-knooppunt                 |                               |
 | WijzeVanInwinning  | Wijze van inwinning     | gwsw:hasReference bij gwsw:WijzeVanInwinning   |                               |
 | DatumInwinning     | Datum inwinning         | gwsw:hasValue bij gwsw:DatumInwinning          |                               |
 | Opmerking          | Opmerking               | gwsw:hasValue bij gwsw:Opmerking               | in Opera rdfs:comment         |
@@ -176,18 +176,18 @@ Veel URI's staan al in het GWSW datamodel, voor het deelmodel Revisies zijn ook 
 
 Een overzicht van de nieuwe concepten (exclusief in deelmodel GWSW-Revisies):
 
-| URI                    | Naam                              | Definitie                                                              | Opmerking |
-|------------------------|-----------------------------------|------------------------------------------------------------------------|-----------|
-| Revisieproject         | Revisieproject                    |                                                                        |           |
-| Contractnummer         | Contractnummer                    |                                                                        |           |
-| MetingKnooppunt        | Meting knooppunt                  | Een meting van een put of bouwwerk (deelactiviteit van Revisieproject) |           |
-| MetingLeiding          | Meting leiding                    | Een meting van een leiding (deelactiviteit van Revisieproject)         |           |
-| MetingWaterstand       | Meting waterstand                 | De gemeten waterstand tov de constructiebodem                          | \[mm]     |
-| MeldingMetingKnooppunt | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk      |           |
-| MeldingMetingDeksel    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel               |           |
-| MeldingMetingLeiding   | Melding bij meting leiding        | Voorgedefinieerde meldingen bij de meting van een leiding              |           |
-| BbbBeginpuntLeiding    | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt       | \[m.nap]  |
-| BbbEindpuntLeiding     | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt        | \[m.nap]  |
+| URI                    | Naam                              | Definitie                                                                                   | Opmerking |
+|------------------------|-----------------------------------|---------------------------------------------------------------------------------------------|-----------|
+| Revisieproject         | Revisieproject                    |                                                                                             |           |
+| Contractnummer         | Contractnummer                    |                                                                                             |           |
+| InmetingKnooppunt      | Inmeting knooppunt                | Een meting van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) |           |
+| InmetingLeiding        | Inmeting leiding                  | Een meting van een leiding (deelactiviteit van Revisieproject)                              |           |
+| MetingWaterstand       | Meting waterstand                 | De gemeten waterstand tov de constructiebodem                                               | \[mm]     |
+| MeldingMetingKnooppunt | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk                           |           |
+| MeldingMetingDeksel    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel                                    |           |
+| MeldingMetingLeiding   | Melding bij meting leiding        | Voorgedefinieerde meldingen bij de meting van een leiding                                   |           |
+| BbbBeginpuntLeiding    | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt                            | \[m.nap]  |
+| BbbEindpuntLeiding     | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt                             | \[m.nap]  |
 
 # GWSW Datamodel
 
