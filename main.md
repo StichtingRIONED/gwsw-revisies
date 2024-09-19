@@ -27,7 +27,7 @@ De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aa
 Het projectmodel beschrijft globaal het activiteiten-schema van een revisieproject.
 
 **Deelactiviteiten**  
-Een revisieproject bestaat uit de deelactiviteiten meting knooppunt (put of bouwwerk) en meting leiding.
+Een revisieproject bestaat uit de deelactiviteiten inmeten knooppunt (put of bouwwerk) en inmeten leiding.
 Een deelactiviteit heeft algemene kenmerken zoals meldingen, opmerkingen en de wijze van inwinning.
 
 **Invoer**   
@@ -179,8 +179,8 @@ Een overzicht van de nieuwe concepten (exclusief in deelmodel GWSW-Revisies):
 | URI                    | Naam                              | Definitie                                                                                   | Opmerking |
 |------------------------|-----------------------------------|---------------------------------------------------------------------------------------------|-----------|
 | Revisieproject         | Revisieproject                    |                                                                                             |           |
-| InmetingKnooppunt      | Inmeting knooppunt                | Een meting van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) |           |
-| InmetingLeiding        | Inmeting leiding                  | Een meting van een leiding (deelactiviteit van Revisieproject)                              |           |
+| InmetenKnooppunt      | Inmeten knooppunt                | Inmeten van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) |           |
+| InmetenLeiding        | Inmeten leiding                  | Inmeten van een leiding (deelactiviteit van Revisieproject)                              |           |
 | MetingWaterstand       | Meting waterstand                 | De gemeten waterstand tov de constructiebodem                                               | \[mm]     |
 | MeldingMetingKnooppunt | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk                           |           |
 | MeldingMetingDeksel    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel                                    |           |
@@ -202,23 +202,23 @@ rev:Revisieproject rdf:type owl:Class ;
   rdfs:subClassOf gwsw:Project ;
   rdfs:label "Revisieproject";
   skos:definition "Revisieproject" ;
-  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit MetingKnooppunt (min=0)
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit InmetenKnooppunt (min=0)
     rdf:type owl:Restriction ;
-    owl:onClass rev:MetingKnooppunt ;
+    owl:onClass rev:InmetenKnooppunt ;
     owl:onProperty gwsw:hasPart ;
     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
   ] ;
-  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit MetingLeiding (min=0)
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit InmetenLeiding (min=0)
     rdf:type owl:Restriction ;
-    owl:onClass rev:MetingLeiding ;
+    owl:onClass rev:InmetenLeiding ;
     owl:onProperty gwsw:hasPart ;
     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
   ] ;
   skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
 .
-rev:MetingKnooppunt rdf:type owl:Class ;
-  rdfs:subClassOf gwsw:Meting ;
-  rdfs:label "Meting knooppunt" ;
+rev:InmetenKnooppunt rdf:type owl:Class ;
+  rdfs:subClassOf gwsw:Meten ;
+  rdfs:label "Inmeten knooppunt" ;
   skos:definition "Landmeetkundige inmeting van een put of bouwwerk" ;
   rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit Revisieproject (exact=1)
     rdf:type owl:Restriction ;
@@ -282,9 +282,9 @@ rev:MetingKnooppunt rdf:type owl:Class ;
   ] ;
   skos:scopeNote rev:Cof_REV; \# Nieuw concept in deelmodel GWSW-Revisies
 .
-rev:MetingLeiding rdf:type owl:Class ;
-  rdfs:subClassOf gwsw:Meting ;
-  rdfs:label "Meting leiding" ;
+rev:InmetenLeiding rdf:type owl:Class ;
+  rdfs:subClassOf gwsw:Meten ;
+  rdfs:label "Inmeten leiding" ;
   skos:definition "Landmeetkundige inmeting van een leiding" ;
   rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit Revisieproject (exact=1)
     rdf:type owl:Restriction ;
@@ -334,9 +334,9 @@ rev:MeldingMetingKnooppunt rdf:type owl:Class ;
   rdfs:subClassOf gwsw:Kenmerk ;
   rdfs:label "Melding meting knooppunt";
   skos:definition "Melding bij meting van put of bouwwerk";
-  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit MetingKnooppunt (exact=1)
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit InmetenKnooppunt (exact=1)
     rdf:type owl:Restriction ;
-    owl:onClass rev:MetingKnooppunt ;
+    owl:onClass rev:InmetenKnooppunt ;
     owl:onProperty gwsw:isAspectOf ;
     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
   ] ;
@@ -346,9 +346,9 @@ rev:MeldingMetingDeksel rdf:type owl:Class ;
   rdfs:subClassOf gwsw:Kenmerk ;
   rdfs:label "Melding meting deksel" ;
   skos:definition "Melding bij meting van putdeksel" ;
-  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit MetingKnooppunt (exact=1)
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit InmetenKnooppunt (exact=1)
     rdf:type owl:Restriction ;
-    owl:onClass rev:MetingKnooppunt ;
+    owl:onClass rev:InmetengKnooppunt ;
     owl:onProperty gwsw:isAspectOf ;
     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
   ] ;
@@ -358,9 +358,9 @@ rev:MeldingMetingLeiding rdf:type owl:Class ;
   rdfs:subClassOf gwsw:Kenmerk ;
   rdfs:label "Melding meting leiding" ;
   skos:definition "Melding bij meting van leiding" ;
-  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit MetingLeiding (exact=1)
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit InmetenLeiding (exact=1)
     rdf:type owl:Restriction ;
-    owl:onClass rev:MetingLeiding ;
+    owl:onClass rev:InmetenLeiding ;
     owl:onProperty gwsw:isAspectOf ;
     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
   ] ;
@@ -370,7 +370,7 @@ rev:MetingWaterstand rdf:type owl:Class ;
   rdfs:subClassOf gwsw:Kenmerk ;
   rdfs:label "Gemeten waterstand bij revisie-object" ;
   skos:definition "Gemeten waterstand bij de meting van een object, de hoogte tov de bodem";
-  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit MetingKnooppunt (exact=1)
+  rdfs:subClassOf \[ \# Kardinaliteits-restricie op activiteit InmetenKnooppunt (exact=1)
     rdf:type owl:Restriction ;
     owl:onClass gwsw:Put ;
     owl:onProperty gwsw:isAspectOf ;
@@ -428,19 +428,19 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
 .
 {ex:10} \# Meting knooppunt - activiteit
   gwsw:isPartOf {ex:01} ; 
-  rdf:type rev:MetingKnooppunt ;
+  rdf:type rev:InmetenKnooppunt ;
 .
 {ex:10} \# Meting knooppunt - projectdefinitie (heen)
   gwsw:hasInput {ex:11i} ;
 .
 {ex:10} \# Meting knooppunt - resultaat (terug)
   gwsw:hasOutput {ex:11o} ; \# Gebruik een andere URI dan ex:11i, ook bij hetzelfde knooppunt (houdt dezelfde naam)
-  gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {MetingKnooppunt.WijzeVanInwinning}; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {MetingKnooppunt.DatumInwinning} ; ] ;
-  rdfs:seeAlso {MetingKnooppunt.FotoReferentie} ;
+  gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {InmetenKnooppunt.WijzeVanInwinning}; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {InmetenKnooppunt.DatumInwinning} ; ] ;
+  rdfs:seeAlso {InmetenKnooppunt.FotoReferentie} ;
   gwsw:hasAspect \[ rdf:type rev:MeldingMetingKnooppunt ; gwsw:hasValue {Knooppunt.Melding} ; ] ;
   gwsw:hasAspect \[ rdf:type rev:MeldingMetingDeksel ; gwsw:hasValue {Deksel.Melding} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {MetingKnooppunt.Opmerking} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {InmetenKnooppunt.Opmerking} ; ] ;
 .
 {ex:11i/ex:11o} \# Knooppunt heen en terug
   rdf:type {Knooppunt.Type} ; /# Ga hier uit van supertype gwsw:Put 
@@ -476,12 +476,12 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
 .
 {ex:20} \# Meting Leiding - activiteit
   gwsw:isPartOf {ex:01} ; 
-  rdf:type rev:MetingLeiding ;
+  rdf:type rev:InmetenLeiding ;
 .
 {ex:20} \# Meting Leiding - projectdefinitie (heen)
   gwsw:hasInput {ex:21i} ;
 .
-{ex:20} \# MetingLeiding: - resultaat (terug)
+{ex:20} \# InmetenLeiding: - resultaat (terug)
   gwsw:hasOutput {ex:21o} ; \# Gebruik een andere URI dan ex:21i, ook bij dezelfde leiding (houdt dezelfde naam)
   gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {Leiding.WijzeVanInwinning}; ] ;
   gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {Leiding.DatumInwinning} ; ] ;
