@@ -15,7 +15,7 @@ De voornaamste initiator van dit deelmodel is de GWSW-Opera organisatie. De basi
 
 ## Doel en toepassing
 
-Ondersteuning bij revisies en andere metingen van stedelijk water voorzieningen, met name het efficient en effectief verwerken van inmetingen door de landmeter.
+Ondersteuning bij revisies en andere metingen van stedelijk water voorzieningen, vooral het efficient en effectief verwerken van inmetingen door de landmeter.
 
 **Revisie**  
 De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aanleg (de realisatie van het ontwerp). Dit deelmodel heeft een bredere scoop, ook het inmeten van al langer in gebruik zijnde objecten is een toepassing van dit deelmodel. Denk dan bijvoorbeeld aan het verbeteren van de bestaande registratie of het actualiseren van gegevens na verzakkingen.
@@ -53,7 +53,7 @@ Zo'n dataset is direct bruikbaar op het GWSW platform, waarmee de gegevens voor 
 
 Ook de gegevens van een revisieproject kunnen via het OroX-protocol worden uitgewisseld, dat is de meest directe vorm van uitwisseling. Het complete revisieproject, zowel de definitie als de resultaten past in één dataset.
 
-Het GWSW-OroX protocol is een speciaal formaat, ingericht op het uitwisselen via het web (linked data) en het kunnen bouwen van ontologiën, speciale datastructuren waarin de stedelijk water systemen volledig beschreven kunnen worden, zowel de systemen als de processen.
+Het GWSW-OroX protocol is een speciaal formaat, ingericht op het uitwisselen via het web (linked data) en het kunnen bouwen van ontologiën. Een ontologie is een speciale datastructuur waarin de stedelijk water voorzieningen volledig beschreven kunnen worden, dat geldt voor zowel de systemen als de (beheer)processen.
 
 ## Tussenvorm CSV of JSON 
 Linked data formaten zoals het GWSW-OroX zijn vaak minder bekend bij uitvoerende partijen zoals de landmeter bij inmetingen of de cad-tekenaar bij het ontwerp van systemen.
