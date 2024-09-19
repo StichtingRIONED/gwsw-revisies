@@ -99,13 +99,13 @@ In de volgende tabellen staan de uitwisselgegevens per groep, de veldcode identi
 
 **Project**  
 
-| Veldcode       | Omschrijving         | Waarde in RDF-termen                 | Opmerking                                  |
-|----------------|----------------------|--------------------------------------|--------------------------------------------|
-| Naam           | Naam project         | rdfs:label bij rev:Revisieproject    | in Opera Project_Id                        |
-| Opdrachtgever  | Opdrachtgever        | rdfs:label bij gwsw:Opdrachtgever    |                                            |
+| Veldcode       | Omschrijving         | Waarde in RDF-termen                                  | Opmerking                                  |
+|----------------|----------------------|-------------------------------------------------------|--------------------------------------------|
+| Naam           | Naam project         | rdfs:label bij rev:Revisieproject                     | in Opera Project_Id                        |
+| Opdrachtgever  | Opdrachtgever        | rdfs:label bij gwsw:Opdrachtgever                     |                                            |
 | Contractnummer | Contractnummer       | gwsw:hasValue bij gwsw:ProjectreferentieOpdrachtnemer |                                            |
-| Omschrijving   | Omschrijving project | rdfs:comment bij rev:Revisieproject  | in Opera Projectomschrijving               |
-| Contactpersoon | Contactpersoon       | rdfs:label bij gwsw:Contactpersoon   | in Opera ProjectAdministratorOpdrachtgever |
+| Omschrijving   | Omschrijving project | rdfs:comment bij rev:Revisieproject                   | in Opera Projectomschrijving               |
+| Contactpersoon | Contactpersoon       | rdfs:label bij gwsw:Contactpersoon                    | in Opera ProjectAdministratorOpdrachtgever |
 
 **Knooppunt** (Put of Bouwwerk)  
 
@@ -176,23 +176,23 @@ Veel URI's staan al in het GWSW datamodel, voor het deelmodel Revisies zijn ook 
 
 Een overzicht van de nieuwe concepten (exclusief in deelmodel GWSW-Revisies):
 
-| URI                    | Naam                              | Definitie                                                                                   | Opmerking |
-|------------------------|-----------------------------------|---------------------------------------------------------------------------------------------|-----------|
-| Revisieproject         | Revisieproject                    |                                                                                             |           |
-| InmetenKnooppunt      | Inmeten knooppunt                | Inmeten van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) |           |
-| InmetenLeiding        | Inmeten leiding                  | Inmeten van een leiding (deelactiviteit van Revisieproject)                              |           |
-| MetingWaterstand       | Meting waterstand                 | De gemeten waterstand tov de constructiebodem                                               | \[mm]     |
-| MeldingMetingKnooppunt | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk                           |           |
-| MeldingMetingDeksel    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel                                    |           |
-| MeldingMetingLeiding   | Melding bij meting leiding        | Voorgedefinieerde meldingen bij de meting van een leiding                                   |           |
-| BbbBeginpuntLeiding    | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt                            | \[m.nap]  |
-| BbbEindpuntLeiding     | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt                             | \[m.nap]  |
+| URI                    | Naam                              | Definitie                                                                                | Opmerking |
+|------------------------|-----------------------------------|------------------------------------------------------------------------------------------|-----------|
+| Revisieproject         | Revisieproject                    |                                                                                          |           |
+| InmetenKnooppunt       | Inmeten knooppunt                 | Inmeten van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) |           |
+| InmetenLeiding         | Inmeten leiding                   | Inmeten van een leiding (deelactiviteit van Revisieproject)                              |           |
+| MetingWaterstand       | Meting waterstand                 | De gemeten waterstand tov de constructiebodem                                            | \[mm]     |
+| MeldingMetingKnooppunt | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk                        |           |
+| MeldingMetingDeksel    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel                                 |           |
+| MeldingMetingLeiding   | Melding bij meting leiding        | Voorgedefinieerde meldingen bij de meting van een leiding                                |           |
+| BbbBeginpuntLeiding    | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt                         | \[m.nap]  |
+| BbbEindpuntLeiding     | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt                          | \[m.nap]  |
 
 # GWSW Datamodel
 
-## Datamodel revisies in RDF
+## Datamodel Revisies in RDF
 
-Hieronder staat het eerste concept model met daarin alleen de toegevoegde revisie-concepten (in de uitgewerkte versies wordt de prefix rev: vervangen door gwsw:).  
+Hieronder staat het eerste concept model met daarin alleen de toegevoegde revisie-concepten (in de uitgewerkte versies wordt de prefix rev: vervangen door gwsw: ).  
 
 De uitwerking van het complete deelmodel GWSW-Revisies staat onder https://data.gwsw.nl/Revisies.
 
@@ -416,7 +416,7 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
 \# ex: - prefix met de individuen, de objecten in de projectdefintie en in het terrein
 \# gwsw: - bestaande gwsw-concepten
 \# rev: - concepten in deelmodel GWSW-Revisies
-\# rdf:/rdfs: - generieke RDF-concepten
+\# rdf: / rdfs: - generieke RDF-concepten
 
 {ex:01} \# Revisieproject
   rdfs:label {Project.Naam} ;
@@ -426,14 +426,14 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
   gwsw:isOutputOf \[ rdf:type gwsw:Contactpersoon ; rdfs:label {Project.Contactpersoon} ; ] ;
   rdfs:comment {Project.Omschrijving} ;
 .
-{ex:10} \# Meting knooppunt - activiteit
+{ex:10} \# Inmeten knooppunt - activiteit
   gwsw:isPartOf {ex:01} ; 
   rdf:type rev:InmetenKnooppunt ;
 .
-{ex:10} \# Meting knooppunt - projectdefinitie (heen)
+{ex:10} \# Inmeten knooppunt - projectdefinitie (heen)
   gwsw:hasInput {ex:11i} ;
 .
-{ex:10} \# Meting knooppunt - resultaat (terug)
+{ex:10} \# Inmeten knooppunt - resultaat (terug)
   gwsw:hasOutput {ex:11o} ; \# Gebruik een andere URI dan ex:11i, ook bij hetzelfde knooppunt (houdt dezelfde naam)
   gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {InmetenKnooppunt.WijzeVanInwinning}; ] ;
   gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {InmetenKnooppunt.DatumInwinning} ; ] ;
@@ -474,11 +474,11 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
   gwsw:hasAspect \[ rdf:type gwsw:LengteDeksel ; gwsw:hasValue {Deksel.Lengte} ; ] ;
   gwsw:hasAspect \[ rdf:type gwsw:MateriaalDeksel ; gwsw:hasReference {Deksel.Materiaal} ; ] ;
 .
-{ex:20} \# Meting Leiding - activiteit
+{ex:20} \# Inmeten Leiding - activiteit
   gwsw:isPartOf {ex:01} ; 
   rdf:type rev:InmetenLeiding ;
 .
-{ex:20} \# Meting Leiding - projectdefinitie (heen)
+{ex:20} \# Inmeten Leiding - projectdefinitie (heen)
   gwsw:hasInput {ex:21i} ;
 .
 {ex:20} \# InmetenLeiding: - resultaat (terug)
