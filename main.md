@@ -11,14 +11,17 @@ Vragen over deze website en het GWSW kunt u stellen via gwsw@rioned.org.
 
 # Inleiding
 
-De voornaamste initiator van dit deelmodel is de GWSW-Opera organisatie. De basis ligt bij een PoC gericht op het ontwikkelen en toetsen van het inmeetproces, dus de gegevensuitwisseling tussen landmeter en beheerder.
+De voornaamste initiator van dit deelmodel is de GWSW-Opera organisatie. De basis ligt bij een PoC gericht op het ontwikkelen en toetsen van het inmeetproces, 
+dus de gegevensuitwisseling tussen landmeter en beheerder.
 
 ## Doel en toepassing
 
 Ondersteuning bij revisies en andere metingen van stedelijk water voorzieningen, vooral het efficient en effectief verwerken van inmetingen door de landmeter.
 
 **Revisie**  
-De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aanleg (de realisatie van het ontwerp). Dit deelmodel heeft een bredere scoop, ook het inmeten van al langer in gebruik zijnde objecten is een toepassing van dit deelmodel. Denk dan bijvoorbeeld aan het verbeteren van de bestaande registratie of het actualiseren van gegevens na verzakkingen.
+De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aanleg (de realisatie van het ontwerp). Dit deelmodel heeft een bredere scoop, 
+ook het inmeten van al langer in gebruik zijnde objecten is een toepassing van dit deelmodel. 
+Denk dan bijvoorbeeld aan het verbeteren van de bestaande registratie of het actualiseren van gegevens na verzakkingen.
 
 ## Leeswijzer
 
@@ -34,8 +37,8 @@ Een deelactiviteit heeft algemene kenmerken zoals meldingen, opmerkingen en de w
 Een knooppunt of leiding met oorspronkelijke kenmerken zoals afmetingen vormt de invoer voor de deelactiviteit. Die gegevens komen uit het beheersysteem of vanuit het ontwerpplan.
 
 **Uitvoer**  
-Het ingemeten object wordt als uitvoer van de deelactiviteit beschreven, de ingemeten kenmerken zoals afmetingen en hoogteligging worden - net zoals bij het invoer-object - bij het uitvoer-object opgenomen.
-Waargenomen toestandsgegevens (een soort meting) zoals "meting waterstand" worden als aparte uitvoer bij de deelactiviteit beschreven. 
+Het ingemeten object wordt als uitvoer van de deelactiviteit beschreven, de ingemeten kenmerken zoals afmetingen en hoogteligging worden - net zoals bij het invoer-object - bij het 
+uitvoer-object opgenomen. Waargenomen toestandsgegevens (een soort meting) zoals "meting waterstand" worden als aparte uitvoer bij de deelactiviteit beschreven. 
 
 Hetzelfde fysieke object kan dus (met bijbehorende kenmerken) in twee vormen voorkomen: als invoer (definitie) en/of als uitvoer (resultaat) bij de activiteit.
 Volgens het GWSW Datamoel hebben die invoer- en uitvoer-vorm dezelfde objectnaam (rdfs:label) maar een eigen URI, daardoor hebben de bijbehorende kenmerken ook een invoer- en uitvoer-vorm.
@@ -43,23 +46,32 @@ Volgens het GWSW Datamoel hebben die invoer- en uitvoer-vorm dezelfde objectnaam
 <img src="media/Schema Revisieproject.png" style="width:80%;height:80%" />
 
 # Gegevensuitwisseling
-Een revisieproject gebruikt gegevens met de projectdefinitie (de beschrijving van de in te meten objecten) en levert gegevens met de projectresultaten (de inmetingen) met veelal ook een verschilanalyse en een rapportage daarvan. 
+Een revisieproject gebruikt gegevens met de projectdefinitie (de beschrijving van de in te meten objecten) en levert gegevens met de projectresultaten (de inmetingen) 
+met veelal ook een verschilanalyse en een rapportage daarvan. 
 
 <img src="media/Proces uitwisseling.png" style="width:80%;height:80%" />
 
 ## GWSW-OroX formaat
 Beheersystemen kunnen veelal omgaan met een GWSW-datasets, ze exporteren of importeren dan een dataset (bestand) conform het GWSW-OroX protocol. 
-Zo'n dataset is direct bruikbaar op het GWSW platform, waarmee de gegevens voor allerlei algemene toepassingen beschikbaar komen. Bijvoorbeeld kan de inhoud in GIS systemen worden gebruikt. Zie ook https://apps.gwsw.nl.
+Zo'n dataset is direct bruikbaar op het GWSW platform, waarmee de gegevens voor allerlei algemene toepassingen beschikbaar komen. 
+Bijvoorbeeld kan de inhoud in GIS systemen worden gebruikt. Zie ook https://apps.gwsw.nl.
 
-Ook de gegevens van een revisieproject kunnen via het OroX-protocol worden uitgewisseld, dat is de meest directe vorm van uitwisseling. Het complete revisieproject, zowel de definitie als de resultaten past in één dataset.
+Ook de gegevens van een revisieproject kunnen via het OroX-protocol worden uitgewisseld, dat is de meest directe vorm van uitwisseling. 
+Het complete revisieproject, zowel de definitie als de resultaten past in één dataset.
 
-Het GWSW-OroX protocol is een speciaal formaat, ingericht op het uitwisselen via het web (linked data) en het kunnen bouwen van ontologiën. Een ontologie is een speciale datastructuur waarin de stedelijk water voorzieningen volledig beschreven kunnen worden, dat geldt voor zowel de systemen als de (beheer)processen.
+**Validatie uitwisseling**  
+Gebruik voor de validatie van heen- en terug-gegevens ook de tabellen in het volgende hoofdstuk, zie de kolommen "Heen" en "Terug"
+
+Het GWSW-OroX protocol is een speciaal formaat, ingericht op het uitwisselen via het web (linked data) en het kunnen bouwen van ontologiën. 
+Een ontologie is een speciale datastructuur waarin de stedelijk water voorzieningen volledig beschreven kunnen worden, dat geldt voor zowel de systemen als de (beheer)processen.
 
 ## Tussenvorm CSV of JSON 
 Linked data formaten zoals het GWSW-OroX zijn vaak minder bekend bij uitvoerende partijen zoals de landmeter bij inmetingen of de cad-tekenaar bij het ontwerp van systemen.
-Om die reden zijn er tussenvormen beschikbaar in bekendere formaten zoals CSV en JSON (minder bekend maar wel eenvoudig van opzet). Omzetters van CSV naar JSON en vise versa zijn algemeen beschikbaar.
+Om die reden zijn er tussenvormen beschikbaar in bekendere formaten zoals CSV en JSON (minder bekend maar wel eenvoudig van opzet). 
+Omzetters van CSV naar JSON en vise versa zijn algemeen beschikbaar.
 
-Via CSV of JSON worden de gegevens uitgewisseld in aparte heen- en terug-bestanden (analoog aan de GWSW-RibX uitwisseling). Daardoor is er wel een klein nadeel vanwege enige redundantie (bijvoorbeeld projectgegevens komen dubbel voor).
+Via CSV of JSON worden de gegevens uitgewisseld in aparte heen- en terug-bestanden (analoog aan de GWSW-RibX uitwisseling). 
+Daardoor is er wel een klein nadeel vanwege enige redundantie (bijvoorbeeld projectgegevens komen dubbel voor).
 
 In deze tussenvorm zijn er vier groepen: Project, Knooppunt, Deksel en Leiding. 
 Elk uitwisselgegeven wordt geïdentificeerd door deze groep + de veldcode (zie hierna).  
@@ -97,98 +109,174 @@ In het JSON-formaat is een heen- en terug-bestand een tekstfile met daarin de JS
 
 In de volgende tabellen staan de uitwisselgegevens per groep, de veldcode identificeert dus het gegeven per groep.
 
-**Project**  
+**Vullingsvoorschriften uitwisseling (identiek aan de RibX-definitie):**
 
-| Veldcode       | Omschrijving         | Waarde in RDF-termen                                  | Opmerking                                  |
-|----------------|----------------------|-------------------------------------------------------|--------------------------------------------|
-| Naam           | Naam project         | rdfs:label bij rev:Revisieproject                     | in Opera Project_Id                        |
-| Opdrachtgever  | Opdrachtgever        | rdfs:label bij gwsw:Opdrachtgever                     |                                            |
-| Contractnummer | Contractnummer       | gwsw:hasValue bij gwsw:ProjectreferentieOpdrachtnemer |                                            |
-| Omschrijving   | Omschrijving project | rdfs:comment bij rev:Revisieproject                   | in Opera Projectomschrijving               |
-| Contactpersoon | Contactpersoon       | rdfs:label bij gwsw:Contactpersoon                    | in Opera ProjectAdministratorOpdrachtgever |
+De vullingsvoorschriften staan in twee kolommen:
+* “Heen”: de veldvulling in een vooraf aangeleverd uitwisselbestand (van de rioleringsbeheerder).
+* “Terug”: de veldvulling in een teruggeleverd uitwisselbestand, de resultaten (van de landmeter).
 
-**Knooppunt** (Put of Bouwwerk)  
+De kolommen “heen” en “terug” gebruiken de volgende codes:
 
-| Veldcode             | Omschrijving              | Waarde in RDF-termen                                              | Opmerking                    |
-|----------------------|---------------------------|-------------------------------------------------------------------|------------------------------|
-| Type                 | Type put of bouwwerk      | rdf:type van gwsw:Put of gwsw:Bouwwerk                            | in Opera SoortPut            |
-| Vorm                 | Vorm put of bouwwerk      | gwsw:hasReference bij gwsw:VormPut of gwsw:VormBouwwerk           | in Opera VormPut             |
-| Breedte              | Breedte put of bouwwerk   | gwsw:hasValue bij gwsw:BreedtePut of gwsw:BreedteBouwwerk         | in Opera BreedtePut          |
-| Lengte               | Lengte put of bouwwerk    | gwsw:hasValue bij gwsw:LengtePut of gwsw:LengteBouwwerk           | in Opera LengtePut           |
-| Materiaal            | Materiaal put of bouwwerk | gwsw:hasReference bij gwsw:MateriaalPut of gwsw:MateriaalBouwwerk | in Opera MateriaalPut        |
-| Bodemprofiel         | Bodemprofiel              | gwsw:hasReference bij gwsw:Bodemprofiel                           | Vanaf GWSW 1.6.1             |
-| Naam                 | Naam put of bouwwerk      | rdfs:label bij gwsw:Knooppunt                                     | in Opera Knooppuntreferentie |
-| X                    | X coördinaat              | gwsw:hasValue bij gwsw:Punt                                       | in Opera X_coordinaat        |
-| Y                    | Y coördinaat              | gwsw:hasValue bij gwsw:Punt                                       | in Opera Y_coordinaat        |
-| Z                    | Z coördinaat              | gwsw:hasValue bij gwsw:Punt                                       | in Opera Z_coordinaat        |
-| Hoogte               | Hoogte knooppunt          | gwsw:hasValue bij gwsw:HoogtePut of gwsw:HoogteBouwwerk           |                              |
-| StatusFunctioneren   | Status functioneren       | gwsw:hasReference bij gwsw:StatusFunctioneren                     |                              |
-| TypeStelsel          | Type stelsel              | rdf:type bij gwsw:Stelsel                                         |                              |
-| Constructieonderdeel | Constructieonderdeel      | rdf:type bij gwsw:Constructieonderdeel                            |                              |
-| Drempelniveau        | Drempelniveau             | gwsw:hasValue bijgwsw:Drempelniveau                               |                              |
-| Melding              | Melding meting knooppunt  | gwsw:hasReference bij rev:MeldingMetingKnooppunt                  | in Opera MeldingPut          |
-| WijzeVanInwinning    | Wijze van inwinning       | gwsw:hasReference bij gwsw:WijzeVanInwinning                      |                              |
-| DatumInwinning       | Datum inwinning           | gwsw:hasValue bij gwsw:DatumInwinning                             |                              |
-| Waterstand           | Meting waterstand         | gwsw:hasValue bij rev:MetingWaterstand                            |                              |
-| HoogteStellaag       | Hoogte stellaag           | gwsw:hasValue van gwsw:HoogteStellaag                             | Vanaf GWSW 1.6.1             |
-| Fotoreferentie       | Fotoreferentie            | rdfs:seeAlso bij URI-knooppunt                                    |                              |
-| Opmerking            | Opmerking                 | gwsw:hasValue bij gwsw:Opmerking                                  | in Opera rdfs:comment        |
+| Code | Voorschrift veldvulling in uitwisselbestand                                 |
+|------|-----------------------------------------------------------------------------|
+|      | Geen code in kolom “heen”: Niet vooraf invullen                             |
+|      | Geen code in kolom “terug”: Niet achteraf invullen (terug zonder wijziging) |
+| O    | Optioneel                                                                   |
+| A    | Altijd *)                                                                   |
 
-**Deksel**  
+*) Als voor de kolom “heen” geldt dat het gegeven verplicht is (A) en het gegeven ontbreekt in het heen-bestand, dan moet de rioleringsbeheerder met de landmeter 
+afspraken maken over de teruglevering. Wanneer het gegeven voor zowel “heen” als “terug” verplicht is (A) en het “heen”-gegeven is fout of ontbreekt (nieuw object, niet vooraf 
+ingevuld), dan moet de landmeter dit gegeven – als het bekend is – altijd bij de inmeting corrigeren of aanvullen.
 
-| Veldcode  | Omschrijving              | Waarde in RDF-termen                          | Opmerking                    |
-|-----------|---------------------------|-----------------------------------------------|------------------------------|
-| Naam      | Naam put of bouwwerk      | rdfs:label bij gwsw:Knooppunt                 | in Opera Knooppuntreferentie |
-| Type      | Type deksel               | rdf:type van gwsw:Afdekking                   | in Opera SoortDeksel         |
-| Vorm      | Vorm deksel               | gwsw:hasReference bij gwsw:VormDeksel         | in Opera VormDeksel          |
-| Lengte    | Lengte deksel             | gwsw:hasValue bij gwsw:LengteDeksel           | in Opera LengteDeksel        |
-| Breedte   | Breedte deksel            | gwsw:hasValue bij gwsw:BreedteDeksel          | in Opera BreedteDeksel       |
-| Materiaal | Materiaal deksel          | gwsw:hasReference bij gwsw:MateriaalDeksel    | in Opera MateriaalDeksel     |
-| Melding   | Melding bij meting deksel | gwsw:hasReference bij rev:MeldingMetingDeksel | in Opera MeldingDeksel       |
-| Opmerking | Opmerking                 | gwsw:hasValue bij gwsw:Opmerking              | in Opera rdfs:comment        |
+**Link naar datamodel GWSW**
 
-**Leiding**  
+Het GWSW-datamodel beschrijft de gebruikte concepten, de definitie en het waardetype is daarin beschreven.  
+Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder http://data.gwsw.nl/totaal of http://data.gwsw.nl/revisies).
 
-| Veldcode           | Omschrijving            | Waarde in RDF-termen                           | Opmerking                     |
-|--------------------|-------------------------|------------------------------------------------|-------------------------------|
-| Naam               | Naam leiding            | rdfs:label bij gwsw:Leiding                    | in Opera Leiding_id           |
-| NaamKnooppuntBegin | Naam knooppunt begin    | gwsw:hasConnection met URI-BeginpuntLeiding    | in Opera Knooppuntreferentie1 |
-| NaamKnooppuntEind  | Naam knooppunt eind     | gwsw:hasConnection met URI-EindpuntLeiding     | in Opera Knooppuntreferentie2 |
-| BobKnooppuntBegin  | Bob bij knooppunt begin | hasValue van gwsw:BobBeginpuntLeiding          | in Opera BobBeginpuntLeiding  |
-| BobKnooppuntEind   | Bob bij knooppunt eind  | hasValue van gwsw:BobEindpuntLeiding           | in Opera BobEindpuntLeiding   |
-| BbbKnooppuntBegin  | Bbb bij knooppunt begin | hasValue van rev:BbbBeginpuntLeiding           | in Opera BbbBeginpuntLeiding  |
-| BbbKnooppuntEind   | Bbb bij knooppunt eind  | hasValue van rev:BbbEindpuntLeiding            | in Opera BbbEindpuntLeiding   |
-| StatusFunctioneren | Status functioneren     | gwsw:hasReference bij gwsw:StatusFunctioneren  |                               |
-| TypeStelsel        | Type stelsel            | rdf:type van gwsw:Stelsel                      |                               |
-| Type               | Type leiding            | rdf:type van gwsw:Leiding                      | in Opera Leidingtype          |
-| Vorm               | Vorm leiding            | gwsw:hasReference bij gwsw:Vorm                | in Opera VormLeiding          |
-| Hoogte             | Hoogte leiding          | gwsw:hasValue bij gwsw:Hoogte                  | in Opera HoogteLeiding        |
-| Breedte            | Breedte leiding         | gwsw:hasValue bij gwsw:Breedte                 | in Opera BreedteLeiding       |
-| Materiaal          | Materiaal leiding       | gwsw:hasReference bij gwsw:Materiaal           | in Opera MateriaalLeiding     |
-| Melding            | Melding meting leiding  | gwsw:hasReference bij rev:MeldingMetingLeiding | in Opera MeldingLeiding       |
-| Fotoreferentie     | Fotoreferentie          | rdfs:seeAlso bij URI-knooppunt                 |                               |
-| WijzeVanInwinning  | Wijze van inwinning     | gwsw:hasReference bij gwsw:WijzeVanInwinning   |                               |
-| DatumInwinning     | Datum inwinning         | gwsw:hasValue bij gwsw:DatumInwinning          |                               |
-| Opmerking          | Opmerking               | gwsw:hasValue bij gwsw:Opmerking               | in Opera rdfs:comment         |
 
-Veel URI's staan al in het GWSW datamodel, voor het deelmodel Revisies zijn ook een aantal nieuwe concepten uitgewerkt 
-(in de tabellen hiervoor staan al enkele nieuwe concepten, herkenbaar aan de prefix rev:).
+**Gegevens Project**  
 
-Een overzicht van de nieuwe concepten (exclusief in deelmodel GWSW-Revisies):
+| Veldcode       | Omschrijving         | Waardetype (in RDF-termen)                     | Heen | Terug | Opmerking                                  |
+|----------------|----------------------|------------------------------------------------|------|-------|--------------------------------------------|
+| Naam           | Naam project         | rdfs:label bij [Revisieproject]                | A    |       | in Opera Project_Id                        |
+| Opdrachtgever  | Opdrachtgever        | rdfs:label bij [Opdrachtgever]                 | A    |       |                                            |
+| Contractnummer | Contractnummer       | gwsw:hasValue [ProjectreferentieOpdrachtnemer] | A    |       |                                            |
+| Omschrijving   | Omschrijving project | rdfs:comment bij [Revisieproject]              | A    |       | in Opera Projectomschrijving               |
+| Contactpersoon | Contactpersoon       | rdfs:label bij [Contactpersoon]                | A    |       | in Opera ProjectAdministratorOpdrachtgever |
 
-| URI                    | Naam                              | Definitie                                                                                | Opmerking |
-|------------------------|-----------------------------------|------------------------------------------------------------------------------------------|-----------|
-| Revisieproject         | Revisieproject                    |                                                                                          |           |
-| InmetenKnooppunt       | Inmeten knooppunt                 | Inmeten van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) |           |
-| InmetenLeiding         | Inmeten leiding                   | Inmeten van een leiding (deelactiviteit van Revisieproject)                              |           |
-| MetingWaterstand       | Meting waterstand                 | De gemeten waterstand tov de constructiebodem                                            | \[mm]     |
-| MeldingMetingKnooppunt | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk                        |           |
-| MeldingMetingDeksel    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel                                 |           |
-| MeldingMetingLeiding   | Melding bij meting leiding        | Voorgedefinieerde meldingen bij de meting van een leiding                                |           |
-| BbbBeginpuntLeiding    | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt                         | \[m.nap]  |
-| BbbEindpuntLeiding     | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt                          | \[m.nap]  |
+[Revisieproject]: http://data.gwsw.nl/revisies/Revisieproject
+[Opdrachtgever]: http://data.gwsw.nl/totaal/Opdrachtgever
+[ProjectreferentieOpdrachtnemer]: http://data.gwsw.nl/totaal/ProjectreferentieOpdrachtnemer
+[Contactpersoon]: http://data.gwsw.nl/revisies/Contactpersoon
 
-# GWSW Datamodel
+**Gegevens Knooppunt** (Put of Bouwwerk)  
+
+| Veldcode             | Omschrijving               | Waardetype (in RDF-termen)                      | Heen | Terug | Opmerking                    |
+|----------------------|----------------------------|-------------------------------------------------|------|-------|------------------------------|
+| Naam                 | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]              | A    | A     | in Opera Knooppuntreferentie |
+| Type                 | Type put of bouwwerk       | rdf:type [Put] of [Bouwwerk]                    | O    | A     | in Opera SoortPut            |
+| NaamStelsel          | Naam stelsel               | rdfs:label bij [Stelsel]                        | A    | A     |                              |
+| TypeStelsel          | Type stelsel               | rdf:type [Stelsel]                              | O    | O     |                              |
+| WijzeVanInwinning    | Wijze van inwinning        | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |                              |
+| DatumInwinning       | Datum inwinning            | gwsw:hasValue [DatumInwinning]                  |      | A     |                              |
+| Vorm                 | Vorm put of bouwwerk       | gwsw:hasReference [VormPutColl]                 | O    | A     | in Opera VormPut             |
+| Breedte              | Breedte put of bouwwerk    | gwsw:hasValue [BreedtePut] of [BreedteBouwwerk] | O    | A     | in Opera BreedtePut          |
+| Lengte               | Lengte put of bouwwerk     | gwsw:hasValue [LengtePut] of [LengteBouwwerk]   | O    | A     | in Opera LengtePut           |
+| Materiaal            | Materiaal put of bouwwerk  | gwsw:hasReference [MateriaalPutColl]            | O    | A     | in Opera MateriaalPut        |
+| Bodemprofiel         | Bodemprofiel               | gwsw:hasReference [BodemprofielColl]            | O    | A     | Vanaf GWSW 1.6.1             |
+| X                    | X coördinaat               | gwsw:hasValue [Punt]                            | A    | A     | in Opera X_coordinaat        |
+| Y                    | Y coördinaat               | gwsw:hasValue [Punt]                            | A    | A     | in Opera Y_coordinaat        |
+| Z                    | Z coördinaat               | gwsw:hasValue [Punt]                            | O    | O     | in Opera Z_coordinaat        |
+| Hoogte               | Hoogte put of bouwwerk     | gwsw:hasValue [HoogtePut] of [HoogteBouwwerk]   | O    | A     |                              |
+| StatusFunctioneren   | Status functioneren        | gwsw:hasReference [StatusFunctionerenColl]      | O    | A     |                              |
+| Constructieonderdeel | Bevat constructieonderdeel | rdf:type [Constructieonderdeel]                 | O    | A     |                              |
+| Drempelniveau        | Drempelniveau              | gwsw:hasValue [Drempelniveau]                   | O    | A     |                              |
+| HoogteStellaag       | Hoogte stellaag            | gwsw:hasValue [HoogteStellaag]                  | O    | A     | Vanaf GWSW 1.6.1             |
+| Waterstand           | Meting waterstand          | gwsw:hasValue [MetingWaterstand]                |      | A     |                              |
+| Fotoreferentie       | Fotoreferentie             | rdfs:seeAlso bij [Put] of [Bouwwerk]            |      | O     |                              |
+| Melding              | Melding meting knooppunt   | gwsw:hasReference [MeldingMetingKnooppuntColl]  |      | O     | in Opera MeldingPut          |
+| Opmerking            | Opmerking                  | gwsw:hasValue [Opmerking]                       |      | O     | in Opera rdfs:comment        |
+
+[Put]: http://data.gwsw.nl/totaal/Put
+[Bouwwerk]: http://data.gwsw.nl/totaal/Bouwwerk
+[VormPutColl]: http://data.gwsw.nl/totaal/VormPutColl
+[BreedtePut]: http://data.gwsw.nl/totaal/BreedtePut
+[BreedteBouwwerk]: http://data.gwsw.nl/totaal/BreedteBouwwerk
+[LengtePut]: http://data.gwsw.nl/totaal/LengtePut
+[LengteBouwwerk]: http://data.gwsw.nl/totaal/LengteBouwwerk
+[MateriaalPutColl]: http://data.gwsw.nl/totaal/MateriaalPutColl
+[BodemprofielColl]: http://data.gwsw.nl/totaal/BodemprofielColl
+[Punt]: http://data.gwsw.nl/totaal/Punt
+[HoogtePut]: http://data.gwsw.nl/totaal/HoogtePut
+[HoogteBouwwerk]: http://data.gwsw.nl/totaal/HoogteBouwwerk
+[StatusFunctionerenColl]: http://data.gwsw.nl/totaal/StatusFunctionerenColl
+[Stelsel]: http://data.gwsw.nl/totaal/Stelsel
+[Constructieonderdeel]: http://data.gwsw.nl/totaal/Constructieonderdeel
+[Drempelniveau]: http://data.gwsw.nl/totaal/Drempelniveau
+[MeldingMetingKnooppuntColl]: http://data.gwsw.nl/revisies/MeldingMetingKnooppuntColl
+[WijzeVanInwinningColl]: http://data.gwsw.nl/totaal/WijzeVanInwinningColl
+[DatumInwinning]: http://data.gwsw.nl/totaal/DatumInwinning
+[MetingWaterstand]: http://data.gwsw.nl/revisies/MetingWaterstand
+[HoogteStellaag]: http://data.gwsw.nl/totaal/HoogteStellaag
+[Opmerking]: http://data.gwsw.nl/totaal/Opmerking
+
+**Gegevens Deksel**  
+
+| Veldcode  | Omschrijving          | Waardetype (in RDF-termen)                  | Heen | Terug | Opmerking                    |
+|-----------|-----------------------|---------------------------------------------|------|-------|------------------------------|
+| Naam      | Naam put of bouwwerk  | rdfs:label bij [Put] of [Bouwwerk]          | A    | A     | in Opera Knooppuntreferentie |
+| Type      | Type deksel           | rdf:type [Afdekking]                        | O    | A     | in Opera SoortDeksel         |
+| Vorm      | Vorm deksel           | gwsw:hasReference [VormDekselColl]          | O    | A     | in Opera VormDeksel          |
+| Lengte    | Lengte deksel         | gwsw:hasValue [LengteDeksel]                | O    | A     | in Opera LengteDeksel        |
+| Breedte   | Breedte deksel        | gwsw:hasValue [BreedteDeksel]               | O    | A     | in Opera BreedteDeksel       |
+| Materiaal | Materiaal deksel      | gwsw:hasReference [MateriaalDekselColl]     | O    | A     | in Opera MateriaalDeksel     |
+| Melding   | Melding meting deksel | gwsw:hasReference [MeldingMetingDekselColl] |      | O     | in Opera MeldingDeksel       |
+
+[Afdekking]: http://data.gwsw.nl/totaal/Afdekking
+[VormDekselColl]: http://data.gwsw.nl/totaal/VormDekselColl
+[LengteDeksel]: http://data.gwsw.nl/totaal/LengteDeksel
+[BreedteDeksel]: http://data.gwsw.nl/totaal/BreedteDeksel
+[MateriaalDekselColl]: http://data.gwsw.nl/totaal/MateriaalDekselColl
+[MeldingMetingDekselColl]: http://data.gwsw.nl/revisies/MeldingMetingDekselColl
+
+**Gegevens Leiding**  
+
+| Veldcode           | Omschrijving            | Waardetype (in RDF-termen)                   | Heen | Terug | Opmerking                     |
+|--------------------|-------------------------|----------------------------------------------|------|-------|-------------------------------|
+| Naam               | Naam leiding            | rdfs:label bij [Leiding]                     | A    | A     | in Opera Leiding_id           |
+| Type               | Type leiding            | rdf:type [Leiding]                           | O    | A     | in Opera Leidingtype          |
+| NaamStelsel        | Naam stelsel            | rdfs:label bij [Stelsel]                     | A    | A     |                               |
+| TypeStelsel        | Type stelsel            | rdf:type [Stelsel]                           | O    | O     |                               |
+| WijzeVanInwinning  | Wijze van inwinning     | gwsw:hasReference [WijzeVanInwinningColl]    |      | A     |                               |
+| DatumInwinning     | Datum inwinning         | gwsw:hasValue [DatumInwinning]               |      | A     |                               |
+| NaamKnooppuntBegin | Naam knooppunt begin    | rdfs:label bij [Put] of [Bouwwerk]           | A    | A     | in Opera Knooppuntreferentie1 |
+| NaamKnooppuntEind  | Naam knooppunt eind     | rdfs:label bij [Put] of [Bouwwerk]           | A    | A     | in Opera Knooppuntreferentie2 |
+| BobKnooppuntBegin  | Bob bij knooppunt begin | gwsw:hasValue [BobBeginpuntLeiding]          | O    | A     | in Opera BobBeginpuntLeiding  |
+| BobKnooppuntEind   | Bob bij knooppunt eind  | gwsw:hasValue [BobEindpuntLeiding]           | O    | A     | in Opera BobEindpuntLeiding   |
+| BbbKnooppuntBegin  | Bbb bij knooppunt begin | gwsw:hasValue [BbbBeginpuntLeiding]          |      | A     | in Opera BbbBeginpuntLeiding  |
+| BbbKnooppuntEind   | Bbb bij knooppunt eind  | gwsw:hasValue [BbbEindpuntLeiding]           |      | A     | in Opera BbbEindpuntLeiding   |
+| StatusFunctioneren | Status functioneren     | gwsw:hasReference [StatusFunctionerenColl]   | O    | A     |                               |
+| Vorm               | Vorm leiding            | gwsw:hasReference [VormLeidingColl]          | O    | A     | in Opera VormLeiding          |
+| Hoogte             | Hoogte leiding          | gwsw:hasValue [HoogteLeiding]                | O    | A     | in Opera HoogteLeiding        |
+| Breedte            | Breedte leiding         | gwsw:hasValue [BreedteLeiding]               | O    | A     | in Opera BreedteLeiding       |
+| Materiaal          | Materiaal leiding       | gwsw:hasReference [MateriaalLeidingColl]     | O    | A     | in Opera MateriaalLeiding     |
+| Fotoreferentie     | Fotoreferentie          | rdfs:seeAlso bij [Put] of [Bouwwerk]         |      | O     |                               |
+| Melding            | Melding meting leiding  | gwsw:hasReference [MeldingMetingLeidingColl] |      | O     | in Opera MeldingLeiding       |
+| Opmerking          | Opmerking               | gwsw:hasValue [Opmerking]                    |      | O     | in Opera rdfs:comment         |
+
+[Leiding]: http://data.gwsw.nl/totaal/Leiding
+[BobBeginpuntLeiding]: http://data.gwsw.nl/totaal/BobBeginpuntLeiding
+[BobEindpuntLeiding]: http://data.gwsw.nl/totaal/BobEindpuntLeiding
+[BbbBeginpuntLeiding]: http://data.gwsw.nl/revisies/BbbBeginpuntLeiding
+[BbbEindpuntLeiding]: http://data.gwsw.nl/revisies/BbbEindpuntLeiding
+[VormLeidingColl]: http://data.gwsw.nl/totaal/VormLeidingColl
+[HoogteLeiding]: http://data.gwsw.nl/totaal/HoogteLeiding
+[BreedteLeiding]: http://data.gwsw.nl/totaal/BreedteLeiding
+[MateriaalLeidingColl]: http://data.gwsw.nl/totaal/MateriaalLeidingColl
+[MeldingMetingLeidingColl]: http://data.gwsw.nl/revisies/MeldingMetingLeidingColl
+
+# Datamodel
+
+## Nieuwe GWSW-concepten
+
+Veel URI's staan al in het GWSW datamodel, voor het deelmodel Revisies zijn ook een aantal nieuwe concepten uitgewerkt (in de hoofdstukken hiervoor staan al enkele van die concepten).
+
+Een overzicht van de nieuwe concepten (exclusief in concept-deelmodel GWSW-Revisies 1.6.1):
+
+| URI                          | Naam                              | Definitie                                                                                | 
+|------------------------------|-----------------------------------|------------------------------------------------------------------------------------------|
+| [Revisieproject]             | Revisieproject                    |                                                                                          | 
+| [InmetenKnooppunt]           | Inmeten knooppunt                 | Inmeten van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) | 
+| [InmetenLeiding]             | Inmeten leiding                   | Inmeten van een leiding (deelactiviteit van Revisieproject)                              | 
+| [MetingWaterstand]           | Meting waterstand                 | De gemeten waterstand tov de constructiebodem                                            | 
+| [MeldingMetingKnooppuntColl] | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk                        |
+| [MeldingMetingDekselColl]    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel                                 |  
+| [MeldingMetingLeidingColl]   | Melding bij meting leiding        | Voorgedefinieerde meldingen bij de meting van een leiding                                | 
+| [BbbBeginpuntLeiding]        | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt                         |
+| [BbbEindpuntLeiding]         | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt                          | 
+
+[InmetenKnooppunt]: http://data.gwsw.nl/revisies/InmetenKnooppunt
+[InmetenLeiding]: http://data.gwsw.nl/revisies/InmetenLeiding
 
 ## Datamodel Revisies in RDF
 
@@ -404,7 +492,7 @@ rev:BbbEindpuntLeiding rdf:type owl:Class ;
 .
 </pre> </div>
 
-## Projectmodel revisies in RDF
+## Projectmodel revisies in RDF (dataset)
 
 Als we de meetgegevens combineren met het eerder beschreven projectmodel kan een GWSW-dataset worden opgebouwd.
 Zo'n GWSW-dataset omvat de uitwisseling binnen het volledige project, dus zowel de gegevens van de heen- als van de terug-levering.  
