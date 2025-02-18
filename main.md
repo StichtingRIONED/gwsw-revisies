@@ -44,12 +44,14 @@ Hetzelfde fysieke object kan dus (met bijbehorende kenmerken) in twee vormen voo
 Volgens het GWSW Datamodel hebben die invoer- en uitvoer-vorm dezelfde objectnaam (rdfs:label) maar een eigen URI, daardoor hebben de bijbehorende kenmerken ook een invoer- en uitvoer-vorm.
 
 <img src="media/Schema Revisieproject.png" style="width:80%;height:80%" />
+
 *Figuur 2.1 - Schematisatie revisieproject met de verschillende deelactiviteiten (acties)*
 
 # Gegevensuitwisseling
 Een revisieproject gebruikt de projectdefinitie en gegevens over de oorspronkelijke kenmerken van de in te meten objecten. Dit kunnen brongegevens zijn of gegevens afkomstig van de GWSW-server, zie ook Figuur 3.1. Als projectresultaat worden de inmetingen terug geleverd. Veelal wordt hierbij ook een verschilanalyse uitgevoerd en een rapportage opgeleverd. Uitwisseling van inmeetgegevens tussen de opdrachtgever en de opdrachtnemer geschiedt via een uitwisselingsformaat in OroX, JSON of CSV. Deze uitwisselingsformaten zijn in de onderstaande paragrafen uitgewerkt. 
 
 <img src="media/Proces uitwisseling.png" style="width:80%;height:80%" />
+
 *Figuur 3.1 - Schematische weergave van de gegevensuitwisseling via Orox / JSON / CSV in verschillende stadia van een revisieproject*
 
 ## GWSW-OroX formaat
