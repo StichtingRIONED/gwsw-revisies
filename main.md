@@ -5,73 +5,71 @@
   .symbol{width:30px;height:30px;margin-right:1em;vertical-align:middle}
 </style>
 
-Stichting RIONED is initiatiefnemer en eigenaar van dit GitHub-project, Eric Oosterom is de verantwoordelijk projectmanager. 
+Stichting RIONED is initiatiefnemer en eigenaar van dit GitHub-project, Eric Oosterom is de verantwoordelijk projectmanager. De inhoud van GWSW Revisies is in grote mate tot stand gekomen in samenwerking met GWSW-Opera B.V., die samen met een partners GWSW-Inmeten een aantal Proof-of-Concepts (PoC’s) heeft uitgevoerd. 
 
 Vragen over deze website en het GWSW kunt u stellen via gwsw@rioned.org. 
 
 # Inleiding
+Het inmeten van vaste gegevens is een activiteit die bijdraagt aan goed beheer van stedelijk watervoorzieningen. Door ontbrekende, foutieve of achterhaalde maatvoeringen (opnieuw) in te meten ontstaat een betrouwbaar beheerbestand waarmee kostbare besluiten onderbouwd kunnen worden, bijvoorbeeld als basis voor een hydrodynamisch rekenmodel dat wordt gebruikt om te bepalen of stelselaanpassingen nodig zijn. Een foutieve leidingdiameter of verouderde overstortdrempelhoogte in zettingsgevoelig gebied kan dan al snel leiden tot grote verschillen tussen theoretische modelberekeningen en wat buiten gebeurt tijdens hevige neerslag. De ligging van vaste gegevens op orde hebben is ook een belangrijk middel om graafschade door grondroerders te voorkomen.
 
-Het initiatief voor dit deelmodel komt voor een belangrijk deel van de GWSW-Opera organisatie. De basis ligt bij een PoC gericht op het ontwikkelen en toetsen van het inmeetproces, 
-dus de gegevensuitwisseling tussen landmeter en beheerder.
+Door te werken met GWSW-conforme datasets van opdrachtgever naar landmeter over in te meten objecten en daarna vice versa met meetresultaten terug, ontstaat een efficiënte informatie-uitwisseling waar op eenvoudige wijze validatieregels aan toe te voegen zijn die controleren op volledigheid en eventueel foutieve metingen. 
+
+Het initiatief voor dit deelmodel komt voor een belangrijk deel van de GWSW-Opera organisatie. De basis ligt bij een PoC gericht op het ontwikkelen en toetsen van het inmeetproces, dus de gegevensuitwisseling tussen landmeter en beheerder.
 
 ## Doel en toepassing
 
-Ondersteuning bij revisies en andere metingen van stedelijk water voorzieningen, vooral het efficient en effectief verwerken van inmetingen door de landmeter.
+Ondersteuning bij revisies en andere metingen van stedelijk water voorzieningen, vooral het efficiënt en effectief verwerken van inmetingen door de landmeter.
 
 **Revisie**  
-De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aanleg (de realisatie van het ontwerp). Dit deelmodel heeft een bredere scoop, 
-ook het inmeten van al langer in gebruik zijnde objecten is een toepassing van dit deelmodel. 
+De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aanleg (de realisatie van het ontwerp). Dit deelmodel heeft een bredere scope, ook het inmeten van al langer in gebruik zijnde objecten is een toepassing van dit deelmodel. 
 Denk dan bijvoorbeeld aan het verbeteren van de bestaande registratie of het actualiseren van gegevens na verzakkingen.
 
 ## Leeswijzer
+NOG IN TE VULLEN
 
 # Projectmodel
-
-Het projectmodel beschrijft globaal het activiteiten-schema van een revisieproject.
+Dit hoofdstuk beschrijft de opbouw van een revisieproject. Een revisieproject bestaat uit de algemene kenmerken van een project (opdrachtgever, opdrachtnemer, projectreferentie, etc.), waaraan verschillende deelactiviteiten, oftewel acties, aan gekoppeld zijn (zie ook FIGUUR Schema Revisieproject.png).
 
 **Deelactiviteiten**  
-Een revisieproject bestaat uit de deelactiviteiten inmeten knooppunt (put of bouwwerk) en inmeten leiding.
-Een deelactiviteit heeft algemene kenmerken zoals meldingen, opmerkingen en de wijze van inwinning.
+De deelactiviteiten van een revisieproject gaan over het inmeten van een knooppunt (put of bouwwerk) en/of het inmeten van een leiding.
+Een deelactiviteit heeft algemene kenmerken zoals meldingen, opmerkingen en de wijze van inwinning. Elke activiteit kent een in- en uitvoer, waarin de gegevens staan die richting de landmeter gaan en na meten weer terugkomen.
 
 **Invoer**   
-Een knooppunt of leiding met oorspronkelijke kenmerken zoals afmetingen vormt de invoer voor de deelactiviteit. Die gegevens komen uit het beheersysteem of vanuit het ontwerpplan.
+Een knooppunt of leiding met oorspronkelijke kenmerken zoals afmetingen vormt de invoer voor de deelactiviteit. Die gegevens komen uit het beheersysteem of vanuit het ontwerpplan en gaan naar de opdrachtnemer (landmeter) zodat bekend is welk object ingemeten dient te worden.
 
 **Uitvoer**  
-Het ingemeten object wordt als uitvoer van de deelactiviteit beschreven, de ingemeten kenmerken zoals afmetingen en hoogteligging worden - net zoals bij het invoer-object - bij het 
-uitvoer-object opgenomen. Waargenomen toestandsgegevens (een soort meting) zoals "meting waterstand" worden als aparte uitvoer bij de deelactiviteit beschreven. 
+Het ingemeten object wordt als uitvoer van de deelactiviteit beschreven, de ingemeten kenmerken zoals afmetingen en hoogteligging worden - net zoals bij het invoer-object - bij het uitvoer-object opgenomen. Waargenomen toestandsgegevens (een soort meting) zoals "meting waterstand" worden als aparte uitvoer bij de deelactiviteit beschreven. 
 
 Hetzelfde fysieke object kan dus (met bijbehorende kenmerken) in twee vormen voorkomen: als invoer (definitie) en/of als uitvoer (resultaat) bij de activiteit.
-Volgens het GWSW Datamoel hebben die invoer- en uitvoer-vorm dezelfde objectnaam (rdfs:label) maar een eigen URI, daardoor hebben de bijbehorende kenmerken ook een invoer- en uitvoer-vorm.
+Volgens het GWSW Datamodel hebben die invoer- en uitvoer-vorm dezelfde objectnaam (rdfs:label) maar een eigen URI, daardoor hebben de bijbehorende kenmerken ook een invoer- en uitvoer-vorm.
 
 <img src="media/Schema Revisieproject.png" style="width:80%;height:80%" />
 
 # Gegevensuitwisseling
-Een revisieproject gebruikt gegevens met de projectdefinitie (de beschrijving van de in te meten objecten) en levert gegevens met de projectresultaten (de inmetingen) 
-met veelal ook een verschilanalyse en een rapportage daarvan. 
+Een revisieproject gebruikt de projectdefinitie en gegevens over de oorspronkelijke kenmerken van de in te meten objecten. Dit kunnen brongegevens zijn of gegevens afkomstig van de GWSW-server, zie ook FIGUUR Proces uitwisseling.png. Als projectresultaat worden de inmetingen terug geleverd. Veelal wordt hierbij ook een verschilanalyse uitgevoerd en een rapportage opgeleverd. Uitwisseling van inmeetgegevens tussen de opdrachtgever en de opdrachtnemer geschiedt via een uitwisselingsformaat in OroX, JSON of CSV. Deze uitwisselingsformaten zijn in de onderstaande paragrafen uitgewerkt. 
 
 <img src="media/Proces uitwisseling.png" style="width:80%;height:80%" />
 
 ## GWSW-OroX formaat
 Beheersystemen kunnen veelal omgaan met een GWSW-datasets, ze exporteren of importeren dan een dataset (bestand) conform het GWSW-OroX protocol. 
 Zo'n dataset is direct bruikbaar op het GWSW platform, waarmee de gegevens voor allerlei algemene toepassingen beschikbaar komen. 
-Bijvoorbeeld kan de inhoud in GIS systemen worden gebruikt. Zie ook https://apps.gwsw.nl.
+Zo kan de inhoud direct in GIS systemen worden ontsloten. Zie ook https://apps.gwsw.nl.
 
 Ook de gegevens van een revisieproject kunnen via het OroX-protocol worden uitgewisseld, dat is de meest directe vorm van uitwisseling. 
-Het complete revisieproject, zowel de definitie als de resultaten past in één dataset.
+Het complete revisieproject, zowel de definitie als de resultaten past dan in één dataset.
 
 **Validatie uitwisseling**  
-Gebruik voor de validatie van heen- en terug-gegevens ook de tabellen in het volgende hoofdstuk, zie de kolommen "Heen" en "Terug"
+Gebruik voor de validatie van de volledigheid van heen- en terug-gegevens ook de tabellen in de volgende paragraaf, zie de kolommen "Heen" en "Terug"
 
-Het GWSW-OroX protocol is een speciaal formaat, ingericht op het uitwisselen via het web (linked data) en het kunnen bouwen van ontologiën. 
+Het GWSW-OroX protocol is een speciaal formaat, ingericht op het uitwisselen via linked data en het kunnen bouwen van ontologiën. 
 Een ontologie is een speciale datastructuur waarin de stedelijk water voorzieningen volledig beschreven kunnen worden, dat geldt voor zowel de systemen als de (beheer)processen.
 
 ## Tussenvorm CSV of JSON 
-Linked data formaten zoals het GWSW-OroX zijn vaak minder bekend bij uitvoerende partijen zoals de landmeter bij inmetingen of de cad-tekenaar bij het ontwerp van systemen.
+Linked data formaten zoals het GWSW-OroX zijn vaak minder bekend bij uitvoerende partijen zoals de landmeter bij inmetingen of de CAD-tekenaar bij het ontwerp van systemen.
 Om die reden zijn er tussenvormen beschikbaar in bekendere formaten zoals CSV en JSON (minder bekend maar wel eenvoudig van opzet). 
-Omzetters van CSV naar JSON en vise versa zijn algemeen beschikbaar.
+Omzetters van CSV naar JSON en vice versa zijn algemeen beschikbaar.
 
-Via CSV of JSON worden de gegevens uitgewisseld in aparte heen- en terug-bestanden (analoog aan de GWSW-RibX uitwisseling). 
-Daardoor is er wel een klein nadeel vanwege enige redundantie (bijvoorbeeld projectgegevens komen dubbel voor).
+Via CSV of JSON worden de gegevens uitgewisseld in aparte heen- en terug-bestanden (analoog aan de GWSW-RibX uitwisseling). Nadeel van deze route is dat er sprake is van enige redundantie, zo komen projectgegevens zowel in het heen- als terug bestand voor. Daarmee zijn deze tussenvormen foutgevoeliger.
 
 In deze tussenvorm zijn er vier groepen: Project, Knooppunt, Deksel en Leiding. 
 Elk uitwisselgegeven wordt geïdentificeerd door deze groep + de veldcode (zie hierna).  
@@ -79,7 +77,7 @@ Elk uitwisselgegeven wordt geïdentificeerd door deze groep + de veldcode (zie h
 **CSV**
 
 In het CSV-formaat is het heen- en terug-bestand een zipfile met daarin voor elke groep een apart CSV-bestand. 
-De veldcode per groep is de kolomheader in het CSV-bestand.
+De veldcodes uit de onderstaande tabellen per groep, vormen de kolomheader voor het CSV-bestand. HIER BEN JE!!
 
 **Voorbeeld Project.csv uit bestand heen.zip**  
 <div class="box"><pre>
@@ -89,8 +87,7 @@ Naam;Opdrachtgever;Contractnummer;Omschrijving;Contactpersoon
 
 **JSON**
 
-In JSON-vorm is elke groep een object binnen het omvattende JSON-object, elk groep-object bevat vervolgens een object-array met daarin objecten met elementnamen conform de veldcode.
-In het JSON-formaat is een heen- en terug-bestand een tekstfile met daarin de JSON-string.
+In JSON-vorm is elke groep een object binnen het omvattende JSON-object, elk groep-object bevat vervolgens een object-array met daarin objecten met elementnamen conform de veldcode. In het JSON-formaat is een heen- en terug-bestand een tekstfile met daarin de JSON-string.
 
 **Voorbeeld bestand heen.json**  
 <div class="box"><pre>
@@ -112,10 +109,10 @@ In de volgende tabellen staan de uitwisselgegevens per groep, de veldcode identi
 **Vullingsvoorschriften uitwisseling (identiek aan de RibX-definitie):**
 
 De vullingsvoorschriften staan in twee kolommen:
-* “Heen”: de veldvulling in een vooraf aangeleverd uitwisselbestand (van de rioleringsbeheerder).
-* “Terug”: de veldvulling in een teruggeleverd uitwisselbestand, de resultaten (van de landmeter).
+* “Heen”: de veldvulling in een vooraf aangeleverd uitwisselbestand, afkomstig van (het beheersysteem van) de rioleringsbeheerder.
+* “Terug”: de veldvulling in een terug geleverd uitwisselbestand, de resultaten van de landmeter.
 
-De kolommen “heen” en “terug” gebruiken de volgende codes:
+De kolommen “heen” en “terug” gebruiken de volgende codes om aan te geven of een gegeven verplicht is:
 
 | Code | Voorschrift veldvulling in uitwisselbestand                                 |
 |------|-----------------------------------------------------------------------------|
@@ -259,9 +256,9 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 
 ## Nieuwe GWSW-concepten
 
-Veel URI's staan al in het GWSW datamodel, voor het deelmodel Revisies zijn ook een aantal nieuwe concepten uitgewerkt (in de hoofdstukken hiervoor staan al enkele van die concepten).
+Veel URI's staan al in het GWSW datamodel, voor het deelmodel Revisies zijn ook een aantal nieuwe concepten uitgewerkt. In de eerdere hoofdstukken zijn enkele van deze concepten al voorbijgekomen.
 
-Een overzicht van de nieuwe concepten (exclusief in concept-deelmodel GWSW-Revisies 1.6.1):
+Een overzicht van de nieuw toegevoegde concepten (vanaf concept-deelmodel GWSW-Revisies 1.6.1):
 
 | URI                          | Naam                              | Definitie                                                                                | 
 |------------------------------|-----------------------------------|------------------------------------------------------------------------------------------|
@@ -495,7 +492,7 @@ rev:BbbEindpuntLeiding rdf:type owl:Class ;
 ## Projectmodel revisies in RDF (dataset)
 
 Als we de meetgegevens combineren met het eerder beschreven projectmodel kan een GWSW-dataset worden opgebouwd.
-Zo'n GWSW-dataset omvat de uitwisseling binnen het volledige project, dus zowel de gegevens van de heen- als van de terug-levering.  
+Zo'n GWSW-dataset omvat de complete uitwisseling binnen het revisieproject, dus zowel de gegevens van de heen- als van de terug-levering.  
 
 Het ziet er dan als volgt uit (in één GWSW-dataset):
 
