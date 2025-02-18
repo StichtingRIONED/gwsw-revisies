@@ -25,10 +25,10 @@ De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aa
 Denk dan bijvoorbeeld aan het verbeteren van de bestaande registratie of het actualiseren van gegevens na verzakkingen.
 
 ## Leeswijzer
-NOG IN TE VULLEN
+In hoofdstuk twee van dit ontwerpdocument wordt beschreven uit welke elementen een revisieproject bestaat en welke gegevens van de opdrachtgever (beheerder) naar de opdrachtnemer (landmeter) worden uitgewisseld en andersom. Hoofdstuk drie gaat over de uitwisselingsformaten (CSV, JSON, OroX) waarmee deze gegevens kunnen worden uitgewisseld. Tot slot beschrijft hoofdstuk vier de aanpassingen aan het GWSW datamodel. 
 
 # Projectmodel
-Dit hoofdstuk beschrijft de opbouw van een revisieproject. Een revisieproject bestaat uit de algemene kenmerken van een project (opdrachtgever, opdrachtnemer, projectreferentie, etc.), waaraan verschillende deelactiviteiten, oftewel acties, aan gekoppeld zijn (zie ook FIGUUR Schema Revisieproject.png).
+Dit hoofdstuk beschrijft de opbouw van een revisieproject. Een revisieproject bestaat uit de algemene kenmerken van een project (opdrachtgever, opdrachtnemer, projectreferentie, etc.), waaraan verschillende deelactiviteiten, oftewel acties, aan gekoppeld zijn (zie ook Figuur 2.1).
 
 **Deelactiviteiten**  
 De deelactiviteiten van een revisieproject gaan over het inmeten van een knooppunt (put of bouwwerk) en/of het inmeten van een leiding.
@@ -44,11 +44,13 @@ Hetzelfde fysieke object kan dus (met bijbehorende kenmerken) in twee vormen voo
 Volgens het GWSW Datamodel hebben die invoer- en uitvoer-vorm dezelfde objectnaam (rdfs:label) maar een eigen URI, daardoor hebben de bijbehorende kenmerken ook een invoer- en uitvoer-vorm.
 
 <img src="media/Schema Revisieproject.png" style="width:80%;height:80%" />
+*Figuur 2.1 - Schematisatie revisieproject met de verschillende deelactiviteiten (acties)*
 
 # Gegevensuitwisseling
-Een revisieproject gebruikt de projectdefinitie en gegevens over de oorspronkelijke kenmerken van de in te meten objecten. Dit kunnen brongegevens zijn of gegevens afkomstig van de GWSW-server, zie ook FIGUUR Proces uitwisseling.png. Als projectresultaat worden de inmetingen terug geleverd. Veelal wordt hierbij ook een verschilanalyse uitgevoerd en een rapportage opgeleverd. Uitwisseling van inmeetgegevens tussen de opdrachtgever en de opdrachtnemer geschiedt via een uitwisselingsformaat in OroX, JSON of CSV. Deze uitwisselingsformaten zijn in de onderstaande paragrafen uitgewerkt. 
+Een revisieproject gebruikt de projectdefinitie en gegevens over de oorspronkelijke kenmerken van de in te meten objecten. Dit kunnen brongegevens zijn of gegevens afkomstig van de GWSW-server, zie ook Figuur 3.1. Als projectresultaat worden de inmetingen terug geleverd. Veelal wordt hierbij ook een verschilanalyse uitgevoerd en een rapportage opgeleverd. Uitwisseling van inmeetgegevens tussen de opdrachtgever en de opdrachtnemer geschiedt via een uitwisselingsformaat in OroX, JSON of CSV. Deze uitwisselingsformaten zijn in de onderstaande paragrafen uitgewerkt. 
 
 <img src="media/Proces uitwisseling.png" style="width:80%;height:80%" />
+*Figuur 3.1 - Schematische weergave van de gegevensuitwisseling via Orox / JSON / CSV in verschillende stadia van een revisieproject*
 
 ## GWSW-OroX formaat
 Beheersystemen kunnen veelal omgaan met een GWSW-datasets, ze exporteren of importeren dan een dataset (bestand) conform het GWSW-OroX protocol. 
@@ -509,7 +511,7 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
   rdfs:label {Project.Naam} ;
   rdf:type rev:Revisieproject ;
   gwsw:isOutputOf \[ rdf:type gwsw:Opdrachtgever ; rdfs:label {Project.Opdrachtgever} ; ] ;
-  gwsw:hasAspect \[ rdf:type rev:ProjectreferentieOpdrachtnemer ; gwsw:hasValue {Project.Contractnummer} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:ProjectreferentieOpdrachtnemer ; rdfs:label {Project.ProjectreferentieOpdrachtnemer} ; ] ;
   gwsw:isOutputOf \[ rdf:type gwsw:Contactpersoon ; rdfs:label {Project.Contactpersoon} ; ] ;
   rdfs:comment {Project.Omschrijving} ;
 .
