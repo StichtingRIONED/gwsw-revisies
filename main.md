@@ -81,7 +81,7 @@ De veldcodes uit de onderstaande tabellen per groep, vormen de kolomheader voor 
 
 **Voorbeeld Project.csv uit bestand heen.zip**  
 <div class="box"><pre>
-Naam;Opdrachtgever;Contractnummer;Omschrijving;Contactpersoon
+Naam;Opdrachtgever;ProjectreferentieOpdrachtnemer;Omschrijving;Contactpersoon
 "Project A";"Opdrachtgever B";"Contract C";"Omschrijving E";"Persoon F"
 </pre></div>
 
@@ -93,7 +93,7 @@ In JSON-vorm is elke groep een object binnen het omvattende JSON-object, elk gro
 <div class="box"><pre>
 {
   "Project": [
-    {"Naam": "Project A", "Opdrachtgever": "Opdrachtgever B", "Contractnummer": "Contract C", "Omschrijving": "Omschrijving E", "Contactpersoon": "Persoon F"},
+    {"Naam": "Project A", "Opdrachtgever": "Opdrachtgever B", "ProjectreferentieOpdrachtnemer": "Contract C", "Omschrijving": "Omschrijving E", "Contactpersoon": "Persoon F"},
   ],
   "Knooppunt": [
   ],
@@ -133,13 +133,15 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 
 **Gegevens Project**  
 
-| Veldcode       | Omschrijving         | Waardetype (in RDF-termen)                     | Heen | Terug | Opmerking                                  |
-|----------------|----------------------|------------------------------------------------|------|-------|--------------------------------------------|
-| Naam           | Naam project         | rdfs:label bij [Revisieproject]                | A    |       | in Opera Project_Id                        |
-| Opdrachtgever  | Opdrachtgever        | rdfs:label bij [Opdrachtgever]                 | A    |       |                                            |
-| Contractnummer | Contractnummer       | gwsw:hasValue [ProjectreferentieOpdrachtnemer] | A    |       |                                            |
-| Omschrijving   | Omschrijving project | rdfs:comment bij [Revisieproject]              | A    |       | in Opera Projectomschrijving               |
-| Contactpersoon | Contactpersoon       | rdfs:label bij [Contactpersoon]                | A    |       | in Opera ProjectAdministratorOpdrachtgever |
+| Veldcode       					| Omschrijving         				| Waardetype (in RDF-termen)                     	| Heen | Terug | Opmerking                                  |
+|-----------------------------------|-----------------------------------|---------------------------------------------------|------|-------|--------------------------------------------|
+| Naam           					| Naam project         				| rdfs:label bij [Revisieproject]                	| A    |       | in Opera Project_Id                        |
+| Opdrachtgever  					| Opdrachtgever        				| rdfs:label bij [Opdrachtgever]                 	| A    |       |                                            |
+| Opdrachtnemer  					| Opdrachtnemer        				| rdfs:label bij [Opdrachtnemer]                 	| A    |       |                                            |
+| ProjectreferentieOpdrachtgever 	| Projectreferentie Opdrachtgever   | rdfs:label bij [ProjectreferentieOpdrachtgever] 	| A    |       |                                            |
+| ProjectreferentieOpdrachtnemer 	| Projectreferentie Opdrachtnemer   | rdfs:label bij [ProjectreferentieOpdrachtnemer] 	| A    |       |                                            |
+| Omschrijving   					| Omschrijving project 				| rdfs:comment bij [Revisieproject]              	| A    |       | in Opera Projectomschrijving               |
+| Contactpersoon 					| Contactpersoon       				| rdfs:label bij [Contactpersoon]                	| A    |       | in Opera ProjectAdministratorOpdrachtgever |
 
 [Revisieproject]: http://data.gwsw.nl/revisies/Revisieproject
 [Opdrachtgever]: http://data.gwsw.nl/totaal/Opdrachtgever
@@ -237,7 +239,7 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | Hoogte             | Hoogte leiding          | gwsw:hasValue [HoogteLeiding]                | O    | A     | in Opera HoogteLeiding        |
 | Breedte            | Breedte leiding         | gwsw:hasValue [BreedteLeiding]               | O    | A     | in Opera BreedteLeiding       |
 | Materiaal          | Materiaal leiding       | gwsw:hasReference [MateriaalLeidingColl]     | O    | A     | in Opera MateriaalLeiding     |
-| Fotoreferentie     | Fotoreferentie          | rdfs:seeAlso bij [Put] of [Bouwwerk]         |      | O     |                               |
+| Fotoreferentie     | Fotoreferentie          | rdfs:seeAlso bij [Leiding]         		  |      | O     |                               |
 | Melding            | Melding meting leiding  | gwsw:hasReference [MeldingMetingLeidingColl] |      | O     | in Opera MeldingLeiding       |
 | Opmerking          | Opmerking               | gwsw:hasValue [Opmerking]                    |      | O     | in Opera rdfs:comment         |
 
@@ -507,7 +509,7 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
   rdfs:label {Project.Naam} ;
   rdf:type rev:Revisieproject ;
   gwsw:isOutputOf \[ rdf:type gwsw:Opdrachtgever ; rdfs:label {Project.Opdrachtgever} ; ] ;
-  gwsw:hasAspect \[ rdf:type rev:Contractnummer ; gwsw:hasValue {Project.Contractnummer} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:ProjectreferentieOpdrachtnemer ; gwsw:hasValue {Project.Contractnummer} ; ] ;
   gwsw:isOutputOf \[ rdf:type gwsw:Contactpersoon ; rdfs:label {Project.Contactpersoon} ; ] ;
   rdfs:comment {Project.Omschrijving} ;
 .
