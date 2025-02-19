@@ -510,12 +510,12 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
 \# rdf: / rdfs: - generieke RDF-concepten
 
 {ex:01} \# Revisieproject
-  rdfs:label {Project.Naam} ;
+  rdfs:label "Inmeetproject Hollandse buurt";
   rdf:type rev:Revisieproject ;
-  gwsw:isOutputOf \[ rdf:type gwsw:Opdrachtgever ; rdfs:label {Project.Opdrachtgever} ; ] ;
-  gwsw:hasAspect \[ rdf:type rev:ProjectreferentieOpdrachtnemer ; rdfs:label {Project.ProjectreferentieOpdrachtnemer} ; ] ;
-  gwsw:isOutputOf \[ rdf:type gwsw:Contactpersoon ; rdfs:label {Project.Contactpersoon} ; ] ;
-  rdfs:comment {Project.Omschrijving} ;
+  gwsw:isOutputOf \[ rdf:type gwsw:Opdrachtgever ; rdfs:label "Gemeente Juinen" ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:ProjectreferentieOpdrachtnemer ; rdfs:label "Pr20250101_00892" ; ] ;
+  gwsw:isOutputOf \[ rdf:type gwsw:Contactpersoon ; rdfs:label "Walter de Rochebrune" ; ] ;
+  rdfs:comment "Dit is een inmeetproject" ;
 .
 {ex:10} \# Inmeten knooppunt - activiteit
   gwsw:isPartOf {ex:01} ; 
@@ -526,44 +526,44 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
 .
 {ex:10} \# Inmeten knooppunt - resultaat (terug)
   gwsw:hasOutput {ex:11o} ; \# Gebruik een andere URI dan ex:11i, ook bij hetzelfde knooppunt (houdt dezelfde naam)
-  gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {InmetenKnooppunt.WijzeVanInwinning}; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {InmetenKnooppunt.DatumInwinning} ; ] ;
-  rdfs:seeAlso {InmetenKnooppunt.FotoReferentie} ;
-  gwsw:hasAspect \[ rdf:type rev:MeldingMetingKnooppunt ; gwsw:hasValue {Knooppunt.Melding} ; ] ;
-  gwsw:hasAspect \[ rdf:type rev:MeldingMetingDeksel ; gwsw:hasValue {Deksel.Melding} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {InmetenKnooppunt.Opmerking} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference gwsw:Inmeting; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue "20240828"^^xsd:date. ; ] ;
+  rdfs:seeAlso _:24084\G265_1.jpg, _:24084\G265_2.jpg;
+  gwsw:hasAspect \[ rdf:type rev:MeldingMetingKnooppunt ; rev:hasReference rev:GeurWaargenomen ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:MeldingMetingDeksel ; rev:hasReference rev:DekselGebroken ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue "Mooi weer buiten" ; ] ;
 .
 {ex:11i/ex:11o} \# Knooppunt heen en terug
-  rdf:type {Knooppunt.Type} ; /# Ga hier uit van supertype gwsw:Put 
-  rdfs:label {Knooppunt.Naam} ;
-  gwsw:hasAspect \[ rdf:type gwsw:VormPut ; gwsw:hasReference {Knooppunt.Vorm} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:BreedtePut ; gwsw:hasValue {Knooppunt.Breedte} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:LengtePut ; gwsw:hasValue {Knooppunt.Lengte} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:MateriaalPut ; gwsw:hasReference {Knooppunt.Materiaal} ; ] ;
-  gwsw:hasPart \[ rdf:type gwsw:Stroomprofiel; gwsw:hasAspect \[ rdf:type gwsw:VormStroomprofiel ; gwsw:hasReference {Knooppunt.Stroomprofiel} ; ] ; ] ;
-  gwsw:hasPart \[ rdf:type gwsw:Stellaag; gwsw:hasAspect \[ rdf:type gwsw:HoogteStellaag ; gwsw:hasValue {Knooppunt.Stellaag} ; ] ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:HoogtePut ; gwsw:hasValue {Knooppunt.Hoogte} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference {Knooppunt.StatusFunctioneren} ; ] ;
-  gwsw:isPartOf \[ rdf:type {Knooppunt.TypeStelsel}; ] ;
-  gwsw:hasPart \[ rdf:type {Knooppunt.Constructieonderdeel}; gwsw:hasAspect \[ rdf:type gwsw:Drempelniveau ; gwsw:hasValue {Knooppunt.Drempelniveau} ; ] ; ] ;
+  rdf:type  gwsw:ExterneOverstortput; /# Ga hier uit van supertype gwsw:Put 
+  rdfs:label "KN90001" ;
+  gwsw:hasAspect \[ rdf:type gwsw:VormPut ; gwsw:hasReference gwsw:Rechthoekig ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:BreedtePut ; gwsw:hasValue 800 ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:LengtePut ; gwsw:hasValue 800 ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:MateriaalPut ; gwsw:hasReference gwsw:Beton ; ] ;
+  gwsw:hasPart \[ rdf:type gwsw:Stroomprofiel; gwsw:hasAspect \[ rdf:type gwsw:VormStroomprofiel ; gwsw:hasReference gwsw:Geulprofiel ; ] ; ] ;
+  gwsw:hasPart \[ rdf:type gwsw:Stellaag; gwsw:hasAspect \[ rdf:type gwsw:HoogteStellaag ; gwsw:hasValue 45 ; ] ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:HoogtePut ; gwsw:hasValue 2140 ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference gwsw:InGebruik ; ] ;
+  gwsw:isPartOf \[ rdf:type gwsw:GemengdStelsel; ] ;
+  gwsw:hasPart \[ rdf:type gwsw:Overstortdrempel; gwsw:hasAspect \[ rdf:type gwsw:Drempelniveau ; gwsw:hasValue 7.9 ; ] ; ] ;
 .
 {ex:11i/ex:11o} \# Knooppunt heen en terug: de verbinding
   gwsw:hasAspect {ex:12i/ex:12o} ;
 .
 {ex:12i/ex:12o} 
   rdf:type gwsw:Putorientatie ;
-  gwsw:hasAspect \[ rdf:type gwsw:Punt ; gwsw:hasValue "gml:Point {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}" ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:Punt ; gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>168443.01 442691.00 22.42</gml:pos></gml:Point>"^^geo:gmlLiteral . ; ] ;
 .
 {ex:11o} \# Knooppunt terug
-  gwsw:hasAspect \[ rdf:type rev:MetingWaterstand ; gwsw:hasValue {Knooppunt.MetingWaterstand} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:MetingWaterstand ; gwsw:hasValue 0.2 ; ] ;
 .
 {ex:13i/ex:13o} \# Deksel heen en terug 
-  rdf:type {Deksel.Type} ;
+  rdf:type gwsw:Putdeksel ;
   gwsw:isPartOf {ex:11i/i11o} ; # Afleiden uit {Deksel.NaamKnooppunt}
-  gwsw:hasAspect \[ rdf:type gwsw:VormDeksel ; gwsw:hasReference {Deksel.Vorm} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:BreedteDeksel ; gwsw:hasValue {Deksel.Breedte} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:LengteDeksel ; gwsw:hasValue {Deksel.Lengte} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:MateriaalDeksel ; gwsw:hasReference {Deksel.Materiaal} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:VormDeksel ; gwsw:hasReference gwsw:Rond ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:BreedteDeksel ; gwsw:hasValue 0.58 ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:LengteDeksel ; gwsw:hasValue 0.58 ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:MateriaalDeksel ; gwsw:hasReference gwsw:Gietijzer ; ] ;
 .
 {ex:20} \# Inmeten Leiding - activiteit
   gwsw:isPartOf {ex:01} ; 
@@ -574,46 +574,46 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
 .
 {ex:20} \# InmetenLeiding: - resultaat (terug)
   gwsw:hasOutput {ex:21o} ; \# Gebruik een andere URI dan ex:21i, ook bij dezelfde leiding (houdt dezelfde naam)
-  gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference {Leiding.WijzeVanInwinning}; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue {Leiding.DatumInwinning} ; ] ;
-  gwsw:hasAspect \[ rdf:type rev:MeldingMetingLeiding ; gwsw:hasValue {Leiding.Melding} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue {Leiding.Opmerking} ; ] ;
-  rdfs:seeAlso {Leiding.FotoReferentie} ;
+  gwsw:hasAspect \[ rdf:type gwsw:WijzeVanInwinning ; gwsw:hasReference gwsw:Inmeting; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:DatumInwinning ; gwsw:hasValue "20250102"^^xsd:date. ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:MeldingMetingLeiding ; rev:hasReference rev:WortelsInObject ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:Opmerking ; gwsw:hasValue "De leiding was rond" ; ] ;
+  rdfs:seeAlso _:24084\G293_1.jpg, _:24084\G293_2.jpg ;
 .
 {ex:21i/ex:21o} \# Leiding heen en terug
-  rdf:type {Leiding.Type} ;
-  rdfs:label {Leiding.Naam} ;
-  gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference {Leiding.StatusFunctioneren} ; ] ;
-  gwsw:isPartOf \[ rdf:type {Leiding.TypeStelsel}; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:VormLeiding ; gwsw:hasReference {Leiding.Vorm} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:HoogteLeiding ; gwsw:hasValue {Leiding.Hoogte} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:BreedteLeiding ; gwsw:hasValue {Leiding.Breedte} ; ] ;
-  gwsw:hasAspect \[ rdf:type gwsw:MateriaalLeiding ; gwsw:hasReference {Leiding.Materiaal} ; ] ;
+  rdf:type gwsw:GemengdRiool ;
+  rdfs:label "90003_1" ;
+  gwsw:hasAspect \[ rdf:type gwsw:StatusFunctioneren ; gwsw:hasReference gwsw:InGebruik ; ] ;
+  gwsw:isPartOf \[ rdf:type gwsw:GemengdStelsel; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:VormLeiding ; gwsw:hasReference gwsw:Rond ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:HoogteLeiding ; gwsw:hasValue 300 ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:BreedteLeiding ; gwsw:hasValue 300 ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:MateriaalLeiding ; gwsw:hasReference gwsw:Beton ; ] ;
 .
 {ex:21i/ex:21o} \# Leiding heen en terug: de verbinding
   gwsw:hasAspect {ex:22} ;
 .
 {ex:22} 
   rdf:type gwsw:Leidingorientatie ; \# Afleiden uit {Leiding.KnooppuntBegin} en {Leiding.KnooppuntEind} 
-  gwsw:hasAspect \[ rdf:type gwsw:Lijn ; gwsw:hasValue "gml:LineString {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}, {Knooppunt.X} {Knooppunt.Y} {Knooppunt.Z}" ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:Lijn ; gwsw:hasValue "<gml:LineString xmlns:gml=\"http://www.opengis.net/gml\"><gml:posList srsDimension=\"3\">168462.01 442691.30 22.45 168503.00 442701.30 22.45</gml:posList></gml:LineString>"^^geo:gmlLiteral ; ] ;
   gwsw:hasPart {ex:23} ;
   gwsw:hasPart {ex:24} ;
 .
 {ex:23} \# Leiding heen en terug: beginpunt
   rdf:type gwsw:BeginpuntLeiding ; 
   gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntBegin}
-  gwsw:hasAspect \[ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppuntBegin} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:BobBeginpuntLeiding ; gwsw:hasValue 22.45 ; ] ;
 .
 {ex:24} \# Leiding heen en terug: eindpunt 
   rdf:type gwsw:EindpuntLeiding ; 
   gwsw:hasConnection {ex:12} ; \# Afleiden uit {Leiding.KnooppuntEind} {ex:12} is natuurlijk een andere put
-  gwsw:hasAspect \[ rdf:type gwsw:BobEindpuntLeiding ; gwsw:hasValue {Leiding.BobKnooppuntEind} ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:BobEindpuntLeiding ; gwsw:hasValue 22.46 ; ] ;
 .
 {ex:241} \# Beginpunt terug
-  gwsw:hasAspect \[ rdf:type rev:BbbBeginpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntBegin} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:BbbBeginpuntLeiding ; gwsw:hasValue 22.75} ; ] ;
 .
 {ex:24o} \# Eindpunt terug
-  gwsw:hasAspect \[ rdf:type rev:BbbEindpuntLeiding ; gwsw:hasValue {Leiding.BbbKnooppuntEind} ; ] ;
+  gwsw:hasAspect \[ rdf:type rev:BbbEindpuntLeiding ; gwsw:hasValue 22.76 ; ] ;
 .
  </pre> </div>
 
