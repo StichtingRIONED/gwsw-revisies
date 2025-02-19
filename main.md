@@ -149,6 +149,8 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 
 [Revisieproject]: http://data.gwsw.nl/revisies/Revisieproject
 [Opdrachtgever]: http://data.gwsw.nl/totaal/Opdrachtgever
+[Opdrachtnemer]: http://data.gwsw.nl/totaal/Opdrachtnemer
+[ProjectreferentieOpdrachtgever]: http://data.gwsw.nl/totaal/ProjectreferentieOpdrachtgever
 [ProjectreferentieOpdrachtnemer]: http://data.gwsw.nl/totaal/ProjectreferentieOpdrachtnemer
 [Contactpersoon]: http://data.gwsw.nl/revisies/Contactpersoon
 
