@@ -148,10 +148,10 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | Contactpersoon 					| Contactpersoon       				| rdfs:label bij [Contactpersoon]                	| A    |       | in Opera ProjectAdministratorOpdrachtgever |
 
 [Revisieproject]: http://data.gwsw.nl/revisies/Revisieproject
-[Opdrachtgever]: http://data.gwsw.nl/totaal/Opdrachtgever
-[Opdrachtnemer]: http://data.gwsw.nl/totaal/Opdrachtnemer
-[ProjectreferentieOpdrachtgever]: http://data.gwsw.nl/totaal/ProjectreferentieOpdrachtgever
-[ProjectreferentieOpdrachtnemer]: http://data.gwsw.nl/totaal/ProjectreferentieOpdrachtnemer
+[Opdrachtgever]: http://data.gwsw.nl/revisies/Opdrachtgever
+[Opdrachtnemer]: http://data.gwsw.nl/revisies/Opdrachtnemer
+[ProjectreferentieOpdrachtgever]: http://data.gwsw.nl/revisies/ProjectreferentieOpdrachtgever
+[ProjectreferentieOpdrachtnemer]: http://data.gwsw.nl/revisies/ProjectreferentieOpdrachtnemer
 [Contactpersoon]: http://data.gwsw.nl/revisies/Contactpersoon
 
 **Gegevens Knooppunt** (Put of Bouwwerk)  
@@ -182,28 +182,28 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | Melding              | Melding meting knooppunt   | gwsw:hasReference [MeldingMetingKnooppuntColl]  |      | O     | in Opera MeldingPut          |
 | Opmerking            | Opmerking                  | gwsw:hasValue [Opmerking]                       |      | O     | in Opera rdfs:comment        |
 
-[Put]: http://data.gwsw.nl/totaal/Put
-[Bouwwerk]: http://data.gwsw.nl/totaal/Bouwwerk
-[VormPutColl]: http://data.gwsw.nl/totaal/VormPutColl
-[BreedtePut]: http://data.gwsw.nl/totaal/BreedtePut
-[BreedteBouwwerk]: http://data.gwsw.nl/totaal/BreedteBouwwerk
-[LengtePut]: http://data.gwsw.nl/totaal/LengtePut
-[LengteBouwwerk]: http://data.gwsw.nl/totaal/LengteBouwwerk
-[MateriaalPutColl]: http://data.gwsw.nl/totaal/MateriaalPutColl
-[BodemprofielColl]: http://data.gwsw.nl/totaal/BodemprofielColl
-[Punt]: http://data.gwsw.nl/totaal/Punt
-[HoogtePut]: http://data.gwsw.nl/totaal/HoogtePut
-[HoogteBouwwerk]: http://data.gwsw.nl/totaal/HoogteBouwwerk
-[StatusFunctionerenColl]: http://data.gwsw.nl/totaal/StatusFunctionerenColl
-[Stelsel]: http://data.gwsw.nl/totaal/Stelsel
-[Constructieonderdeel]: http://data.gwsw.nl/totaal/Constructieonderdeel
-[Drempelniveau]: http://data.gwsw.nl/totaal/Drempelniveau
+[Put]: http://data.gwsw.nl/revisies/Put
+[Bouwwerk]: http://data.gwsw.nl/revisies/Bouwwerk
+[VormPutColl]: http://data.gwsw.nl/revisies/VormPutColl
+[BreedtePut]: http://data.gwsw.nl/revisies/BreedtePut
+[BreedteBouwwerk]: http://data.gwsw.nl/revisies/BreedteBouwwerk
+[LengtePut]: http://data.gwsw.nl/revisies/LengtePut
+[LengteBouwwerk]: http://data.gwsw.nl/revisies/LengteBouwwerk
+[MateriaalPutColl]: http://data.gwsw.nl/revisies/MateriaalPutColl
+[BodemprofielColl]: http://data.gwsw.nl/revisies/BodemprofielColl
+[Punt]: http://data.gwsw.nl/revisies/Punt
+[HoogtePut]: http://data.gwsw.nl/revisies/HoogtePut
+[HoogteBouwwerk]: http://data.gwsw.nl/revisies/HoogteBouwwerk
+[StatusFunctionerenColl]: http://data.gwsw.nl/revisies/StatusFunctionerenColl
+[Stelsel]: http://data.gwsw.nl/revisies/Stelsel
+[Constructieonderdeel]: http://data.gwsw.nl/revisies/Constructieonderdeel
+[Drempelniveau]: http://data.gwsw.nl/revisies/Drempelniveau
 [MeldingMetingKnooppuntColl]: http://data.gwsw.nl/revisies/MeldingMetingKnooppuntColl
-[WijzeVanInwinningColl]: http://data.gwsw.nl/totaal/WijzeVanInwinningColl
-[DatumInwinning]: http://data.gwsw.nl/totaal/DatumInwinning
+[WijzeVanInwinningColl]: http://data.gwsw.nl/revisies/WijzeVanInwinningColl
+[DatumInwinning]: http://data.gwsw.nl/revisies/DatumInwinning
 [MetingWaterstand]: http://data.gwsw.nl/revisies/MetingWaterstand
-[HoogteStellaag]: http://data.gwsw.nl/totaal/HoogteStellaag
-[Opmerking]: http://data.gwsw.nl/totaal/Opmerking
+[HoogteStellaag]: http://data.gwsw.nl/revisies/HoogteStellaag
+[Opmerking]: http://data.gwsw.nl/revisies/Opmerking
 
 **Gegevens Deksel**  
 
@@ -217,11 +217,11 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | Materiaal | Materiaal deksel      | gwsw:hasReference [MateriaalDekselColl]     | O    | A     | in Opera MateriaalDeksel     |
 | Melding   | Melding meting deksel | gwsw:hasReference [MeldingMetingDekselColl] |      | O     | in Opera MeldingDeksel       |
 
-[Afdekking]: http://data.gwsw.nl/totaal/Afdekking
-[VormDekselColl]: http://data.gwsw.nl/totaal/VormDekselColl
-[LengteDeksel]: http://data.gwsw.nl/totaal/LengteDeksel
-[BreedteDeksel]: http://data.gwsw.nl/totaal/BreedteDeksel
-[MateriaalDekselColl]: http://data.gwsw.nl/totaal/MateriaalDekselColl
+[Afdekking]: http://data.gwsw.nl/revisies/Afdekking
+[VormDekselColl]: http://data.gwsw.nl/revisies/VormDekselColl
+[LengteDeksel]: http://data.gwsw.nl/revisies/LengteDeksel
+[BreedteDeksel]: http://data.gwsw.nl/revisies/BreedteDeksel
+[MateriaalDekselColl]: http://data.gwsw.nl/revisies/MateriaalDekselColl
 [MeldingMetingDekselColl]: http://data.gwsw.nl/revisies/MeldingMetingDekselColl
 
 **Gegevens Leiding**  
@@ -249,15 +249,15 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | Melding            | Melding meting leiding  | gwsw:hasReference [MeldingMetingLeidingColl] |      | O     | in Opera MeldingLeiding       |
 | Opmerking          | Opmerking               | gwsw:hasValue [Opmerking]                    |      | O     | in Opera rdfs:comment         |
 
-[Leiding]: http://data.gwsw.nl/totaal/Leiding
-[BobBeginpuntLeiding]: http://data.gwsw.nl/totaal/BobBeginpuntLeiding
-[BobEindpuntLeiding]: http://data.gwsw.nl/totaal/BobEindpuntLeiding
+[Leiding]: http://data.gwsw.nl/revisies/Leiding
+[BobBeginpuntLeiding]: http://data.gwsw.nl/revisies/BobBeginpuntLeiding
+[BobEindpuntLeiding]: http://data.gwsw.nl/revisies/BobEindpuntLeiding
 [BbbBeginpuntLeiding]: http://data.gwsw.nl/revisies/BbbBeginpuntLeiding
 [BbbEindpuntLeiding]: http://data.gwsw.nl/revisies/BbbEindpuntLeiding
-[VormLeidingColl]: http://data.gwsw.nl/totaal/VormLeidingColl
-[HoogteLeiding]: http://data.gwsw.nl/totaal/HoogteLeiding
-[BreedteLeiding]: http://data.gwsw.nl/totaal/BreedteLeiding
-[MateriaalLeidingColl]: http://data.gwsw.nl/totaal/MateriaalLeidingColl
+[VormLeidingColl]: http://data.gwsw.nl/revisies/VormLeidingColl
+[HoogteLeiding]: http://data.gwsw.nl/revisies/HoogteLeiding
+[BreedteLeiding]: http://data.gwsw.nl/revisies/BreedteLeiding
+[MateriaalLeidingColl]: http://data.gwsw.nl/revisies/MateriaalLeidingColl
 [MeldingMetingLeidingColl]: http://data.gwsw.nl/revisies/MeldingMetingLeidingColl
 
 # Datamodel
