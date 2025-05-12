@@ -132,7 +132,7 @@ ingevuld), dan moet de landmeter dit gegeven – als het bekend is – altijd bi
 **Link naar datamodel GWSW**
 
 Het GWSW-datamodel beschrijft de gebruikte concepten, de definitie en het waardetype is daarin beschreven.  
-Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder http://data.gwsw.nl/totaal of http://data.gwsw.nl/revisies).
+Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder https:data.gwsw.nl/totaal of https:data.gwsw.nl/revisies).
 
 
 **Gegevens Project**  
@@ -147,12 +147,12 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | Omschrijving   					| Omschrijving project 				| rdfs:comment bij [Revisieproject]              	| A    |       | in Opera Projectomschrijving               |
 | Contactpersoon 					| Contactpersoon       				| rdfs:label bij [Contactpersoon]                	| A    |       | in Opera ProjectAdministratorOpdrachtgever |
 
-[Revisieproject]: http://data.gwsw.nl/revisies/Revisieproject
-[Opdrachtgever]: http://data.gwsw.nl/revisies/Opdrachtgever
-[Opdrachtnemer]: http://data.gwsw.nl/revisies/Opdrachtnemer
-[ProjectreferentieOpdrachtgever]: http://data.gwsw.nl/revisies/ProjectreferentieOpdrachtgever
-[ProjectreferentieOpdrachtnemer]: http://data.gwsw.nl/revisies/ProjectreferentieOpdrachtnemer
-[Contactpersoon]: http://data.gwsw.nl/revisies/Contactpersoon
+[Revisieproject]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Revisieproject
+[Opdrachtgever]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Opdrachtgever
+[Opdrachtnemer]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Opdrachtnemer
+[ProjectreferentieOpdrachtgever]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./ProjectreferentieOpdrachtgever
+[ProjectreferentieOpdrachtnemer]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./ProjectreferentieOpdrachtnemer
+[Contactpersoon]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Contactpersoon
 
 **Gegevens Knooppunt** (Put of Bouwwerk)  
 
@@ -182,28 +182,28 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | Melding              | Melding meting knooppunt   | gwsw:hasReference [MeldingMetingKnooppuntColl]  |      | O     | in Opera MeldingPut          |
 | Opmerking            | Opmerking                  | gwsw:hasValue [Opmerking]                       |      | O     | in Opera rdfs:comment        |
 
-[Put]: http://data.gwsw.nl/revisies/Put
-[Bouwwerk]: http://data.gwsw.nl/revisies/Bouwwerk
-[VormPutColl]: http://data.gwsw.nl/revisies/VormPutColl
-[BreedtePut]: http://data.gwsw.nl/revisies/BreedtePut
-[BreedteBouwwerk]: http://data.gwsw.nl/revisies/BreedteBouwwerk
-[LengtePut]: http://data.gwsw.nl/revisies/LengtePut
-[LengteBouwwerk]: http://data.gwsw.nl/revisies/LengteBouwwerk
-[MateriaalPutColl]: http://data.gwsw.nl/revisies/MateriaalPutColl
-[BodemprofielColl]: http://data.gwsw.nl/revisies/BodemprofielColl
-[Punt]: http://data.gwsw.nl/revisies/Punt
-[HoogtePut]: http://data.gwsw.nl/revisies/HoogtePut
-[HoogteBouwwerk]: http://data.gwsw.nl/revisies/HoogteBouwwerk
-[StatusFunctionerenColl]: http://data.gwsw.nl/revisies/StatusFunctionerenColl
-[Stelsel]: http://data.gwsw.nl/revisies/Stelsel
-[Constructieonderdeel]: http://data.gwsw.nl/revisies/Constructieonderdeel
-[Drempelniveau]: http://data.gwsw.nl/revisies/Drempelniveau
-[MeldingMetingKnooppuntColl]: http://data.gwsw.nl/revisies/MeldingMetingKnooppuntColl
-[WijzeVanInwinningColl]: http://data.gwsw.nl/revisies/WijzeVanInwinningColl
-[DatumInwinning]: http://data.gwsw.nl/revisies/DatumInwinning
-[MetingWaterstand]: http://data.gwsw.nl/revisies/MetingWaterstand
-[HoogteStellaag]: http://data.gwsw.nl/revisies/HoogteStellaag
-[Opmerking]: http://data.gwsw.nl/revisies/Opmerking
+[Put]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Put
+[Bouwwerk]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Bouwwerk
+[VormPutColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./VormPutColl
+[BreedtePut]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./BreedtePut
+[BreedteBouwwerk]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./BreedteBouwwerk
+[LengtePut]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./LengtePut
+[LengteBouwwerk]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./LengteBouwwerk
+[MateriaalPutColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./MateriaalPutColl
+[BodemprofielColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./BodemprofielColl
+[Punt]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Punt
+[HoogtePut]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./HoogtePut
+[HoogteBouwwerk]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./HoogteBouwwerk
+[StatusFunctionerenColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./StatusFunctionerenColl
+[Stelsel]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Stelsel
+[Constructieonderdeel]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Constructieonderdeel
+[Drempelniveau]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Drempelniveau
+[MeldingMetingKnooppuntColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./MeldingMetingKnooppuntColl
+[WijzeVanInwinningColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./WijzeVanInwinningColl
+[DatumInwinning]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./DatumInwinning
+[MetingWaterstand]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./MetingWaterstand
+[HoogteStellaag]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./HoogteStellaag
+[Opmerking]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Opmerking
 
 **Gegevens Deksel**  
 
@@ -217,12 +217,12 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | Materiaal | Materiaal deksel      | gwsw:hasReference [MateriaalDekselColl]     | O    | A     | in Opera MateriaalDeksel     |
 | Melding   | Melding meting deksel | gwsw:hasReference [MeldingMetingDekselColl] |      | O     | in Opera MeldingDeksel       |
 
-[Afdekking]: http://data.gwsw.nl/revisies/Afdekking
-[VormDekselColl]: http://data.gwsw.nl/revisies/VormDekselColl
-[LengteDeksel]: http://data.gwsw.nl/revisies/LengteDeksel
-[BreedteDeksel]: http://data.gwsw.nl/revisies/BreedteDeksel
-[MateriaalDekselColl]: http://data.gwsw.nl/revisies/MateriaalDekselColl
-[MeldingMetingDekselColl]: http://data.gwsw.nl/revisies/MeldingMetingDekselColl
+[Afdekking]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Afdekking
+[VormDekselColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./VormDekselColl
+[LengteDeksel]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./LengteDeksel
+[BreedteDeksel]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./BreedteDeksel
+[MateriaalDekselColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./MateriaalDekselColl
+[MeldingMetingDekselColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./MeldingMetingDekselColl
 
 **Gegevens Leiding**  
 
@@ -249,16 +249,16 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | Melding            | Melding meting leiding  | gwsw:hasReference [MeldingMetingLeidingColl] |      | O     | in Opera MeldingLeiding       |
 | Opmerking          | Opmerking               | gwsw:hasValue [Opmerking]                    |      | O     | in Opera rdfs:comment         |
 
-[Leiding]: http://data.gwsw.nl/revisies/Leiding
-[BobBeginpuntLeiding]: http://data.gwsw.nl/revisies/BobBeginpuntLeiding
-[BobEindpuntLeiding]: http://data.gwsw.nl/revisies/BobEindpuntLeiding
-[BbbBeginpuntLeiding]: http://data.gwsw.nl/revisies/BbbBeginpuntLeiding
-[BbbEindpuntLeiding]: http://data.gwsw.nl/revisies/BbbEindpuntLeiding
-[VormLeidingColl]: http://data.gwsw.nl/revisies/VormLeidingColl
-[HoogteLeiding]: http://data.gwsw.nl/revisies/HoogteLeiding
-[BreedteLeiding]: http://data.gwsw.nl/revisies/BreedteLeiding
-[MateriaalLeidingColl]: http://data.gwsw.nl/revisies/MateriaalLeidingColl
-[MeldingMetingLeidingColl]: http://data.gwsw.nl/revisies/MeldingMetingLeidingColl
+[Leiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Leiding
+[BobBeginpuntLeiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./BobBeginpuntLeiding
+[BobEindpuntLeiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./BobEindpuntLeiding
+[BbbBeginpuntLeiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./BbbBeginpuntLeiding
+[BbbEindpuntLeiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./BbbEindpuntLeiding
+[VormLeidingColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./VormLeidingColl
+[HoogteLeiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./HoogteLeiding
+[BreedteLeiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./BreedteLeiding
+[MateriaalLeidingColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./MateriaalLeidingColl
+[MeldingMetingLeidingColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./MeldingMetingLeidingColl
 
 # Datamodel
 
@@ -280,8 +280,8 @@ Een overzicht van de nieuw toegevoegde concepten (vanaf concept-deelmodel GWSW-R
 | [BbbBeginpuntLeiding]        | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt                         |
 | [BbbEindpuntLeiding]         | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt                          | 
 
-[InmetenKnooppunt]: http://data.gwsw.nl/revisies/InmetenKnooppunt
-[InmetenLeiding]: http://data.gwsw.nl/revisies/InmetenLeiding
+[InmetenKnooppunt]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./InmetenKnooppunt
+[InmetenLeiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./InmetenLeiding
 
 ## Datamodel Revisies in RDF
 
@@ -554,7 +554,7 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
 .
 {ex:12i/ex:12o} 
   rdf:type gwsw:Putorientatie ;
-  gwsw:hasAspect \[ rdf:type gwsw:Punt ; gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>168443.01 442691.00 22.42</gml:pos></gml:Point>"^^geo:gmlLiteral . ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:Punt ; gwsw:hasValue "<gml:Point xmlns:gml=\"https:www.opengis.net/gml\"><gml:pos>168443.01 442691.00 22.42</gml:pos></gml:Point>"^^geo:gmlLiteral . ; ] ;
 .
 {ex:11o} \# Knooppunt terug
   gwsw:hasAspect \[ rdf:type rev:MetingWaterstand ; gwsw:hasValue 0.2 ; ] ;
@@ -597,7 +597,7 @@ Het ziet er dan als volgt uit (in één GWSW-dataset):
 .
 {ex:22} 
   rdf:type gwsw:Leidingorientatie ; \# Afleiden uit {Leiding.KnooppuntBegin} en {Leiding.KnooppuntEind} 
-  gwsw:hasAspect \[ rdf:type gwsw:Lijn ; gwsw:hasValue "<gml:LineString xmlns:gml=\"http://www.opengis.net/gml\"><gml:posList srsDimension=\"3\">168462.01 442691.30 22.45 168503.00 442701.30 22.45</gml:posList></gml:LineString>"^^geo:gmlLiteral ; ] ;
+  gwsw:hasAspect \[ rdf:type gwsw:Lijn ; gwsw:hasValue "<gml:LineString xmlns:gml=\"https:www.opengis.net/gml\"><gml:posList srsDimension=\"3\">168462.01 442691.30 22.45 168503.00 442701.30 22.45</gml:posList></gml:LineString>"^^geo:gmlLiteral ; ] ;
   gwsw:hasPart {ex:23} ;
   gwsw:hasPart {ex:24} ;
 .
