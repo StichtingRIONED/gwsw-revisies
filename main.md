@@ -81,7 +81,7 @@ Elk uitwisselgegeven wordt geïdentificeerd door deze groep + de veldcode (zie h
 **CSV**
 
 In het CSV-formaat is het heen- en terug-bestand een zipfile met daarin voor elke groep een apart CSV-bestand. 
-De veldcodes uit de onderstaande tabellen per groep, vormen de kolomheader voor het CSV-bestand.
+De veldcodes uit de onderstaande tabellen per groep, vormen de kolomheader voor het CSV-bestand. Wanneer een kolom meerdere waarden bevat, bijvoorbeeld meerdere foto's bij een put, worden deze gescheiden door middel van een 'pipe' teken '|'.
 
 **Voorbeeld Project.csv uit bestand heen.zip**  
 <div class="box"><pre>
