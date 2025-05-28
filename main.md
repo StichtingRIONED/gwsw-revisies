@@ -85,8 +85,8 @@ De veldcodes uit de onderstaande tabellen per groep, vormen de kolomheader voor 
 
 **Voorbeeld Project.csv uit bestand heen.zip**  
 <div class="box"><pre>
-Naam;Opdrachtgever;ProjectreferentieOpdrachtnemer;Omschrijving;Contactpersoon;Versie;Bestandstype
-"Project A";"Opdrachtgever B";"Contract C";"Omschrijving E";"Persoon F";"Versie G";"Revisie heen"
+Bestandstype;Versie;Naam;Opdrachtgever;Opdrachtnemer;ProjectreferentieOpdrachtgever;ProjectreferentieOpdrachtnemer;Omschrijving;Contactpersoon;WijzeVanInwinningKnooppunt;WijzeVanInwinningDeksel;WijzeVanInwinningLeiding;Knooppuntnamen;WijzeVanInwinningXY;WijzeVanInwinningZ
+"Revisie terug";"1.6.2";"Inmeten alles";"Gemeente Juinen";"Hekking Meetadvies B.V.";"OPD12345";"AAN67890";"Inmeting klein Juinen";"Walter de Rochebrune";"Inmeting";"GNSS Vanuit wagen";"Inmeting";"K9999"|"K9998"|"K9997"|"K9996"|"K9995"|"K9994"|"K9993"|"K9992";"GNSS Landmeting";"GNSS Landmeting"
 </pre></div>
 
 **JSON**
@@ -97,14 +97,196 @@ In JSON-vorm is elke groep een object binnen het omvattende JSON-object, elk gro
 <div class="box"><pre>
 {
   "Project": [
-    {"Naam": "Project A", "Opdrachtgever": "Opdrachtgever B", "ProjectreferentieOpdrachtnemer": "Contract C", "Omschrijving": "Omschrijving E", "Contactpersoon": "Persoon F", "Versie": "Versie G", "Bestandstype": "Revisie heen"},
-  ],
-  "Knooppunt": [
+    {
+      "Bestandstype": "Revisie heen",
+	  "Versie": "0.1",
+      "Naam": "Inmeten alles",
+      "Opdrachtgever": "Gemeente Juinen",
+      "Opdrachtnemer": "Hekking Meetadvies B.V.",
+      "ProjectreferentieOpdrachtgever": "OPD12345",
+      "ProjectreferentieOpdrachtnemer": "AAN67890",
+      "Omschrijving": "Inmeting klein Juinen",
+      "Contactpersoon": "Walter de Rochebrune"
+    }
   ],
   "Deksel": [
+    {
+      "Naam": "K0001",
+      "X": 163042.580,
+      "Y": 383220.110,
+      "Z": 15.28
+    },
+    {
+      "Naam": "K0002",
+      "X": 163035.930,
+      "Y": 383176.510,
+      "Z": 15.30
+    }
+  ],
+  "Knooppunt": [
+    {
+      "Naam": "K0001",
+	  "X": 163042.580,
+      "Y": 383220.110,
+      "Type": "Inspectieput",
+      "NaamStelsel": "Centrum hoofd",
+      "TypeStelsel": "Gemengd stelsel",
+      "Vorm": "Rechthoekig",
+      "Breedte": 800,
+      "Lengte": 800,
+      "Materiaal": "Beton"
+    },
+    {
+      "Naam": "K0002",
+	  "X": 163035.930,
+      "Y": 383176.510,
+      "Type": "Externe overstortput",
+      "NaamStelsel": "Centrum hoofd",
+      "TypeStelsel": "Gemengd stelsel",
+      "Vorm": "Rechthoekig",
+      "Materiaal": "Beton"
+    }
   ],
   "Leiding": [
+    {
+      "Naam": "001",
+      "Type": "Rioolleiding",
+      "NaamStelsel": "Centrum hoofd",
+      "TypeStelsel": "Gemengd stelsel",
+      "NaamKnooppuntBegin": "K0001",
+      "NaamKnooppuntEind": "K0002",
+      "BobKnooppuntBegin": 16.43,
+      "BobKnooppuntEind": 16.56,
+      "Vorm": "Rond",
+      "Hoogte": 300,
+      "Breedte": 300,
+      "Materiaal": "Beton"
+    }
+  ]
+}
+</pre></div>
+
+**Voorbeeld bestand terug.json**  
+<div class="box"><pre>
+{
+  "Project": [
+    {
+      "Bestandstype": "Revisie terug",
+	  "Versie": "0.1",
+      "Naam": "Inmeten alles",
+      "Opdrachtgever": "Gemeente Juinen",
+      "Opdrachtnemer": "Hekking Meetadvies B.V.",
+      "ProjectreferentieOpdrachtgever": "OPD12345",
+      "ProjectreferentieOpdrachtnemer": "AAN67890",
+      "Omschrijving": "Inmeting klein Juinen",
+      "Contactpersoon": "Walter de Rochebrune",
+	  "WijzeVanInwinningKnooppunt": "Inmeting",
+	  "WijzeVanInwinningDeksel": "GNSS Vanuit wagen"
+	  "WijzeVanInwinningLeiding": "Inmeting",
+	  "WijzeVanInwinningXY":"GNSS Landmeting",
+	  "WijzeVanInwinningZ": "GNSS Landmeting"
+    }
   ],
+  "Deksel": [
+    {
+      "Naam": "K0001",
+	  "DatumInwinning": "2026-01-01",
+      "X": 163042.420,
+      "Y": 383220.109,
+      "Z": 15.30,
+      "Type": "Deksel",
+      "Vorm": "Rond",
+      "Lengte": 520,
+      "Breedte": 520,
+      "Materiaal": "Gietijzer",
+      "Melding": [ "Deksel gebroken", "Deksel boven maaiveld" ]
+    },
+    {
+      "Naam": "K0002",
+	  "DatumInwinning": "2026-01-01",
+      "X": 163035.890,
+      "Y": 383176.600,
+      "Z": 15.31,
+      "Type": "Putdeksel - zwaar verkeer",
+      "Vorm": "Rond",
+      "Lengte": 600,
+      "Breedte": 600,
+      "Materiaal": "Gietijzer",
+	  "Opmerking": "Mooie deksel"
+    }
+  ],
+  "Knooppunt": [
+    {
+      "Naam": "K0001",
+      "Type": "Inspectieput",
+      "NaamStelsel": "Centrum hoofd",
+      "TypeStelsel": "Gemengd stelsel",
+      "DatumInwinning": "2026-01-01",
+      "Vorm": "Rechthoekig",
+      "Breedte": 800,
+      "Lengte": 800,
+      "Materiaal": "Beton",
+      "Bodemprofiel": "Vlakke bodem met banken",
+	  "X": 163042.420,
+      "Y": 383220.109,
+      "Z": 14.15,
+      "Hoogte": 1150,
+      "StatusFunctioneren": "In gebruik",
+      "Constructieonderdeel": [ "Afdekking", "Stellaag" ],
+      "HoogteStellaag": 210,
+      "Waterstand": 0.15,
+      "Fotoreferentie": [ "Foto001.jpg","Foto002.jpg" ],
+      "Melding": [ "Oppervlakteschade in object", "Vuil in object" ]
+    },
+    {
+      "Naam": "K0002",
+      "Type": "Externe overstortput",
+      "NaamStelsel": "Centrum hoofd",
+      "TypeStelsel": "Gemengd stelsel",
+      "DatumInwinning": "2026-01-01",
+      "Vorm": "Rechthoekig",
+      "Breedte": 1600,
+      "Lengte": 1600,
+      "Materiaal": "Beton",
+      "Bodemprofiel": "Vlakke bodem",
+      "X": 163035.890,
+      "Y": 383176.600,
+      "Z": 14.01,
+      "Hoogte": 1300,
+      "StatusFunctioneren": "In gebruik",
+      "Constructieonderdeel": [ "Afdekking", "Stellaag", "Overstortdrempel" ],
+	  "Drempelniveau": [14.51, 14.62],
+	  "Drempelbreedte": [1200, 800],
+      "HoogteStellaag": 100,
+      "Waterstand": 0.1,
+      "Fotoreferentie": [ "Foto003.jpg", "Foto004.jpg" ],
+	  "Melding": [ "Object ontbreekt in opdracht","Object toegevoegd","Scheur in object" ],
+	  "Opmerking": "Prima overstort"
+    }
+  ],
+  "Leiding": [
+    {
+      "Naam": "001",
+      "Type": "Gemengd riool",
+      "NaamStelsel": "Centrum hoofd",
+      "TypeStelsel": "Gemengd stelsel",
+	  "DatumInwinning": "2026-06-15",
+      "NaamKnooppuntBegin": "K0001",
+      "NaamKnooppuntEind": "K0002",
+      "BobKnooppuntBegin": 16.12,
+      "BobKnooppuntEind": 16.27,
+      "BbbKnooppuntBegin": 16.42,
+      "BbbKnooppuntEind": 16.57,
+      "StatusFunctioneren": "In gebruik",
+      "Vorm": "Rond",
+      "Hoogte": 300,
+      "Breedte": 300,
+      "Materiaal": "Beton",
+      "Fotoreferentie": [ "Foto004.jpg", "Foto005.jpg" ],
+	  "Melding": [ "Grond in object","Object toegevoegd","Ongedierte in object" ],
+      "Opmerking": "Dit is een opmerking"
+    }
+  ]
 }
 </pre></div>
 
@@ -151,7 +333,7 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | WijzeVanInwinningKnooppunt  		| Wijze van inwinning Knooppunt     | gwsw:hasReference [WijzeVanInwinningColl] 		|      | A     |                               				|
 | WijzeVanInwinningDeksel  			| Wijze van inwinning Deksel     	| gwsw:hasReference [WijzeVanInwinningColl] 		|      | A     |                               				|
 | WijzeVanInwinningLeiding  		| Wijze van inwinning Leiding     	| gwsw:hasReference [WijzeVanInwinningColl] 		|      | A     |                               				|
-| Knooppuntnamen  					| Beschikbare knooppuntnamen     	| rdfs:label 										| O    | O     |                               				|
+| Knooppuntnamen  					| Beschikbare knooppuntnamen     	| rdfs:label 										| O    |       |                               				|
 | WijzeVanInwinningXY  				| Wijze van inwinning XY     		| gwsw:hasReference [WijzeVanInwinningColl] 		|      | A     |                               				|
 | WijzeVanInwinningZ  				| Wijze van inwinning X     		|	 gwsw:hasReference [WijzeVanInwinningColl] 		|      | A     |                               				|
 
