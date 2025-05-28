@@ -63,7 +63,7 @@ Ook de gegevens van een revisieproject kunnen via het OroX-protocol worden uitge
 Het complete revisieproject, zowel de definitie als de resultaten past dan in één dataset.
 
 **Voorbeeld bestand volgens het OroX-protocol**  
-```ttl
+<div class="box"><pre>
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;.
@@ -437,7 +437,7 @@ _:b1000_106 a gwsw:BbbEindpuntLeiding;
     gwsw:hasValue "16.57"^^xsd:decimal.
 _:b1000_107 a gwsw:Lijn;
     gwsw:hasValue "<gml:LineString xmlns:gml=\"http://www.opengis.net/gml\"><gml:posList srsDimension=2>163042.42 383220.109 163035.89 383176.6</gml:posList></gml:LineString>".
-```
+</pre></div>
 
 **Validatie uitwisseling**  
 Gebruik voor de validatie van de volledigheid van heen- en terug-gegevens ook de tabellen in de volgende paragraaf, zie de kolommen "Heen" en "Terug"
