@@ -64,14 +64,14 @@ Het complete revisieproject, zowel de definitie als de resultaten past dan in é
 
 **Voorbeeld bestand volgens het OroX-protocol**  
 <div class="box"><pre>
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix geo: <http://www.opengis.net/ont/geosparql#>.
-@prefix gwsw: <http://data.gwsw.nl/1.6/totaal/>.
-@prefix ex: <http://sparql.gwsw.nl/instances#>.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+@prefix geo: &lt;http://www.opengis.net/ont/geosparql#&gt;.
+@prefix gwsw: &lt;http://data.gwsw.nl/1.6/totaal/&gt;.
+@prefix ex: &lt;http://sparql.gwsw.nl/instances#&gt;.
 
 ex:Proj_1 rdfs:label "Inmeten alles";
     rdfs:comment "Inmeting klein Juinen";
@@ -102,7 +102,7 @@ _:b1000_3 a gwsw:VormPut;
 _:b1000_4 a gwsw:MateriaalPut;
     gwsw:hasReference gwsw:Beton.
 _:b1000_5 a gwsw:Punt;
-    gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163042.58 383220.11 undefined</gml:pos></gml:Point>"^^geo:gmlLiteral.
+    gwsw:hasValue "<gml:Point xmlns:gml=\\"http://www.opengis.net/gml\\"><gml:pos>163042.58 383220.11 undefined</gml:pos></gml:Point>"^^geo:gmlLiteral.
 _:b1000_6 a gwsw:Stellaag.
 ex:Knp_6 rdfs:label "K0002";
     a gwsw:ExterneOverstortput;
