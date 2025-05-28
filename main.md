@@ -102,7 +102,7 @@ _:b1000_3 a gwsw:VormPut;
 _:b1000_4 a gwsw:MateriaalPut;
     gwsw:hasReference gwsw:Beton.
 _:b1000_5 a gwsw:Punt;
-    gwsw:hasValue "<gml:Point xmlns:gml=\\"http://www.opengis.net/gml\\"><gml:pos>163042.58 383220.11 undefined</gml:pos></gml:Point>"^^geo:gmlLiteral.
+    `gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163042.58 383220.11 undefined</gml:pos></gml:Point>"^^geo:gmlLiteral.`
 _:b1000_6 a gwsw:Stellaag.
 ex:Knp_6 rdfs:label "K0002";
     a gwsw:ExterneOverstortput;
