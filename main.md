@@ -62,6 +62,383 @@ Zo kan de inhoud direct in GIS systemen worden ontsloten. Zie ook https://apps.g
 Ook de gegevens van een revisieproject kunnen via het OroX-protocol worden uitgewisseld, dat is de meest directe vorm van uitwisseling. 
 Het complete revisieproject, zowel de definitie als de resultaten past dan in één dataset.
 
+**Voorbeeld bestand volgens het OroX-protocol**  
+<div class="box"><pre>
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix geo: <http://www.opengis.net/ont/geosparql#>.
+@prefix gwsw: <http://data.gwsw.nl/1.6/totaal/>.
+@prefix ex: <http://sparql.gwsw.nl/instances#>.
+
+ex:Proj_1 rdfs:label "Inmeten alles";
+    rdfs:comment "Inmeting klein Juinen";
+    a gwsw:Revisieproject;
+    gwsw:hasInput _:b1000_22, _:b1000_23, _:b1000_24;
+    gwsw:hasAspect _:b1000_25, _:b1000_26.
+ex:Knp_2 rdfs:label "K0001";
+    a gwsw:Inspectieput;
+    gwsw:hasAspect ex:KnpOri_3;
+    gwsw:isPartOf ex:Stl_5;
+    gwsw:hasAspect _:b1000_1, _:b1000_2, _:b1000_3, _:b1000_4;
+    gwsw:hasPart _:b1000_6.
+ex:KnpOri_3 a gwsw:Putorientatie;
+    gwsw:hasAspect _:b1000_5.
+ex:InmKnp_4 a gwsw:InmetenKnooppunt;
+    gwsw:isPartOf ex:Proj_1;
+    gwsw:hasInput ex:Knp_2;
+    gwsw:hasAspect _:b1000_27, _:b1000_28;
+    gwsw:hasOutput ex:Knp_20.
+ex:Stl_5 rdfs:label "Centrum hoofd";
+    a gwsw:GemengdStelsel.
+_:b1000_1 a gwsw:BreedtePut;
+    gwsw:hasValue "800"^^xsd:integer.
+_:b1000_2 a gwsw:LengtePut;
+    gwsw:hasValue "800"^^xsd:integer.
+_:b1000_3 a gwsw:VormPut;
+    gwsw:hasReference gwsw:Rechthoekig.
+_:b1000_4 a gwsw:MateriaalPut;
+    gwsw:hasReference gwsw:Beton.
+_:b1000_5 a gwsw:Punt;
+    gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163042.58 383220.11 undefined</gml:pos></gml:Point>"^^geo:gmlLiteral.
+_:b1000_6 a gwsw:Stellaag.
+ex:Knp_6 rdfs:label "K0002";
+    a gwsw:ExterneOverstortput;
+    gwsw:hasAspect ex:KnpOri_7;
+    gwsw:isPartOf ex:Stl_5;
+    gwsw:hasAspect _:b1000_7, _:b1000_8;
+    gwsw:hasPart _:b1000_10.
+ex:KnpOri_7 a gwsw:Putorientatie;
+    gwsw:hasAspect _:b1000_9.
+ex:InmKnp_8 a gwsw:InmetenKnooppunt;
+    gwsw:isPartOf ex:Proj_1;
+    gwsw:hasInput ex:Knp_6;
+    gwsw:hasAspect _:b1000_41, _:b1000_42;
+    gwsw:hasOutput ex:Knp_24.
+_:b1000_7 a gwsw:VormPut;
+    gwsw:hasReference gwsw:Rechthoekig.
+_:b1000_8 a gwsw:MateriaalPut;
+    gwsw:hasReference gwsw:Beton.
+_:b1000_9 a gwsw:Punt;
+    gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163035.93 383176.51 undefined</gml:pos></gml:Point>"^^geo:gmlLiteral.
+_:b1000_10 a gwsw:Stellaag.
+ex:Dks_9 a gwsw:Afdekking;
+    gwsw:isPartOf ex:Knp_2;
+    gwsw:hasAspect ex:DksOri_10, ex:DksOri_11.
+ex:DksOri_10 a gwsw:Dekselorientatie;
+    gwsw:hasAspect _:b1000_11.
+_:b1000_11 a gwsw:Punt;
+    gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163042.58 383220.11 </gml:pos></gml:Point>"^^geo:gmlLiteral.
+ex:DksOri_11 a gwsw:Dekselorientatie;
+    gwsw:hasAspect _:b1000_12.
+_:b1000_12 a gwsw:Putdekselniveau;
+    gwsw:hasValue "15.28"^^xsd:decimal.
+ex:Dks_12 a gwsw:Afdekking;
+    gwsw:isPartOf ex:Knp_6;
+    gwsw:hasAspect ex:DksOri_13, ex:DksOri_14.
+ex:DksOri_13 a gwsw:Dekselorientatie;
+    gwsw:hasAspect _:b1000_13.
+_:b1000_13 a gwsw:Punt;
+    gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163035.93 383176.51 </gml:pos></gml:Point>"^^geo:gmlLiteral.
+ex:DksOri_14 a gwsw:Dekselorientatie;
+    gwsw:hasAspect _:b1000_14.
+_:b1000_14 a gwsw:Putdekselniveau;
+    gwsw:hasValue "15.3"^^xsd:decimal.
+ex:Lei_15 rdfs:label "001";
+    a gwsw:Rioolleiding;
+    gwsw:isPartOf ex:Stl_5;
+    gwsw:hasAspect _:b1000_15, _:b1000_16, _:b1000_17, _:b1000_18, ex:LeiOri_17.
+ex:InmLei_16 a gwsw:InmetenLeiding;
+    gwsw:isPartOf ex:Proj_1;
+    gwsw:hasInput ex:Lei_15;
+    gwsw:hasAspect _:b1000_85;
+    gwsw:hasOutput ex:Lei_39.
+_:b1000_15 a gwsw:BreedteLeiding;
+    gwsw:hasValue "300"^^xsd:integer.
+_:b1000_16 a gwsw:HoogteLeiding;
+    gwsw:hasValue "300"^^xsd:integer.
+_:b1000_17 a gwsw:VormLeiding;
+    gwsw:hasReference gwsw:Rond.
+_:b1000_18 a gwsw:MateriaalLeiding;
+    gwsw:hasReference gwsw:Beton.
+ex:LeiOri_17 a gwsw:Leidingorientatie;
+    gwsw:hasPart ex:LeiOriB_18, ex:LeiOriE_19;
+    gwsw:hasAspect _:b1000_21.
+ex:LeiOriB_18 a gwsw:BeginpuntLeiding;
+    gwsw:hasConnection ex:KnpOri_3;
+    gwsw:hasAspect _:b1000_19.
+_:b1000_19 a gwsw:BobBeginpuntLeiding;
+    gwsw:hasValue "16.43"^^xsd:decimal.
+ex:LeiOriE_19 a gwsw:EindpuntLeiding;
+    gwsw:hasConnection ex:KnpOri_7;
+    gwsw:hasAspect _:b1000_20.
+_:b1000_20 a gwsw:BobEindpuntLeiding;
+    gwsw:hasValue "16.56"^^xsd:decimal.
+_:b1000_21 a gwsw:Lijn;
+    gwsw:hasValue "<gml:LineString xmlns:gml=\"http://www.opengis.net/gml\"><gml:posList srsDimension=2>163042.58 383220.11 163035.93 383176.51</gml:posList></gml:LineString>".
+_:b1000_22 rdfs:label "Gemeente Juinen";
+    a gwsw:Opdrachtgever.
+_:b1000_23 rdfs:label "Hekking Meetadvies B.V.";
+    a gwsw:Opdrachtnemer.
+_:b1000_24 rdfs:label "Walter de Rochebrune";
+    a gwsw:Contactpersoon.
+_:b1000_25 a gwsw:ProjectreferentieOpdrachtgever;
+    gwsw:hasValue "OPD12345".
+_:b1000_26 a gwsw:ProjectreferentieOpdrachtnemer;
+    gwsw:hasValue "AAN67890".
+ex:Knp_20 rdfs:label "K0001";
+    a gwsw:Inspectieput;
+    gwsw:hasAspect ex:KnpOri_21;
+    gwsw:isPartOf ex:Stl_22;
+    gwsw:hasAspect _:b1000_29, _:b1000_30, _:b1000_31, _:b1000_32, _:b1000_35, _:b1000_36, _:b1000_37;
+    gwsw:hasPart _:b1000_39.
+ex:KnpOri_21 a gwsw:Putorientatie;
+    gwsw:hasAspect _:b1000_38.
+_:b1000_27 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+_:b1000_28 a gwsw:MetingWaterstand;
+    gwsw:hasValue "0.15"^^xsd:decimal.
+ex:Stl_22 rdfs:label "Centrum hoofd";
+    a gwsw:GemengdStelsel.
+_:b1000_29 a gwsw:BreedtePut;
+    gwsw:hasValue "800"^^xsd:integer.
+_:b1000_30 a gwsw:LengtePut;
+    gwsw:hasValue "800"^^xsd:integer.
+_:b1000_31 a gwsw:HoogtePut;
+    gwsw:hasValue "1150"^^xsd:integer.
+_:b1000_32 a gwsw:VormPut;
+    gwsw:hasAspect ex:Inwinn_23;
+    gwsw:hasReference gwsw:Rechthoekig.
+ex:Inwinn_23 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_33, _:b1000_34.
+_:b1000_33 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_34 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+_:b1000_35 a gwsw:MateriaalPut;
+    gwsw:hasReference gwsw:Beton.
+_:b1000_36 a gwsw:Bodemprofiel;
+    gwsw:hasReference gwsw:VlakkeBodemBanken.
+_:b1000_37 a gwsw:StatusFunctioneren;
+    gwsw:hasReference gwsw:InGebruik.
+_:b1000_38 a gwsw:Punt;
+    gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163042.42 383220.109 </gml:pos></gml:Point>"^^geo:gmlLiteral.
+_:b1000_39 a gwsw:Stellaag;
+    gwsw:hasAspect _:b1000_40.
+_:b1000_40 a gwsw:HoogteStellaag;
+    gwsw:hasValue "210"^^xsd:integer.
+ex:Knp_24 rdfs:label "K0002";
+    a gwsw:ExterneOverstortput;
+    gwsw:hasAspect ex:KnpOri_25;
+    gwsw:isPartOf ex:Stl_22;
+    gwsw:hasAspect _:b1000_43, _:b1000_44, _:b1000_45, _:b1000_46, _:b1000_49, _:b1000_50, _:b1000_51;
+    gwsw:hasPart _:b1000_53, _:b1000_60, _:b1000_67.
+ex:KnpOri_25 a gwsw:Putorientatie;
+    gwsw:hasAspect _:b1000_52.
+_:b1000_41 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+_:b1000_42 a gwsw:MetingWaterstand;
+    gwsw:hasValue "0.1"^^xsd:decimal.
+_:b1000_43 a gwsw:BreedtePut;
+    gwsw:hasValue "1600"^^xsd:integer.
+_:b1000_44 a gwsw:LengtePut;
+    gwsw:hasValue "1600"^^xsd:integer.
+_:b1000_45 a gwsw:HoogtePut;
+    gwsw:hasValue "1300"^^xsd:integer.
+_:b1000_46 a gwsw:VormPut;
+    gwsw:hasAspect ex:Inwinn_26;
+    gwsw:hasReference gwsw:Rechthoekig.
+ex:Inwinn_26 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_47, _:b1000_48.
+_:b1000_47 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_48 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+_:b1000_49 a gwsw:MateriaalPut;
+    gwsw:hasReference gwsw:Beton.
+_:b1000_50 a gwsw:Bodemprofiel;
+    gwsw:hasReference gwsw:VlakkeBodem.
+_:b1000_51 a gwsw:StatusFunctioneren;
+    gwsw:hasReference gwsw:InGebruik.
+_:b1000_52 a gwsw:Punt;
+    gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163035.89 383176.6 </gml:pos></gml:Point>"^^geo:gmlLiteral.
+_:b1000_53 a gwsw:Wand;
+    gwsw:hasAspect _:b1000_54, _:b1000_57.
+_:b1000_54 a gwsw:Drempelbreedte;
+    gwsw:hasAspect ex:Inwinn_27;
+    gwsw:hasValue "1200"^^xsd:integer.
+ex:Inwinn_27 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_55, _:b1000_56.
+_:b1000_55 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_56 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+_:b1000_57 a gwsw:Drempelniveau;
+    gwsw:hasAspect ex:Inwinn_28;
+    gwsw:hasValue "14.51"^^xsd:decimal.
+ex:Inwinn_28 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_58, _:b1000_59.
+_:b1000_58 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:GPSLandmeting.
+_:b1000_59 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+_:b1000_60 a gwsw:Wand;
+    gwsw:hasAspect _:b1000_61, _:b1000_64.
+_:b1000_61 a gwsw:Drempelbreedte;
+    gwsw:hasAspect ex:Inwinn_29;
+    gwsw:hasValue "800"^^xsd:integer.
+ex:Inwinn_29 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_62, _:b1000_63.
+_:b1000_62 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_63 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+_:b1000_64 a gwsw:Drempelniveau;
+    gwsw:hasAspect ex:Inwinn_30;
+    gwsw:hasValue "14.62"^^xsd:decimal.
+ex:Inwinn_30 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_65, _:b1000_66.
+_:b1000_65 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:GPSLandmeting.
+_:b1000_66 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+_:b1000_67 a gwsw:Stellaag;
+    gwsw:hasAspect _:b1000_68.
+_:b1000_68 a gwsw:HoogteStellaag;
+    gwsw:hasValue "100"^^xsd:integer.
+ex:Dks_31 a gwsw:Deksel;
+    gwsw:isPartOf ex:Knp_20;
+    gwsw:hasAspect _:b1000_69, _:b1000_70, _:b1000_71, _:b1000_72, ex:DksOri_32, ex:DksOri_33.
+_:b1000_69 a gwsw:BreedteDeksel;
+    gwsw:hasValue "520"^^xsd:integer.
+_:b1000_70 a gwsw:LengteDeksel;
+    gwsw:hasValue "520"^^xsd:integer.
+_:b1000_71 a gwsw:VormDeksel;
+    gwsw:hasReference gwsw:Rond.
+_:b1000_72 a gwsw:MateriaalDeksel;
+    gwsw:hasReference gwsw:Gietijzer.
+ex:DksOri_32 a gwsw:Dekselorientatie;
+    gwsw:hasAspect _:b1000_73.
+_:b1000_73 a gwsw:Punt;
+    gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163042.42 383220.109 </gml:pos></gml:Point>"^^geo:gmlLiteral.
+ex:DksOri_33 a gwsw:Dekselorientatie;
+    gwsw:hasAspect _:b1000_74.
+_:b1000_74 a gwsw:Putdekselniveau;
+    gwsw:hasAspect ex:Inwinn_34;
+    gwsw:hasValue "15.3"^^xsd:decimal.
+ex:Inwinn_34 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_75, _:b1000_76.
+_:b1000_75 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:GPSLandmeting.
+_:b1000_76 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+ex:Dks_35 a gwsw:Putdeksel_ZwaarVerkeer;
+    gwsw:isPartOf ex:Knp_24;
+    gwsw:hasAspect _:b1000_77, _:b1000_78, _:b1000_79, _:b1000_80, ex:DksOri_36, ex:DksOri_37.
+_:b1000_77 a gwsw:BreedteDeksel;
+    gwsw:hasValue "600"^^xsd:integer.
+_:b1000_78 a gwsw:LengteDeksel;
+    gwsw:hasValue "600"^^xsd:integer.
+_:b1000_79 a gwsw:VormDeksel;
+    gwsw:hasReference gwsw:Rond.
+_:b1000_80 a gwsw:MateriaalDeksel;
+    gwsw:hasReference gwsw:Gietijzer.
+ex:DksOri_36 a gwsw:Dekselorientatie;
+    gwsw:hasAspect _:b1000_81.
+_:b1000_81 a gwsw:Punt;
+    gwsw:hasValue "<gml:Point xmlns:gml=\"http://www.opengis.net/gml\"><gml:pos>163035.89 383176.6 </gml:pos></gml:Point>"^^geo:gmlLiteral.
+ex:DksOri_37 a gwsw:Dekselorientatie;
+    gwsw:hasAspect _:b1000_82.
+_:b1000_82 a gwsw:Putdekselniveau;
+    gwsw:hasAspect ex:Inwinn_38;
+    gwsw:hasValue "15.31"^^xsd:decimal.
+ex:Inwinn_38 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_83, _:b1000_84.
+_:b1000_83 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:GPSLandmeting.
+_:b1000_84 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-01-01"^^xsd:date.
+ex:Lei_39 rdfs:label "001";
+    a gwsw:GemengdRiool;
+    gwsw:isPartOf ex:Stl_22;
+    gwsw:hasAspect _:b1000_86, _:b1000_89, _:b1000_92, _:b1000_93, _:b1000_96, ex:LeiOri_44.
+_:b1000_85 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-06-15"^^xsd:date.
+_:b1000_86 a gwsw:BreedteLeiding;
+    gwsw:hasAspect ex:Inwinn_40;
+    gwsw:hasValue "300"^^xsd:integer.
+ex:Inwinn_40 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_87, _:b1000_88.
+_:b1000_87 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_88 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-06-15"^^xsd:date.
+_:b1000_89 a gwsw:HoogteLeiding;
+    gwsw:hasAspect ex:Inwinn_41;
+    gwsw:hasValue "300"^^xsd:integer.
+ex:Inwinn_41 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_90, _:b1000_91.
+_:b1000_90 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_91 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-06-15"^^xsd:date.
+_:b1000_92 a gwsw:StatusFunctioneren;
+    gwsw:hasReference gwsw:InGebruik.
+_:b1000_93 a gwsw:VormLeiding;
+    gwsw:hasAspect ex:Inwinn_42;
+    gwsw:hasReference gwsw:Rond.
+ex:Inwinn_42 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_94, _:b1000_95.
+_:b1000_94 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_95 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-06-15"^^xsd:date.
+_:b1000_96 a gwsw:MateriaalLeiding;
+    gwsw:hasAspect ex:Inwinn_43;
+    gwsw:hasReference gwsw:Beton.
+ex:Inwinn_43 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_97, _:b1000_98.
+_:b1000_97 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_98 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-06-15"^^xsd:date.
+ex:LeiOri_44 a gwsw:Leidingorientatie;
+    gwsw:hasPart ex:LeiOriB_45, ex:LeiOriE_47;
+    gwsw:hasAspect _:b1000_107.
+ex:LeiOriB_45 a gwsw:BeginpuntLeiding;
+    gwsw:hasConnection ex:KnpOri_21;
+    gwsw:hasAspect _:b1000_99, _:b1000_102.
+_:b1000_99 a gwsw:BobBeginpuntLeiding;
+    gwsw:hasAspect ex:Inwinn_46;
+    gwsw:hasValue "16.12"^^xsd:decimal.
+ex:Inwinn_46 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_100, _:b1000_101.
+_:b1000_100 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_101 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-06-15"^^xsd:date.
+_:b1000_102 a gwsw:BbbBeginpuntLeiding;
+    gwsw:hasValue "16.42"^^xsd:decimal.
+ex:LeiOriE_47 a gwsw:EindpuntLeiding;
+    gwsw:hasConnection ex:KnpOri_25;
+    gwsw:hasAspect _:b1000_103, _:b1000_106.
+_:b1000_103 a gwsw:BobEindpuntLeiding;
+    gwsw:hasAspect ex:Inwinn_48;
+    gwsw:hasValue "16.27"^^xsd:decimal.
+ex:Inwinn_48 a gwsw:Inwinning;
+    gwsw:hasAspect _:b1000_104, _:b1000_105.
+_:b1000_104 a gwsw:WijzeVanInwinning;
+    gwsw:hasReference gwsw:Inmeting.
+_:b1000_105 a gwsw:DatumInwinning;
+    gwsw:hasValue "2026-06-15"^^xsd:date.
+_:b1000_106 a gwsw:BbbEindpuntLeiding;
+    gwsw:hasValue "16.57"^^xsd:decimal.
+_:b1000_107 a gwsw:Lijn;
+    gwsw:hasValue "<gml:LineString xmlns:gml=\"http://www.opengis.net/gml\"><gml:posList srsDimension=2>163042.42 383220.109 163035.89 383176.6</gml:posList></gml:LineString>".
+</pre></div>
+
 **Validatie uitwisseling**  
 Gebruik voor de validatie van de volledigheid van heen- en terug-gegevens ook de tabellen in de volgende paragraaf, zie de kolommen "Heen" en "Terug"
 
@@ -181,7 +558,7 @@ In JSON-vorm is elke groep een object binnen het omvattende JSON-object, elk gro
       "Omschrijving": "Inmeting klein Juinen",
       "Contactpersoon": "Walter de Rochebrune",
 	  "WijzeVanInwinningKnooppunt": "Inmeting",
-	  "WijzeVanInwinningDeksel": "GNSS Vanuit wagen"
+	  "WijzeVanInwinningDeksel": "GNSS Vanuit wagen",
 	  "WijzeVanInwinningLeiding": "Inmeting",
 	  "WijzeVanInwinningXY":"GNSS Landmeting",
 	  "WijzeVanInwinningZ": "GNSS Landmeting"
