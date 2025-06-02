@@ -72,7 +72,6 @@ Het complete revisieproject, zowel de definitie als de resultaten past dan in é
 @prefix geo: &lt;http://www.opengis.net/ont/geosparql#&gt;.
 @prefix gwsw: &lt;http://data.gwsw.nl/1.6/totaal/&gt;.
 @prefix ex: &lt;http://sparql.gwsw.nl/instances#&gt;.
-
 ex:Proj_1 rdfs:label "Inmeten alles";
     rdfs:comment "Inmeting klein Juinen";
     a gwsw:Revisieproject;
@@ -86,7 +85,6 @@ ex:Proj_1 rdfs:label "Inmeten alles";
 		gwsw:hasValue "OPD12345" ], 
 		[ a gwsw:ProjectreferentieOpdrachtnemer;
 		gwsw:hasValue "AAN67890" ].
-
 ex:Knp_2 rdfs:label "K0001";
     a gwsw:Inspectieput;
     gwsw:hasAspect [a gwsw:Putorientatie;
@@ -102,7 +100,6 @@ ex:Knp_2 rdfs:label "K0001";
 			gwsw:hasReference gwsw:Beton];
     gwsw:isPartOf ex:Stl_5;
     gwsw:hasPart [a gwsw:Stellaag].
-
 ex:InmKnp_4 a gwsw:InmetenKnooppunt;
     gwsw:isPartOf ex:Proj_1;
     gwsw:hasInput ex:Knp_2;
@@ -111,10 +108,8 @@ ex:InmKnp_4 a gwsw:InmetenKnooppunt;
 		[ a gwsw:MetingWaterstand;
 			gwsw:hasValue "0.15"^^xsd:decimal];
 	gwsw:hasOutput ex:Knp_20.
-
 ex:Stl_5 rdfs:label "Centrum hoofd";
     a gwsw:GemengdStelsel.
-
 ex:Knp_6 rdfs:label "K0002";
     a gwsw:ExterneOverstortput;
     gwsw:hasAspect [a gwsw:Putorientatie;
@@ -126,7 +121,6 @@ ex:Knp_6 rdfs:label "K0002";
 			gwsw:hasReference gwsw:Beton];
     gwsw:isPartOf ex:Stl_5;
     gwsw:hasPart [a gwsw:Stellaag].
-
 ex:InmKnp_8 a gwsw:InmetenKnooppunt;
     gwsw:isPartOf ex:Proj_1;
     gwsw:hasInput ex:Knp_6;
@@ -135,7 +129,6 @@ ex:InmKnp_8 a gwsw:InmetenKnooppunt;
 		[ a gwsw:MetingWaterstand;
 			gwsw:hasValue "0.1"^^xsd:decimal];
     gwsw:hasOutput ex:Knp_24.
-
 ex:Dks_9 a gwsw:Afdekking;
     gwsw:isPartOf ex:Knp_2;
     gwsw:hasAspect [ a gwsw:Dekselorientatie;
@@ -144,7 +137,6 @@ ex:Dks_9 a gwsw:Afdekking;
 		[a gwsw:Dekselorientatie;
 			gwsw:hasAspect [a gwsw:Putdekselniveau;
 				gwsw:hasValue "15.28"^^xsd:decimal]]. 
-
 ex:Dks_12 a gwsw:Afdekking;
     gwsw:isPartOf ex:Knp_6;
     gwsw:hasAspect [a gwsw:Dekselorientatie;
@@ -153,7 +145,6 @@ ex:Dks_12 a gwsw:Afdekking;
 		[a gwsw:Dekselorientatie;
 			gwsw:hasAspect [a gwsw:Putdekselniveau;
 				gwsw:hasValue "15.3"^^xsd:decimal]].
-
 ex:Lei_15 rdfs:label "001";
     a gwsw:Rioolleiding;
     gwsw:isPartOf ex:Stl_5;
@@ -177,7 +168,6 @@ ex:LeiOriE_19 a gwsw:EindpuntLeiding;
     gwsw:hasConnection ex:KnpOri_7;
     gwsw:hasAspect [a gwsw:BobEindpuntLeiding;
 		gwsw:hasValue "16.56"^^xsd:decimal].
-
 ex:InmLei_16 a gwsw:InmetenLeiding;
     gwsw:isPartOf ex:Proj_1;
     gwsw:hasInput ex:Lei_15;
@@ -185,7 +175,6 @@ ex:InmLei_16 a gwsw:InmetenLeiding;
 		gwsw:hasValue "2026-01-15"^^xsd:date];
     gwsw:hasAspect _:b1000_85;
     gwsw:hasOutput ex:Lei_39.
-	
 ex:Knp_20 rdfs:label "K0001";
     a gwsw:Inspectieput;
     gwsw:hasAspect [a gwsw:Putorientatie;
@@ -214,10 +203,8 @@ ex:Knp_20 rdfs:label "K0001";
     gwsw:hasPart [a gwsw:Stellaag;
 		gwsw:hasAspect [a gwsw:HoogteStellaag;
 			gwsw:hasValue "210"^^xsd:integer] ].
-
 ex:Stl_22 rdfs:label "Centrum hoofd";
     a gwsw:GemengdStelsel.
-
 ex:Knp_24 rdfs:label "K0002";
     a gwsw:ExterneOverstortput;
     gwsw:hasAspect [a gwsw:Putorientatie;
@@ -250,7 +237,6 @@ ex:Knp_24 rdfs:label "K0002";
 		[a gwsw:Stellaag;
 			gwsw:hasAspect [a gwsw:HoogteStellaag;
 				gwsw:hasValue "100"^^xsd:integer] ].
-
 _:b1000_54 a gwsw:Drempelbreedte;
     gwsw:hasAspect [a gwsw:Inwinning;
 		gwsw:hasAspect [a gwsw:WijzeVanInwinning;
@@ -279,7 +265,6 @@ _:b1000_64 a gwsw:Drempelniveau;
 		[a gwsw:DatumInwinning;
 			gwsw:hasValue "2026-01-01"^^xsd:date] ];
     gwsw:hasValue "14.62"^^xsd:decimal.
-
 ex:Dks_31 a gwsw:Deksel;
     gwsw:isPartOf ex:Knp_20;
     gwsw:hasAspect [a gwsw:BreedteDeksel;
@@ -302,7 +287,6 @@ ex:Inwinn_34 a gwsw:Inwinning;
 		gwsw:hasReference gwsw:GPSLandmeting], 
 	[a gwsw:DatumInwinning;
 		gwsw:hasValue "2026-01-01"^^xsd:date].
-
 ex:Dks_35 a gwsw:Putdeksel_ZwaarVerkeer;
     gwsw:isPartOf ex:Knp_24;
     gwsw:hasAspect [a gwsw:BreedteDeksel;
@@ -325,8 +309,6 @@ _:b1000_83 a gwsw:WijzeVanInwinning;
     gwsw:hasReference gwsw:GPSLandmeting.
 _:b1000_84 a gwsw:DatumInwinning;
     gwsw:hasValue "2026-01-01"^^xsd:date.
-
-
 ex:Lei_39 rdfs:label "001";
     a gwsw:GemengdRiool;
     gwsw:isPartOf ex:Stl_22;
