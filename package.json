@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Launch Respec for preview",
   "main": "server.js",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
+  },
   "scripts": {
     "start": "node ./server.js"
   },
