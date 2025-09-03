@@ -564,7 +564,8 @@
 	a[href] {
 		color: #034575;
 		text-decoration: none;
-		border-bottom: 1px solid #707070;
+ 		font-weight: semibold;
+		/* border-bottom: 1px solid #707070; (20280812) */
 		/* Need a bit of extending for it to look okay */
 		padding: 0 1px 0;
 		margin: 0 -1px 0;
@@ -578,12 +579,12 @@
 	a[href]:hover {
 		background: #f8f8f8;
 		background: rgba(75%, 75%, 75%, .25);
-		border-bottom-width: 3px;
+		/* border-bottom-width: 3px; (20280812) */
 		margin-bottom: -2px;
 	}
 	a[href]:active {
 		color: #C00;
-		border-color: #C00;
+		/* border-color: #C00; (20280812) */
 	}
 
 	/* Backout above styling for W3C logo */
@@ -761,6 +762,7 @@ table.simp th, table.simp td  { /** mv: eenvoudige basistabel */
 /* mv: markdown - vertaling naar html-tabel (20230516) */
 table {
 	border-collapse: collapse; /* enkele border-line tussen de cellen */
+  margin-top: 1rem; /* 20241204/mv: ruimte onder hoofdstuk-naam */
 }
 table thead {
 	background:	#DEF; /* lichtblauw - zie example */
