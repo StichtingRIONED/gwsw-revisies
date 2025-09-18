@@ -267,35 +267,37 @@ Samenvatting wijzigingen:
 - Wijze van inwinning van project-niveau naar object-niveau
 - Veldcode Constructieonderdeel, Drempelniveau, Drempelbreedte, Stellaag vervalt in rubriek Knooppunt
 - TypeStelsel alleen bij Leiding
-- Uitgangspunt: bij alleen metingen van Afdekking altijd de Put of Bouwwerk meenemen (met daarin Naam, NaamGroep en DatumInwinning)
+- Uitgangspunt: bij alleen metingen van Afdekking altijd de rubriek Groep (met daarin Naam) en de rubriek Knooppunt (met daarin Naam, NaamGroep en DatumInwinning) meenemen
 
 ### Gegevens Algemeen
 
-| Veldcode                       | Omschrijving                    | Waardetype (in RDF-termen)                      | Heen | Terug | Opmerking                                    |
-|--------------------------------|---------------------------------|-------------------------------------------------|------|-------|----------------------------------------------|
-| Naam                           | Naam project                    | rdfs:label bij [Revisieproject]                 | A    |       |                                              |
-| Bestandstype                   | Soort uitwisseling              | "Revisie heen" of "Revisie terug"               | A    |       |                                              |
-| Versie                         | Versie van dit formaat          | "1.0.0"                                         | A    |       |                                              |
-| Opdrachtgever                  | Opdrachtgever                   | rdfs:label bij [Opdrachtgever]                  | A    |       |                                              |
-| Opdrachtnemer                  | Opdrachtnemer                   | rdfs:label bij [Opdrachtnemer]                  | A    |       |                                              |
-| ProjectreferentieOpdrachtgever | Projectreferentie Opdrachtgever | rdfs:label bij [ProjectreferentieOpdrachtgever] | A    |       |                                              |
-| ProjectreferentieOpdrachtnemer | Projectreferentie Opdrachtnemer | rdfs:label bij [ProjectreferentieOpdrachtnemer] | A    |       |                                              |
-| Omschrijving                   | Omschrijving project            | rdfs:comment bij [Revisieproject]               | A    |       |                                              |
-| Contactpersoon                 | Contactpersoon                  | rdfs:label bij [Contactpersoon]                 | A    |       |                                              |
-| Knooppuntnamen                 | Beschikbare knooppuntnamen      | rdfs:label (string-array)                       | O    |       | Voor nieuwe knooppunten (ontbrekend in Heen) |
+| Veldcode                       | Omschrijving                    | Waardetype (in RDF-termen)                         | H | T | Opmerking                                    |
+|--------------------------------|---------------------------------|----------------------------------------------------|------|-------|----------------------------------------------|
+| Naam                           | Naam project                    | rdfs:label bij [Project]                           | A    |       |                                              |
+| Bestandstype                   | Soort uitwisseling              | "Revisie heen" of "Revisie terug"                  | A    |       |                                              |
+| Versie                         | Versie van dit formaat          | "1.0.0"                                            | A    |       |                                              |
+| Opdrachtgever                  | Opdrachtgever                   | rdfs:label bij [Opdrachtgever]                     | A    |       |                                              |
+| Opdrachtnemer                  | Opdrachtnemer                   | rdfs:label bij [Opdrachtnemer]                     | A    |       |                                              |
+| ProjectreferentieOpdrachtgever | Projectreferentie Opdrachtgever | rdfs:label bij [ProjectreferentieOpdrachtgever]    | A    |       |                                              |
+| ProjectreferentieOpdrachtnemer | Projectreferentie Opdrachtnemer | rdfs:label bij [ProjectreferentieOpdrachtnemer]    | A    |       |                                              |
+| Omschrijving                   | Omschrijving project            | rdfs:comment bij [Project]                         | A    |       |                                              |
+| Contactpersoon                 | Contactpersoon                  | rdfs:label bij [Contactpersoon]                    | A    |       |                                              |
+| Knooppuntnamen                 | Beschikbare knooppuntnamen      | rdfs:label  bij [Put] of [Bouwwerk] (string-array) | O    |       | Voor nieuwe knooppunten (ontbrekend in Heen) |
+
+[Project]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Project
 
 ### Gegevens Groep (Stelsel of Gebied)
 
-| Veldcode | Omschrijving           | Waardetype (in RDF-termen)             | Heen | Terug | Opmerking                                                                                            |
+| Veldcode | Omschrijving           | Waardetype (in RDF-termen)             | H | T | Opmerking                                                                                            |
 |----------|------------------------|----------------------------------------|------|-------|------------------------------------------------------------------------------------------------------|
 | Naam     | Naam stelsel of gebied | rdfs:label bij [Stelsel] (of [Gebied]) | A    |       | Gebruik conform GWSW altijd [Stelsel]. Als [Stelsel] ontbreekt in de database, gebruik dan [Gebied]. |
-| Type     | Type stelsel           | rdf:type [Stelsel]                     | O    | O     | Gevuld als Groep = [Stelsel] (conform GWSW). Niet gevuld als Groep = [Gebied]                        |
+| Type     | Type stelsel           | rdf:type [Stelsel]                     | O    | O     | Indien gevuld (conform GWSW), dan Groep=[Stelsel]. Niet gevuld, dan Groep=[Gebied]                   |
 
 [Gebied]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Gebied
 
 ### Gegevens Knooppunt (Put of Bouwwerk)  
 
-| Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                      | Heen | Terug | Opmerking                                   |
+| Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                      | H | T | Opmerking                                   |
 |---------------------|----------------------------|-------------------------------------------------|------|-------|---------------------------------------------|
 | Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]              | A    | A     |                                             |
 | NaamGroep           | Naam stelsel of gebied     | rdfs:label bij [Stelsel] of [Gebied]            | A    | A     |                                             |
@@ -325,7 +327,7 @@ Samenvatting wijzigingen:
 
 ### Gegevens Afdekking
 
-| Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                  | Heen | Terug | Opmerking              |
+| Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                  | H | T | Opmerking              |
 |---------------------|----------------------------|---------------------------------------------|------|-------|------------------------|
 | Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]          | A    | A     |                        |
 | Type                | Type afdekking             | rdf:type [Afdekking]                        | O    | A     |                        |
@@ -346,20 +348,23 @@ Samenvatting wijzigingen:
 
 ### Gegevens Wand
 
-| Veldcode          | Omschrijving         | Waardetype (in RDF-termen)                | Heen | Terug | Opmerking                |
-|-------------------|----------------------|-------------------------------------------|------|-------|--------------------------|
-| Naam              | Naam put of bouwwerk | rdfs:label bij [Put] of [Bouwwerk]        | A    | A     |                          |
-| Type              | Type wand            | rdf:type [Wand]                           | O    | A     |                          |
-| WijzeVanInwinning | Wijze van inwinning  | gwsw:hasReference [WijzeVanInwinningColl] |      | A     | Algemean voor het object |
-| Niveau            | Niveau               | gwsw:hasValue [Drempelniveau]             | O    | A     |                          |
-| Breedte           | Breedte van de wand  | gwsw:hasValue [Drempelbreedte]            | O    | A     |                          |
-| Opmerking         | Opmerking            | gwsw:hasValue [Opmerking]                 |      | O     |                          |
+| Veldcode            | Omschrijving           | Waardetype (in RDF-termen)                | H | T | Opmerking                                                                  |
+|---------------------|------------------------|-------------------------------------------|------|-------|----------------------------------------------------------------------------|
+| Naam                | Naam put of bouwwerk   | rdfs:label bij [Put] of [Bouwwerk]        | A    | A     |                                                                            |
+| Type                | Type wand              | rdf:type [Wand]                           | O    | A     |                                                                            |
+| WijzeVanInwinning   | Wijze van inwinning    | gwsw:hasReference [WijzeVanInwinningColl] |      | A     | Algemean voor het object                                                   |
+| X                   | X coördinaat           | gwsw:hasValue [Punt]                      | O    | O     | Niet relevant voor database, alleen voor presentatie van deze uitwisseling |
+| Y                   | Y coördinaat           | gwsw:hasValue [Punt]                      | O    | O     |                                                                            |
+| WijzeVanInwinningXY | Wijze van inwinning XY | gwsw:hasReference [WijzeVanInwinningColl] | O    | O     |                                                                            |
+| Niveau              | Niveau bovenkant       | gwsw:hasValue [Drempelniveau]             | O    | A     |                                                                            |
+| Breedte             | Breedte van de wand    | gwsw:hasValue [Drempelbreedte]            | O    | A     |                                                                            |
+| Opmerking           | Opmerking              | gwsw:hasValue [Opmerking]                 |      | O     |                                                                            |
 
 [Wand]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Wand
 
 ### Gegevens Stellaag
 
-| Veldcode          | Omschrijving         | Waardetype (in RDF-termen)                | Heen | Terug | Opmerking                |
+| Veldcode          | Omschrijving         | Waardetype (in RDF-termen)                | H | T | Opmerking                |
 |-------------------|----------------------|-------------------------------------------|------|-------|--------------------------|
 | Naam              | Naam put of bouwwerk | rdfs:label bij [Put] of [Bouwwerk]        | A    | A     |                          |
 | Type              | Type stellaag        | rdf:type [Stellaag]                       | O    | A     | Voorsorteren op subtypes |
@@ -371,7 +376,7 @@ Samenvatting wijzigingen:
 
 ### Gegevens Leiding
 
-| Veldcode           | Omschrijving            | Waardetype (in RDF-termen)                   | Heen | Terug | Opmerking                                                |
+| Veldcode           | Omschrijving            | Waardetype (in RDF-termen)                   | H | T | Opmerking                                                |
 |--------------------|-------------------------|----------------------------------------------|------|-------|----------------------------------------------------------|
 | Naam               | Naam leiding            | rdfs:label bij [Leiding]                     | A    | A     |                                                          |
 | NaamGroep          | Naam stelsel of gebied  | rdfs:label bij [Stelsel] of [Gebied]         | A    | A     |                                                          |
