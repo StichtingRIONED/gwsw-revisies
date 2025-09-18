@@ -290,8 +290,8 @@ Samenvatting wijzigingen:
 
 | Veldcode | Omschrijving           | Waardetype (in RDF-termen)           | H | T | Opmerking                                                                                                      |
 |----------|------------------------|--------------------------------------|---|---|----------------------------------------------------------------------------------------------------------------|
-| Naam     | Naam stelsel of gebied | rdfs:label bij [Stelsel] of [Gebied] | A |   | Gebruik conform GWSW altijd [Stelsel]. Als [Stelsel] ontbreekt in de database, gebruik dan [Gebied].           |
-| Type     | Type stelsel of gebied | rdf:type [Stelsel] of [Gebied]       | O | O | Gebruik conform GWSW altijd type [Stelsel]. Als [Stelsel] ontbreekt in de database, gebruik dan type [Gebied]. |
+| Naam     | Naam stelsel of gebied | rdfs:label bij [Stelsel] of [Gebied] | A | A | Gebruik conform GWSW altijd [Stelsel]. Als [Stelsel] ontbreekt in de database, gebruik dan [Gebied].           |
+| Type     | Type stelsel of gebied | rdf:type [Stelsel] of [Gebied]       | A | A | Gebruik conform GWSW altijd type [Stelsel]. Als [Stelsel] ontbreekt in de database, gebruik dan type [Gebied]. |
 
 [Gebied]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Gebied
 
