@@ -258,28 +258,31 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 [MateriaalLeidingColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./MateriaalLeidingColl
 [MeldingMetingLeidingColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./MeldingMetingLeidingColl
 
-## Voorstel nieuwe versie (20250918)
+## Voorstel nieuwe versie
 
 Samenvatting wijzigingen:
-- Wijze van inwinning van project-niveau naar object-niveau
-- Veldcode Constructieonderdeel, Drempelniveau, Drempelbreedte, Stellaag vervalt in rubriek Knooppunt
 - Nieuwe rubrieken Groep, Wand, Stellaag
 - Rubriek Deksel wordt Afdekking (meer algemeen, ook rooster enzo)
+- Rubriek Project wordt Algemeen (ook voor niet-revisie uitwisseling)
+- Wijze van inwinning van project-niveau naar object-niveau
+- Veldcode Constructieonderdeel, Drempelniveau, Drempelbreedte, Stellaag vervalt in rubriek Knooppunt
 - TypeStelsel alleen bij Leiding
 - Uitgangspunt: bij alleen metingen van Afdekking altijd de Put of Bouwwerk meenemen (met daarin Naam, NaamGroep en DatumInwinning)
 
-### Gegevens Project
+### Gegevens Algemeen
 
-| Veldcode                       | Omschrijving                    | Waardetype (in RDF-termen)                      | Heen | Terug | Opmerking |
-|--------------------------------|---------------------------------|-------------------------------------------------|------|-------|-----------|
-| Naam                           | Naam project                    | rdfs:label bij [Revisieproject]                 | A    |       |           |
-| Opdrachtgever                  | Opdrachtgever                   | rdfs:label bij [Opdrachtgever]                  | A    |       |           |
-| Opdrachtnemer                  | Opdrachtnemer                   | rdfs:label bij [Opdrachtnemer]                  | A    |       |           |
-| ProjectreferentieOpdrachtgever | Projectreferentie Opdrachtgever | rdfs:label bij [ProjectreferentieOpdrachtgever] | A    |       |           |
-| ProjectreferentieOpdrachtnemer | Projectreferentie Opdrachtnemer | rdfs:label bij [ProjectreferentieOpdrachtnemer] | A    |       |           |
-| Omschrijving                   | Omschrijving project            | rdfs:comment bij [Revisieproject]               | A    |       |           |
-| Contactpersoon                 | Contactpersoon                  | rdfs:label bij [Contactpersoon]                 | A    |       |           |
-| Knooppuntnamen                 | Beschikbare knooppuntnamen      | rdfs:label (string-array)                                     | O    |       | Voor nieuwe knooppunten (ontbrekend in Heen) |
+| Veldcode                       | Omschrijving                    | Waardetype (in RDF-termen)                      | Heen | Terug | Opmerking                                    |
+|--------------------------------|---------------------------------|-------------------------------------------------|------|-------|----------------------------------------------|
+| Naam                           | Naam project                    | rdfs:label bij [Revisieproject]                 | A    |       |                                              |
+| Bestandstype                   | Soort uitwisseling              | "Revisie heen" of "Revisie terug"               | A    |       |                                              |
+| Versie                         | Versie van dit formaat          | "1.0.0"                                         | A    |       |                                              |
+| Opdrachtgever                  | Opdrachtgever                   | rdfs:label bij [Opdrachtgever]                  | A    |       |                                              |
+| Opdrachtnemer                  | Opdrachtnemer                   | rdfs:label bij [Opdrachtnemer]                  | A    |       |                                              |
+| ProjectreferentieOpdrachtgever | Projectreferentie Opdrachtgever | rdfs:label bij [ProjectreferentieOpdrachtgever] | A    |       |                                              |
+| ProjectreferentieOpdrachtnemer | Projectreferentie Opdrachtnemer | rdfs:label bij [ProjectreferentieOpdrachtnemer] | A    |       |                                              |
+| Omschrijving                   | Omschrijving project            | rdfs:comment bij [Revisieproject]               | A    |       |                                              |
+| Contactpersoon                 | Contactpersoon                  | rdfs:label bij [Contactpersoon]                 | A    |       |                                              |
+| Knooppuntnamen                 | Beschikbare knooppuntnamen      | rdfs:label (string-array)                       | O    |       | Voor nieuwe knooppunten (ontbrekend in Heen) |
 
 ### Gegevens Groep (Stelsel of Gebied)
 
@@ -371,10 +374,11 @@ Samenvatting wijzigingen:
 | Veldcode           | Omschrijving            | Waardetype (in RDF-termen)                   | Heen | Terug | Opmerking                                                |
 |--------------------|-------------------------|----------------------------------------------|------|-------|----------------------------------------------------------|
 | Naam               | Naam leiding            | rdfs:label bij [Leiding]                     | A    | A     |                                                          |
-| Type               | Type leiding            | rdf:type [Leiding]                           | O    | A     |                                                          |
 | NaamGroep          | Naam stelsel of gebied  | rdfs:label bij [Stelsel] of [Gebied]         | A    | A     |                                                          |
+| Type               | Type leiding            | rdf:type [Leiding]                           | O    | A     |                                                          |
 | TypeStelsel        | Type stelsel            | rdf:type [Stelsel]                           | O    | O     | Alleen invullen als Groep = [Gebied] (niet GWSW-conform) |
 | DatumInwinning     | Datum inwinning         | gwsw:hasValue [DatumInwinning]               |      | A     |                                                          |
+| WijzeVanInwinning  | Wijze van inwinning     | gwsw:hasReference [WijzeVanInwinningColl]    |      | A     | Algemean voor het object                                 |
 | NaamKnooppuntBegin | Naam knooppunt begin    | rdfs:label bij [Put] of [Bouwwerk]           | A    | A     |                                                          |
 | NaamKnooppuntEind  | Naam knooppunt eind     | rdfs:label bij [Put] of [Bouwwerk]           | A    | A     |                                                          |
 | BobKnooppuntBegin  | Bob bij knooppunt begin | gwsw:hasValue [BobBeginpuntLeiding]          | O    | A     |                                                          |
