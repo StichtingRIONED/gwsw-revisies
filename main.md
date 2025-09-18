@@ -138,8 +138,6 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 | WijzeVanInwinningXY            | Wijze van inwinning XY          | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |           |
 | WijzeVanInwinningZ             | Wijze van inwinning X           | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |           |
 
-
-
 [Revisieproject]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Revisieproject
 [Opdrachtgever]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Opdrachtgever
 [Opdrachtnemer]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Opdrachtnemer
@@ -147,7 +145,6 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 [ProjectreferentieOpdrachtnemer]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./ProjectreferentieOpdrachtnemer
 [Contactpersoon]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Contactpersoon
 [WijzeVanInwinningColl]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./WijzeVanInwinningColl
-
 
 **Gegevens Knooppunt** (Put of Bouwwerk)  
 
@@ -265,8 +262,11 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 
 Samenvatting wijzigingen:
 - Wijze van inwinning van project-niveau naar object-niveau
-
-
+- Veldcode Constructieonderdeel, Drempelniveau, Drempelbreedte, Stellaag vervalt in rubriek Knooppunt
+- Nieuwe rubrieken Groep, Wand, Stellaag
+- Rubriek Deksel wordt Afdekking (meer algemeen, ook rooster enzo)
+- TypeStelsel alleen bij Leiding
+- Uitgangspunt: bij alleen metingen van Afdekking altijd de Put of Bouwwerk meenemen (met daarin Naam, NaamGroep en DatumInwinning)
 
 ### Gegevens Project
 
@@ -279,87 +279,116 @@ Samenvatting wijzigingen:
 | ProjectreferentieOpdrachtnemer | Projectreferentie Opdrachtnemer | rdfs:label bij [ProjectreferentieOpdrachtnemer] | A    |       |           |
 | Omschrijving                   | Omschrijving project            | rdfs:comment bij [Revisieproject]               | A    |       |           |
 | Contactpersoon                 | Contactpersoon                  | rdfs:label bij [Contactpersoon]                 | A    |       |           |
-| WijzeVanInwinningKnooppunt     | Wijze van inwinning Knooppunt   | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |           |
-| WijzeVanInwinningDeksel        | Wijze van inwinning Deksel      | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |           |
-| WijzeVanInwinningLeiding       | Wijze van inwinning Leiding     | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |           |
-| Knooppuntnamen                 | Beschikbare knooppuntnamen      | rdfs:label                                      | O    |       |           |
-| WijzeVanInwinningXY            | Wijze van inwinning XY          | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |           |
-| WijzeVanInwinningZ             | Wijze van inwinning X           | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |           |
+| Knooppuntnamen                 | Beschikbare knooppuntnamen      | rdfs:label (string-array)                                     | O    |       | Voor nieuwe knooppunten (ontbrekend in Heen) |
 
-### Gegevens Stelsel (of Gebied)
+### Gegevens Groep (Stelsel of Gebied)
 
+| Veldcode | Omschrijving           | Waardetype (in RDF-termen)             | Heen | Terug | Opmerking                                                                                            |
+|----------|------------------------|----------------------------------------|------|-------|------------------------------------------------------------------------------------------------------|
+| Naam     | Naam stelsel of gebied | rdfs:label bij [Stelsel] (of [Gebied]) | A    |       | Gebruik conform GWSW altijd [Stelsel]. Als [Stelsel] ontbreekt in de database, gebruik dan [Gebied]. |
+| Type     | Type stelsel           | rdf:type [Stelsel]                     | O    | O     | Gevuld als Groep = [Stelsel] (conform GWSW). Niet gevuld als Groep = [Gebied]                        |
 
+[Gebied]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Gebied
 
 ### Gegevens Knooppunt (Put of Bouwwerk)  
 
-| Veldcode             | Omschrijving               | Waardetype (in RDF-termen)                      | Heen | Terug | Opmerking        |
-|----------------------|----------------------------|-------------------------------------------------|------|-------|------------------|
-| Naam                 | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]              | A    | A     |                  |
-| Type                 | Type put of bouwwerk       | rdf:type [Put] of [Bouwwerk]                    | O    | A     |                  |
-| NaamStelsel          | Naam stelsel               | rdfs:label bij [Stelsel]                        | A    | A     |                  |
-| TypeStelsel          | Type stelsel               | rdf:type [Stelsel]                              | O    | O     |                  |
-| DatumInwinning       | Datum inwinning            | gwsw:hasValue [DatumInwinning]                  |      | A     |                  |
-| Vorm                 | Vorm put of bouwwerk       | gwsw:hasReference [VormPutColl]                 | O    | A     |                  |
-| Breedte              | Breedte put of bouwwerk    | gwsw:hasValue [BreedtePut] of [BreedteBouwwerk] | O    | A     |                  |
-| Lengte               | Lengte put of bouwwerk     | gwsw:hasValue [LengtePut] of [LengteBouwwerk]   | O    | A     |                  |
-| Materiaal            | Materiaal put of bouwwerk  | gwsw:hasReference [MateriaalPutColl]            | O    | A     |                  |
-| Bodemprofiel         | Bodemprofiel               | gwsw:hasReference [BodemprofielColl]            | O    | A     | Vanaf GWSW 1.6.1 |
-| X                    | X coördinaat               | gwsw:hasValue [Punt]                            | A    | A     |                  |
-| Y                    | Y coördinaat               | gwsw:hasValue [Punt]                            | A    | A     |                  |
-| Z                    | Z coördinaat               | gwsw:hasValue [Punt]                            | O    | O     |                  |
-| Hoogte               | Hoogte put of bouwwerk     | gwsw:hasValue [HoogtePut] of [HoogteBouwwerk]   | O    | A     |                  |
-| StatusFunctioneren   | Status functioneren        | gwsw:hasReference [StatusFunctionerenColl]      | O    | A     |                  |
-| Constructieonderdeel | Bevat constructieonderdeel | rdf:type [Constructieonderdeel]                 | O    | A     | String array     |
-| Drempelniveau        | Drempelniveau              | gwsw:hasValue [Drempelniveau]                   | O    | A     | Decimal array    |
-| Drempelbreedte       | Drempelbreedte             | gwsw:hasValue [Drempelbreedte]                  | O    | A     | Integer array    |
-| HoogteStellaag       | Hoogte stellaag            | gwsw:hasValue [HoogteStellaag]                  | O    | A     |                  |
-| Waterstand           | Meting waterstand          | gwsw:hasValue [MetingWaterstand]                |      | A     |                  |
-| Fotoreferentie       | Fotoreferentie             | rdfs:seeAlso bij [Put] of [Bouwwerk]            |      | O     | String array     |
-| Melding              | Melding meting knooppunt   | gwsw:hasReference [MeldingMetingKnooppuntColl]  |      | O     | String array     |
-| Opmerking            | Opmerking                  | gwsw:hasValue [Opmerking]                       |      | O     |                  |
+| Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                      | Heen | Terug | Opmerking                                   |
+|---------------------|----------------------------|-------------------------------------------------|------|-------|---------------------------------------------|
+| Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]              | A    | A     |                                             |
+| NaamGroep           | Naam stelsel of gebied     | rdfs:label bij [Stelsel] of [Gebied]            | A    | A     |                                             |
+| Type                | Type put of bouwwerk       | rdf:type [Put] of [Bouwwerk]                    | O    | A     |                                             |
+| DatumInwinning      | Datum inwinning            | gwsw:hasValue [DatumInwinning]                  |      | A     |                                             |
+| WijzeVanInwinning   | Wijze van inwinning        | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     | Algemean voor het object                    |
+| X                   | X coördinaat               | gwsw:hasValue [Punt]                            | A    | A     | Zie [Putorientatie] of [Bouwwerkorientatie] |
+| Y                   | Y coördinaat               | gwsw:hasValue [Punt]                            | A    | A     |                                             |
+| WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |                                             |
+| Z                   | Z coördinaat               | gwsw:hasValue [Punt]                            | O    | O     |                                             |
+| WijzeVanInwinningZ  | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl]       |      | A     |                                             |
+| Vorm                | Vorm put of bouwwerk       | gwsw:hasReference [VormPutColl]                 | O    | A     |                                             |
+| Breedte             | Breedte put of bouwwerk    | gwsw:hasValue [BreedtePut] of [BreedteBouwwerk] | O    | A     |                                             |
+| Lengte              | Lengte put of bouwwerk     | gwsw:hasValue [LengtePut] of [LengteBouwwerk]   | O    | A     |                                             |
+| Materiaal           | Materiaal put of bouwwerk  | gwsw:hasReference [MateriaalPutColl]            | O    | A     |                                             |
+| Bodemprofiel        | Bodemprofiel               | gwsw:hasReference [BodemprofielColl]            | O    | A     | Vanaf GWSW 1.6.1                            |
+| Hoogte              | Hoogte put of bouwwerk     | gwsw:hasValue [HoogtePut] of [HoogteBouwwerk]   | O    | A     |                                             |
+| StatusFunctioneren  | Status functioneren        | gwsw:hasReference [StatusFunctionerenColl]      | O    | A     |                                             |
+| HoogteStellaag      | Hoogte stellaag            | gwsw:hasValue [HoogteStellaag]                  | O    | A     |                                             |
+| Waterstand          | Meting waterstand          | gwsw:hasValue [MetingWaterstand]                |      | A     |                                             |
+| Fotoreferentie      | Fotoreferentie             | rdfs:seeAlso bij [Put] of [Bouwwerk]            |      | O     | String array                                |
+| Melding             | Melding meting knooppunt   | gwsw:hasReference [MeldingMetingKnooppuntColl]  |      | O     | String array                                |
+| Opmerking           | Opmerking                  | gwsw:hasValue [Opmerking]                       |      | O     |                                             |
 
-**Gegevens Deksel**  
+[Putorientatie]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Putorientatie
+[Bouwwerkorientatie]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Bouwwerkorientatie
 
-| Veldcode       | Omschrijving          | Waardetype (in RDF-termen)                  | Heen | Terug | Opmerking    |
-|----------------|-----------------------|---------------------------------------------|------|-------|--------------|
-| Naam           | Naam put of bouwwerk  | rdfs:label bij [Put] of [Bouwwerk]          | A    | A     |              |
-| DatumInwinning | Datum inwinning       | gwsw:hasValue [DatumInwinning]              |      | A     |              |
-| X              | X coördinaat          | gwsw:hasValue [Punt]                        | A    | A     |              |
-| Y              | Y coördinaat          | gwsw:hasValue [Punt]                        | A    | A     |              |
-| Z              | Z coördinaat          | gwsw:hasValue [Punt]                        | O    | O     |              |
-| Type           | Type deksel           | rdf:type [Afdekking]                        | O    | A     |              |
-| Vorm           | Vorm deksel           | gwsw:hasReference [VormDekselColl]          | O    | A     |              |
-| Lengte         | Lengte deksel         | gwsw:hasValue [LengteDeksel]                | O    | A     |              |
-| Breedte        | Breedte deksel        | gwsw:hasValue [BreedteDeksel]               | O    | A     |              |
-| Materiaal      | Materiaal deksel      | gwsw:hasReference [MateriaalDekselColl]     | O    | A     |              |
-| Melding        | Melding meting deksel | gwsw:hasReference [MeldingMetingDekselColl] |      | O     | String array |
-| Opmerking      | Opmerking             | gwsw:hasValue [Opmerking]                   |      | O     |              |
-| Fotoreferentie | Fotoreferentie        | rdfs:seeAlso bij [Put] of [Bouwwerk]        |      | O     | String array |
+### Gegevens Afdekking
 
-**Gegevens Leiding**  
+| Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                  | Heen | Terug | Opmerking              |
+|---------------------|----------------------------|---------------------------------------------|------|-------|------------------------|
+| Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]          | A    | A     |                        |
+| Type                | Type afdekking             | rdf:type [Afdekking]                        | O    | A     |                        |
+| X                   | X coördinaat               | gwsw:hasValue [Punt]                        | A    | A     | Zie [Dekselorientatie] |
+| Y                   | Y coördinaat               | gwsw:hasValue [Punt]                        | A    | A     |                        |
+| WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl]   |      | A     |                        |
+| Z                   | Z coördinaat               | gwsw:hasValue [Punt]                        | O    | O     |                        |
+| WijzeVanInwinningZ  | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl]   |      | A     |                        |
+| Vorm                | Vorm afdekking             | gwsw:hasReference [VormDekselColl]          | O    | A     |                        |
+| Lengte              | Lengte afdekking           | gwsw:hasValue [LengteDeksel]                | O    | A     |                        |
+| Breedte             | Breedte afdekking          | gwsw:hasValue [BreedteDeksel]               | O    | A     |                        |
+| Materiaal           | Materiaal afdekking        | gwsw:hasReference [MateriaalDekselColl]     | O    | A     |                        |
+| Fotoreferentie      | Fotoreferentie             | rdfs:seeAlso bij [Put] of [Bouwwerk]        |      | O     | String array           |
+| Melding             | Melding meting afdekking   | gwsw:hasReference [MeldingMetingDekselColl] |      | O     | String array           |
+| Opmerking           | Opmerking                  | gwsw:hasValue [Opmerking]                   |      | O     |                        |
 
-| Veldcode           | Omschrijving            | Waardetype (in RDF-termen)                   | Heen | Terug | Opmerking    |
-|--------------------|-------------------------|----------------------------------------------|------|-------|--------------|
-| Naam               | Naam leiding            | rdfs:label bij [Leiding]                     | A    | A     |              |
-| Type               | Type leiding            | rdf:type [Leiding]                           | O    | A     |              |
-| NaamStelsel        | Naam stelsel            | rdfs:label bij [Stelsel]                     | A    | A     |              |
-| TypeStelsel        | Type stelsel            | rdf:type [Stelsel]                           | O    | O     |              |
-| DatumInwinning     | Datum inwinning         | gwsw:hasValue [DatumInwinning]               |      | A     |              |
-| NaamKnooppuntBegin | Naam knooppunt begin    | rdfs:label bij [Put] of [Bouwwerk]           | A    | A     |              |
-| NaamKnooppuntEind  | Naam knooppunt eind     | rdfs:label bij [Put] of [Bouwwerk]           | A    | A     |              |
-| BobKnooppuntBegin  | Bob bij knooppunt begin | gwsw:hasValue [BobBeginpuntLeiding]          | O    | A     |              |
-| BobKnooppuntEind   | Bob bij knooppunt eind  | gwsw:hasValue [BobEindpuntLeiding]           | O    | A     |              |
-| BbbKnooppuntBegin  | Bbb bij knooppunt begin | gwsw:hasValue [BbbBeginpuntLeiding]          |      | A     |              |
-| BbbKnooppuntEind   | Bbb bij knooppunt eind  | gwsw:hasValue [BbbEindpuntLeiding]           |      | A     |              |
-| StatusFunctioneren | Status functioneren     | gwsw:hasReference [StatusFunctionerenColl]   | O    | A     |              |
-| Vorm               | Vorm leiding            | gwsw:hasReference [VormLeidingColl]          | O    | A     |              |
-| Hoogte             | Hoogte leiding          | gwsw:hasValue [HoogteLeiding]                | O    | A     |              |
-| Breedte            | Breedte leiding         | gwsw:hasValue [BreedteLeiding]               | O    | A     |              |
-| Materiaal          | Materiaal leiding       | gwsw:hasReference [MateriaalLeidingColl]     | O    | A     |              |
-| Fotoreferentie     | Fotoreferentie          | rdfs:seeAlso bij [Leiding]                   |      | O     | String array |
-| Melding            | Melding meting leiding  | gwsw:hasReference [MeldingMetingLeidingColl] |      | O     | String array |
-| Opmerking          | Opmerking               | gwsw:hasValue [Opmerking]                    |      | O     |              |
+[Dekselorientatie]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Dekselorientatie
 
+### Gegevens Wand
+
+| Veldcode          | Omschrijving         | Waardetype (in RDF-termen)                | Heen | Terug | Opmerking                |
+|-------------------|----------------------|-------------------------------------------|------|-------|--------------------------|
+| Naam              | Naam put of bouwwerk | rdfs:label bij [Put] of [Bouwwerk]        | A    | A     |                          |
+| Type              | Type wand            | rdf:type [Wand]                           | O    | A     |                          |
+| WijzeVanInwinning | Wijze van inwinning  | gwsw:hasReference [WijzeVanInwinningColl] |      | A     | Algemean voor het object |
+| Niveau            | Niveau               | gwsw:hasValue [Drempelniveau]             | O    | A     |                          |
+| Breedte           | Breedte van de wand  | gwsw:hasValue [Drempelbreedte]            | O    | A     |                          |
+| Opmerking         | Opmerking            | gwsw:hasValue [Opmerking]                 |      | O     |                          |
+
+[Wand]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Wand
+
+### Gegevens Stellaag
+
+| Veldcode          | Omschrijving         | Waardetype (in RDF-termen)                | Heen | Terug | Opmerking                |
+|-------------------|----------------------|-------------------------------------------|------|-------|--------------------------|
+| Naam              | Naam put of bouwwerk | rdfs:label bij [Put] of [Bouwwerk]        | A    | A     |                          |
+| Type              | Type stellaag        | rdf:type [Stellaag]                       | O    | A     | Voorsorteren op subtypes |
+| WijzeVanInwinning | Wijze van inwinning  | gwsw:hasReference [WijzeVanInwinningColl] |      | A     |                          |
+| Hoogte            | Hoogte stellaag      | gwsw:hasValue [HoogteStellaag]            | O    | A     |                          |
+| Opmerking         | Opmerking            | gwsw:hasValue [Opmerking]                 |      | O     |                          |
+
+[Stellaag]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Stellaag
+
+### Gegevens Leiding
+
+| Veldcode           | Omschrijving            | Waardetype (in RDF-termen)                   | Heen | Terug | Opmerking                                                |
+|--------------------|-------------------------|----------------------------------------------|------|-------|----------------------------------------------------------|
+| Naam               | Naam leiding            | rdfs:label bij [Leiding]                     | A    | A     |                                                          |
+| Type               | Type leiding            | rdf:type [Leiding]                           | O    | A     |                                                          |
+| NaamGroep          | Naam stelsel of gebied  | rdfs:label bij [Stelsel] of [Gebied]         | A    | A     |                                                          |
+| TypeStelsel        | Type stelsel            | rdf:type [Stelsel]                           | O    | O     | Alleen invullen als Groep = [Gebied] (niet GWSW-conform) |
+| DatumInwinning     | Datum inwinning         | gwsw:hasValue [DatumInwinning]               |      | A     |                                                          |
+| NaamKnooppuntBegin | Naam knooppunt begin    | rdfs:label bij [Put] of [Bouwwerk]           | A    | A     |                                                          |
+| NaamKnooppuntEind  | Naam knooppunt eind     | rdfs:label bij [Put] of [Bouwwerk]           | A    | A     |                                                          |
+| BobKnooppuntBegin  | Bob bij knooppunt begin | gwsw:hasValue [BobBeginpuntLeiding]          | O    | A     |                                                          |
+| BobKnooppuntEind   | Bob bij knooppunt eind  | gwsw:hasValue [BobEindpuntLeiding]           | O    | A     |                                                          |
+| BbbKnooppuntBegin  | Bbb bij knooppunt begin | gwsw:hasValue [BbbBeginpuntLeiding]          |      | A     |                                                          |
+| BbbKnooppuntEind   | Bbb bij knooppunt eind  | gwsw:hasValue [BbbEindpuntLeiding]           |      | A     |                                                          |
+| StatusFunctioneren | Status functioneren     | gwsw:hasReference [StatusFunctionerenColl]   | O    | A     |                                                          |
+| Vorm               | Vorm leiding            | gwsw:hasReference [VormLeidingColl]          | O    | A     |                                                          |
+| Hoogte             | Hoogte leiding          | gwsw:hasValue [HoogteLeiding]                | O    | A     |                                                          |
+| Breedte            | Breedte leiding         | gwsw:hasValue [BreedteLeiding]               | O    | A     |                                                          |
+| Materiaal          | Materiaal leiding       | gwsw:hasReference [MateriaalLeidingColl]     | O    | A     |                                                          |
+| Fotoreferentie     | Fotoreferentie          | rdfs:seeAlso bij [Leiding]                   |      | O     | String array                                             |
+| Melding            | Melding meting leiding  | gwsw:hasReference [MeldingMetingLeidingColl] |      | O     | String array                                             |
+| Opmerking          | Opmerking               | gwsw:hasValue [Opmerking]                    |      | O     |                                                          |
 
 # Datamodel
 
