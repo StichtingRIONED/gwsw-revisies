@@ -261,9 +261,9 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 ## Voorstel nieuwe versie
 
 Samenvatting wijzigingen:
-- Nieuwe rubrieken Groep, Wand, Stellaag
-- Rubriek Deksel wordt Afdekking (meer algemeen, ook rooster enzo)
 - Rubriek Project wordt Algemeen (ook voor niet-revisie uitwisseling)
+- Rubriek Deksel wordt Afdekking (meer algemeen, ook rooster enzo)
+- Nieuwe rubrieken Groep, Wand, Stellaag
 - Wijze van inwinning van project-niveau naar object-niveau
 - Veldcode Constructieonderdeel, Drempelniveau, Drempelbreedte, Stellaag vervalt in rubriek Knooppunt
 - TypeStelsel alleen bij Leiding
