@@ -271,7 +271,7 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 **Uitgangspunten:** 
 - Bij alleen metingen van Afdekking (geen deksels tillen) altijd de groep Stelsel (met daarin Naam stelsel of gebied) en de groep Knooppunt (met daarin Naam, NaamStelsel en DatumInwinning) meenemen.
 - Onderdelen van Knooppunt die meervoudig kunnen voorkomen in aparte groep. **Geldt dat meervoud ook voor Stellaag?** (staat als enkelvoud in GWSW)
-- Deze vorm is bruikbaar voor CSV, JSON en GeoJSON.
+- Deze vorm is (met minimale toevoegingen) bruikbaar voor CSV, JSON en GeoJSON.
 
 ### Algemeen
 
