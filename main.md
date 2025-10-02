@@ -289,11 +289,20 @@ Enkele formaatregels bij **JSON** en **GeoJSON** (zie ook https://nl.wikipedia.o
 - **Boolean-waarden** Waar/onwaar, noteren als: `true` of `false`
 - **Nul-waarden** Velden met een lege waarde noteren als: `null` (kunnen bijvoorbeeld voorkomen in GeoJSON om aan te geven dat een object geen geometrie heeft)
 - **Arrays** Een JSON-veld kan verwijzen naar een waarde-array, noteren als: `[ "tekst1", "tekst2" ]` of `[1, 2, 3]` of `[ [1, 2, 3], [4, 5, 6] ]` 
-(arrays kunnen alle waardetypen, inclusief arrays, bevatten)
+(arrays kunnen alle waardetypen - inclusief arrays - bevatten)
+
+Enkele opmerkingen bij **GeoJSON**
+- **QGIS/GDAL** Het GeoJSON-formaat is getest op de import van QGIS. De GeoJSON-functionaliteit van QGIS is gebaseerd op de GDAL-bibliotheek.
+- **Versie** GDAL gebruikt als basis de 2008-versie van GeoJSON, optioneel wordt ook de RFC 7946 (uit 2016) toegepast. 
+- **Coördinaatsysteem** EPSG:7415 hanteren, conform het GWSW (in de 2008-versie is het gebruik van een specifiek referentiesysteeem toegestaan, 
+in RFC 7946 ontbreekt die mogelijkheid, daar wordt uitgegaan van WGS 84).
+- **Objecten zonder geometrie** Objecten met null-geometrie zijn toegestaan (conform RFC 7946), dat geldt bijvoorbeeld voor de objectgroep Algemeen (zie hierna).
+- **Gecombineerde lagen** In het GeoJSON-bestand worden de lagen (of groepen, zie hierna) gecombineerd. Deze GeoJSON-vorm werkt op QGIS maar een algemene definitie 
+hiervan is niet beschikbaar (standaard bevat een GeoJSON-bestand één laag). 
 
 Enkele formaatregels bij **CSV**
-- **Arrays** De CSV-cellen kunnen een array met waarden bevatten, deze noteren conform JSON (gebruik aanhalingstekens als komma het scheidingsteken is): `"[tekst1, tekst2]"` of `"[1, 2, 3]"` of `"[ [1, 2, 3], [4, 5, 6] ]"`.
-Als tekst1 het scheidingsteken bevat, dan als volgt noteren: `"[""tekst1"", tekst2]"`
+- **Arrays** De CSV-cellen kunnen een array met waarden bevatten, deze noteren conform JSON (gebruik aanhalingstekens als komma het CSV-scheidingsteken is):
+`"[tekst1, tekst2]"` of `"[1, 2, 3]"` of `"[ [1, 2, 3], [4, 5, 6] ]"`. Als `tekst1` het CSV-scheidingsteken bevat, dan als volgt noteren: `"[""tekst1"", tekst2]"`
 
 ### Algemeen
 
@@ -301,15 +310,15 @@ Als tekst1 het scheidingsteken bevat, dan als volgt noteren: `"[""tekst1"", teks
 
 | Veldcode                       | Omschrijving                    | Waardetype (in RDF-termen)                      | H | T | Opmerking                                                     |
 |--------------------------------|---------------------------------|-------------------------------------------------|---|---|---------------------------------------------------------------|
-| Versie                         | Versie van dit formaat          | gwsw:hasValue "1.0.0"                           | A | O | Vigerende versie 1.0.0                                        |
-| Naam                           | Naam project                    | rdfs:label bij [Project]                        | A |   |                                                               |
-| Type                           | Type project                    | rdf:type [Project]                              | A |   | Nu vooral [Revisieproject]                                    |
-| Bestandstype                   | Soort uitwisseling              | "Revisie heen" of "Revisie terug"               | A |   | Meer soorten volgen ("CAD ontwerp", ...)                      |
-| Opdrachtgever                  | Opdrachtgever                   | rdfs:label bij [Opdrachtgever]                  | A |   |                                                               |
-| Opdrachtnemer                  | Opdrachtnemer                   | rdfs:label bij [Opdrachtnemer]                  | A |   |                                                               |
-| ProjectreferentieOpdrachtgever | Projectreferentie Opdrachtgever | rdfs:label bij [ProjectreferentieOpdrachtgever] | A |   |                                                               |
-| ProjectreferentieOpdrachtnemer | Projectreferentie Opdrachtnemer | rdfs:label bij [ProjectreferentieOpdrachtnemer] | A |   |                                                               |
+| Versie                         | Versie van dit formaat          | gwsw:hasValue "1.0.0"                           | A | A | Vigerende versie 1.0.0                                        |
+| Naam                           | Naam project                    | rdfs:label bij [Project]                        | O |   |                                                               |
+| Type                           | Type project                    | rdf:type [Project]                              | O |   | Nu vooral [Revisieproject]                                    |
 | Omschrijving                   | Omschrijving                    | rdfs:comment bij [Project]                      | O |   |                                                               |
+| Bestandstype                   | Soort uitwisseling              | "Revisie heen" of "Revisie terug"               | A | A | Meer soorten volgen ("CAD ontwerp", ...)                      |
+| Opdrachtgever                  | Opdrachtgever                   | rdfs:label bij [Opdrachtgever]                  | O |   |                                                               |
+| Opdrachtnemer                  | Opdrachtnemer                   | rdfs:label bij [Opdrachtnemer]                  | O |   |                                                               |
+| ProjectreferentieOpdrachtgever | Projectreferentie Opdrachtgever | rdfs:label bij [ProjectreferentieOpdrachtgever] | O |   |                                                               |
+| ProjectreferentieOpdrachtnemer | Projectreferentie Opdrachtnemer | rdfs:label bij [ProjectreferentieOpdrachtnemer] | O |   |                                                               |
 | Contactpersoon                 | Contactpersoon                  | rdfs:label bij [Contactpersoon]                 | O |   |                                                               |
 | Knooppuntnamen                 | Beschikbare knooppuntnamen      | rdfs:label bij [Put] of [Bouwwerk]              | O |   | \[string-array\] Voor nieuwe knooppunten (ontbrekend in Heen) |
 
@@ -319,10 +328,12 @@ Als tekst1 het scheidingsteken bevat, dan als volgt noteren: `"[""tekst1"", teks
 
 **Gegevens van [Stelsel] (of [Gebied])**
 
-| Veldcode | Omschrijving           | Waardetype (in RDF-termen)           | H | T | Opmerking                                                                                                      |
-|----------|------------------------|--------------------------------------|---|---|----------------------------------------------------------------------------------------------------------------|
-| Naam     | Naam stelsel of gebied | rdfs:label bij [Stelsel] of [Gebied] | A | A | Gebruik conform GWSW altijd naam [Stelsel]. Als [Stelsel] ontbreekt in de database, gebruik dan naam [Gebied]. |
-| Type     | Type stelsel of gebied | rdf:type [Stelsel] of [Gebied]       | A | A | Gebruik conform GWSW altijd type [Stelsel]. Als [Stelsel] ontbreekt in de database, gebruik dan type [Gebied]. |
+De groepering van putten, bouwwerken en leidingen.
+
+| Veldcode | Omschrijving           | Waardetype (in RDF-termen)           | H | T | Opmerking                                                                                                     |
+|----------|------------------------|--------------------------------------|---|---|---------------------------------------------------------------------------------------------------------------|
+| Naam     | Naam stelsel of gebied | rdfs:label bij [Stelsel] of [Gebied] | A | A | Gebruik conform GWSW naam [Stelsel]. Als [Stelsel] ontbreekt in het beheersysteem, gebruik dan naam [Gebied]. |
+| Type     | Type stelsel of gebied | rdf:type [Stelsel] of [Gebied]       | A | A | Gebruik conform GWSW type [Stelsel]. Als [Stelsel] ontbreekt in het beheersysteem, gebruik dan type [Gebied]. |
 
 [Gebied]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Gebied
 
@@ -347,7 +358,7 @@ Als tekst1 het scheidingsteken bevat, dan als volgt noteren: `"[""tekst1"", teks
 | Materiaal            | Materiaal put of bouwwerk  | gwsw:hasReference [MateriaalPutColl]            | O | O |                                                               |
 | Bodemprofiel         | Bodemprofiel               | gwsw:hasReference [BodemprofielColl]            | O | O | Vanaf GWSW 1.6.1                                              |
 | StatusFunctioneren   | Status functioneren        | gwsw:hasReference [StatusFunctionerenColl]      | O | O |                                                               |
-| Constructieonderdeel | Bevat constructieonderdeel | rdf:type [Constructieonderdeel]                 | O | A | \[string-array\] Onderdelen, anders dan Wand of Doorlaat      |
+| Constructieonderdeel | Bevat constructieonderdeel | rdf:type [Constructieonderdeel]                 | O | O | \[string-array\] Onderdelen, anders dan Wand of Doorlaat      |
 | Waterstand           | Meting waterstand          | gwsw:hasValue [MetingWaterstand]                |   | O |                                                               |
 | Fotoreferentie       | Fotoreferentie             | rdfs:seeAlso bij [Put] of [Bouwwerk]            |   | O | \[string-array\]                                              |
 | Melding              | Melding meting knooppunt   | gwsw:hasReference [MeldingMetingKnooppuntColl]  |   | O | \[string-array\]                                              |
@@ -364,7 +375,7 @@ Als tekst1 het scheidingsteken bevat, dan als volgt noteren: `"[""tekst1"", teks
 |---------------------|----------------------------|---------------------------------------------|---|---|------------------------------------------|
 | Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]          | A | A |                                          |
 | Type                | Type afdekking             | rdf:type [Afdekking]                        | A | A | Deksel, Luik, ...                        |
-| Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                        | A | A | \[GeoJSON Point\] Zie [Dekselorientatie] |
+| Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                        | O | A | \[GeoJSON Point\] Zie [Dekselorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl]   |   | A |                                          |
 | WijzeVanInwinningZ  | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl]   |   | A |                                          |
 | Vorm                | Vorm afdekking             | gwsw:hasReference [VormDekselColl]          | O | O |                                          |
@@ -420,31 +431,31 @@ Als tekst1 het scheidingsteken bevat, dan als volgt noteren: `"[""tekst1"", teks
 
 **Gegevens van [Leiding]**
 
-| Veldcode            | Omschrijving            | Waardetype (in RDF-termen)                   | H | T | Opmerking                                                                  |
-|---------------------|-------------------------|----------------------------------------------|---|---|----------------------------------------------------------------------------|
-| Naam                | Naam leiding            | rdfs:label bij [Leiding]                     | A | A |                                                                            |
-| NaamStelsel         | Naam stelsel of gebied  | rdfs:label bij [Stelsel] of [Gebied]         | A | A |                                                                            |
-| Type                | Type leiding            | rdf:type [Leiding]                           | A | A |                                                                            |
-| TypeStelsel         | Type stelsel            | rdf:type [Stelsel]                           | O | O | Invullen als voor Stelsel [Gebied] is gebruikt (niet GWSW-conform)         |
-| DatumInwinning      | Datum inwinning         | gwsw:hasValue [DatumInwinning]               |   | A |                                                                            |
-| WijzeVanInwinning   | Wijze van inwinning     | gwsw:hasReference [WijzeVanInwinningColl]    |   | A | Algemeen voor het object                                                   |
-| Lijn                | Coördinaatreeks X,Y(,Z) | gwsw:hasValue [Lijn]                         | A | O | \[GeoJSON LineString\] Zie [Leidingorientatie]. Toepasbaar bij goten enzo. |
-| WijzeVanInwinningXY | Wijze van inwinning XY  | gwsw:hasReference [WijzeVanInwinningColl]    |   | O | Bijvoorbeeld                                                               |
-| WijzeVanInwinningZ  | Wijze van inwinning bob | gwsw:hasReference [WijzeVanInwinningColl]    |   | O |                                                                            |
-| NaamKnooppuntBegin  | Naam knooppunt begin    | rdfs:label bij [Put] of [Bouwwerk]           | A | A |                                                                            |
-| NaamKnooppuntEind   | Naam knooppunt eind     | rdfs:label bij [Put] of [Bouwwerk]           | A | A |                                                                            |
-| BobKnooppuntBegin   | Bob bij knooppunt begin | gwsw:hasValue [BobBeginpuntLeiding]          | O | O | Zie [Leidingorientatie]                                                    |
-| BobKnooppuntEind    | Bob bij knooppunt eind  | gwsw:hasValue [BobEindpuntLeiding]           | O | O |                                                                            |
-| BbbKnooppuntBegin   | Bbb bij knooppunt begin | gwsw:hasValue [BbbBeginpuntLeiding]          |   | O |                                                                            |
-| BbbKnooppuntEind    | Bbb bij knooppunt eind  | gwsw:hasValue [BbbEindpuntLeiding]           |   | O |                                                                            |
-| StatusFunctioneren  | Status functioneren     | gwsw:hasReference [StatusFunctionerenColl]   | O | O |                                                                            |
-| Vorm                | Vorm leiding            | gwsw:hasReference [VormLeidingColl]          | O | O |                                                                            |
-| Breedte             | Breedte leiding         | gwsw:hasValue [BreedteLeiding]               | O | O |                                                                            |
-| Hoogte              | Hoogte leiding          | gwsw:hasValue [HoogteLeiding]                | O | O |                                                                            |
-| Materiaal           | Materiaal leiding       | gwsw:hasReference [MateriaalLeidingColl]     | O | O |                                                                            |
-| Fotoreferentie      | Fotoreferentie          | rdfs:seeAlso bij [Leiding]                   |   | O | \[string-array\]                                                           |
-| Melding             | Melding meting leiding  | gwsw:hasReference [MeldingMetingLeidingColl] |   | O | \[string-array\]                                                           |
-| Opmerking           | Opmerking               | gwsw:hasValue [Opmerking]                    |   | O |                                                                            |
+| Veldcode            | Omschrijving            | Waardetype (in RDF-termen)                   | H | T | Opmerking                                                                      |
+|---------------------|-------------------------|----------------------------------------------|---|---|--------------------------------------------------------------------------------|
+| Naam                | Naam leiding            | rdfs:label bij [Leiding]                     | A | A |                                                                                |
+| NaamStelsel         | Naam stelsel of gebied  | rdfs:label bij [Stelsel] of [Gebied]         | A | A |                                                                                |
+| Type                | Type leiding            | rdf:type [Leiding]                           | A | A |                                                                                |
+| TypeStelsel         | Type stelsel            | rdf:type [Stelsel]                           | O | O | Invullen als in de groep Stelsel verwezen is naar [Gebied] (niet GWSW-conform) |
+| DatumInwinning      | Datum inwinning         | gwsw:hasValue [DatumInwinning]               |   | A |                                                                                |
+| WijzeVanInwinning   | Wijze van inwinning     | gwsw:hasReference [WijzeVanInwinningColl]    |   | A | Algemeen voor het object                                                       |
+| Lijn                | Coördinaatreeks X,Y(,Z) | gwsw:hasValue [Lijn]                         | A | O | \[GeoJSON LineString\] Zie [Leidingorientatie]. Toepasbaar bij goten enzo.     |
+| WijzeVanInwinningXY | Wijze van inwinning XY  | gwsw:hasReference [WijzeVanInwinningColl]    |   | O | Bijvoorbeeld                                                                   |
+| WijzeVanInwinningZ  | Wijze van inwinning bob | gwsw:hasReference [WijzeVanInwinningColl]    |   | O |                                                                                |
+| NaamKnooppuntBegin  | Naam knooppunt begin    | rdfs:label bij [Put] of [Bouwwerk]           | A | A |                                                                                |
+| NaamKnooppuntEind   | Naam knooppunt eind     | rdfs:label bij [Put] of [Bouwwerk]           | A | A |                                                                                |
+| BobKnooppuntBegin   | Bob bij knooppunt begin | gwsw:hasValue [BobBeginpuntLeiding]          | O | O | Zie [Leidingorientatie]                                                        |
+| BobKnooppuntEind    | Bob bij knooppunt eind  | gwsw:hasValue [BobEindpuntLeiding]           | O | O |                                                                                |
+| BbbKnooppuntBegin   | Bbb bij knooppunt begin | gwsw:hasValue [BbbBeginpuntLeiding]          |   | O |                                                                                |
+| BbbKnooppuntEind    | Bbb bij knooppunt eind  | gwsw:hasValue [BbbEindpuntLeiding]           |   | O |                                                                                |
+| StatusFunctioneren  | Status functioneren     | gwsw:hasReference [StatusFunctionerenColl]   | O | O |                                                                                |
+| Vorm                | Vorm leiding            | gwsw:hasReference [VormLeidingColl]          | O | O |                                                                                |
+| Breedte             | Breedte leiding         | gwsw:hasValue [BreedteLeiding]               | O | O |                                                                                |
+| Hoogte              | Hoogte leiding          | gwsw:hasValue [HoogteLeiding]                | O | O |                                                                                |
+| Materiaal           | Materiaal leiding       | gwsw:hasReference [MateriaalLeidingColl]     | O | O |                                                                                |
+| Fotoreferentie      | Fotoreferentie          | rdfs:seeAlso bij [Leiding]                   |   | O | \[string-array\]                                                               |
+| Melding             | Melding meting leiding  | gwsw:hasReference [MeldingMetingLeidingColl] |   | O | \[string-array\]                                                               |
+| Opmerking           | Opmerking               | gwsw:hasValue [Opmerking]                    |   | O |                                                                                |
 
 [Leidingorientatie]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Leidingorientatie
 [Lijn]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Lijn
@@ -466,10 +477,8 @@ Een overzicht van de nieuw toegevoegde concepten (vanaf concept-deelmodel GWSW-R
 | [MeldingMetingKnooppuntColl] | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk                        |
 | [MeldingMetingDekselColl]    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel                                 |
 | [MeldingMetingLeidingColl]   | Melding bij meting leiding        | Voorgedefinieerde meldingen bij de meting van een leiding                                |
-| [BbbBeginpuntLeiding]        | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het topologische beginpunt                         |
-| [BbbEindpuntLeiding]         | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het topologische eindpunt                          |
-| [BestandstypeColl]           | Bestandstype                      | Voorgedefinieerde bestandstypen voor een revisiebestand                                  |
-| [Versie]                     | Binnenbovenkant eindpunt leiding  | Bestandsversie                                                                           |
+| [BbbBeginpuntLeiding]        | Binnenbovenkant beginpunt leiding | Het niveau van de binnenbovenkant bij het beginpunt                                      |
+| [BbbEindpuntLeiding]         | Binnenbovenkant eindpunt leiding  | Het niveau van de binnenbovenkant bij het eindpunt                                       |
 
 [InmetenKnooppunt]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./InmetenKnooppunt
 [InmetenLeiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./InmetenLeiding
