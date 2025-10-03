@@ -272,6 +272,7 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 - Veldcodes X,Y,Z vervallen in groep Knooppunt en Deksel, zijn vervangen door Punt met GeoJSON-notatie "Point": \[X,Y(,Z)\]
 - Veldcode Lijn toegevoegd aan groep Leiding, met de GeoJSON-notatie "LineString": \[ \[X,Y(,Z)\], \[X,Y(,Z)\], \[X,Y(,Z)\] \]
 - In de CSV-vorm de arrays noteren conform de JSON-notatie, was pipe-teken, wordt \[..., ...\] (vanwege de meer complexe LineString-arrays, zie hiervoor)
+- Veldcode Maaiveld toegevoegd aan groep Knooppunt, met GeoJSON-notatie "Point": \[X,Y,Z\] (het punt met de meet-positie en gemeten niveau)
 
 **Uitgangspunten:** 
 - Bij alleen metingen van onderdeel-groepen (bijvoorbeeld bij inmeten deksels, niet tillen) altijd ook de groep Stelsel (met daarin Naam) en de groep Knooppunt (met daarin Naam, NaamStelsel en DatumInwinning) vullen.
@@ -281,27 +282,28 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 **Formaten**  
 
 Enkele formaatregels bij **JSON** en **GeoJSON** (zie ook https://nl.wikipedia.org/wiki/JSON)
-- **Extensie** De extensie van een JSON-bestand is ".json" (altijd kleine letters)
-- **Velden** De JSON-veldnamen zijn hoofdletter-gevoelig, gebruik de exacte Veldcode-naam uit de hierna volgende tabellen
-- **String-waarden** Noteren tussen aanhalingstekens (double quotation): `"tekst"`
-- **Datum-waarden** Noteren als string met xsd:date opbouw: `"yyyy-mm-dd"`
-- **Getal-waarden** Integers (zonder decimaal-teken) en decimals (altijd met decimaal-teken ".") noteren als: `333` en `333.33`
-- **Boolean-waarden** Waar/onwaar, noteren als: `true` of `false`
-- **Nul-waarden** Velden met een lege waarde noteren als: `null` (kunnen bijvoorbeeld voorkomen in GeoJSON om aan te geven dat een object geen geometrie heeft)
-- **Arrays** Een JSON-veld kan verwijzen naar een waarde-array, noteren als: `[ "tekst1", "tekst2" ]` of `[1, 2, 3]` of `[ [1, 2, 3], [4, 5, 6] ]` 
-(arrays kunnen alle waardetypen - inclusief arrays - bevatten)
+- **Extensie** - De extensie van een JSON-bestand is ".json" *(altijd kleine letters)*.
+- **Velden** - De JSON-veldnamen zijn hoofdletter-gevoelig, gebruik de exacte Veldcode-naam uit de hierna volgende tabellen.
+- **String-waarden** - Noteren tussen aanhalingstekens (double quotation): `"tekst"`
+- **Datum-waarden** - Noteren als string met xsd:date opbouw: `"yyyy-mm-dd"`
+- **Getal-waarden** - Integers *(zonder decimaal-teken)* en decimals *(altijd met decimaal-teken ".")* noteren als: `333` en `333.33`
+- **Boolean-waarden** - Waar/onwaar, noteren als: `true` of `false`
+- **Nul-waarden** - Velden met een lege waarde noteren als: `null` (kunnen bijvoorbeeld voorkomen in GeoJSON om aan te geven dat een object geen geometrie heeft)
+- **Arrays** - Een JSON-veld kan verwijzen naar een waarde-array, noteren als: `[ "tekst1", "tekst2" ]` of `[1, 2, 3]` of `[ [1, 2, 3], [4, 5, 6] ]` 
+(arrays kunnen alle waardetypen - inclusief arrays - bevatten).
 
 Enkele opmerkingen bij **GeoJSON**
-- **QGIS/GDAL** Het GeoJSON-formaat is getest op de import van QGIS. De GeoJSON-functionaliteit van QGIS is gebaseerd op de GDAL-bibliotheek.
-- **Versie** GDAL gebruikt als basis de 2008-versie van GeoJSON, optioneel wordt ook de RFC 7946 (uit 2016) toegepast. 
-- **Coördinaatsysteem** EPSG:7415 hanteren, conform het GWSW (in de 2008-versie is het gebruik van een specifiek referentiesysteeem toegestaan, 
+- **QGIS/GDAL** - Het GeoJSON-formaat is getest op de import van QGIS. De GeoJSON-functionaliteit van QGIS is gebaseerd op de GDAL-bibliotheek.
+- **GeoJSON-versie** - GDAL gebruikt als basis de 2008-versie van GeoJSON, optioneel wordt ook de RFC 7946 (uit 2016) toegepast. 
+- **Coördinaatsysteem** - EPSG:7415 hanteren, conform het GWSW (in de 2008-versie is het gebruik van een specifiek referentiesysteeem toegestaan, 
 in RFC 7946 ontbreekt die mogelijkheid, daar wordt uitgegaan van WGS 84).
-- **Objecten zonder geometrie** Objecten met null-geometrie zijn toegestaan (conform RFC 7946), dat geldt bijvoorbeeld voor de objectgroep Algemeen (zie hierna).
-- **Gecombineerde lagen** In het GeoJSON-bestand worden de lagen (of groepen, zie hierna) gecombineerd. Deze GeoJSON-vorm werkt op QGIS maar een algemene definitie 
-hiervan is niet beschikbaar (standaard bevat een GeoJSON-bestand één laag). 
+- **Objecten zonder geometrie** - Objecten met null-geometrie zijn toegestaan (conform RFC 7946), dat geldt bijvoorbeeld voor de objectgroep Algemeen (zie hierna).
+- **Gecombineerde lagen** - In het GeoJSON-bestand worden de lagen (of groepen, zie hierna) gecombineerd, er wordt een GWSW-specifieke GeoJSON-interpretatie gebruikt.
+Deze GeoJSON-vorm werkt op QGIS/GDAL maar een algemene definitie hiervan is niet beschikbaar (standaard bevat een GeoJSON-bestand één laag).   
+- **Objectnamen** - Zet in de feature-properties de property Naam bovenaan, de inhoud van Naam wordt dan de objectidentificatie in GIS (getest met QGIS). 
 
 Enkele formaatregels bij **CSV**
-- **Arrays** De CSV-cellen kunnen een array met waarden bevatten, deze noteren conform JSON (gebruik aanhalingstekens als komma het CSV-scheidingsteken is):
+- **Arrays** - De CSV-cellen kunnen een array met waarden bevatten, deze noteren conform JSON *(gebruik aanhalingstekens als het CSV-scheidingsteken een komma is)*:
 `"[tekst1, tekst2]"` of `"[1, 2, 3]"` of `"[ [1, 2, 3], [4, 5, 6] ]"`. Als `tekst1` het CSV-scheidingsteken bevat, dan als volgt noteren: `"[""tekst1"", tekst2]"`
 
 ### Algemeen
@@ -311,7 +313,7 @@ Enkele formaatregels bij **CSV**
 | Veldcode                       | Omschrijving                    | Waardetype (in RDF-termen)                      | H | T | Opmerking                                                     |
 |--------------------------------|---------------------------------|-------------------------------------------------|---|---|---------------------------------------------------------------|
 | Versie                         | Versie van dit formaat          | gwsw:hasValue "1.0.0"                           | A | A | Vigerende versie 1.0.0                                        |
-| Naam                           | Naam project                    | rdfs:label bij [Project]                        | O |   |                                                               |
+| Naam                           | Naam project                    | rdfs:label bij [Project]                        | A | A | Identificatie van het werk                                    |
 | Type                           | Type project                    | rdf:type [Project]                              | O |   | Nu vooral [Revisieproject]                                    |
 | Omschrijving                   | Omschrijving                    | rdfs:comment bij [Project]                      | O |   |                                                               |
 | Bestandstype                   | Soort uitwisseling              | "Revisie heen" of "Revisie terug"               | A | A | Meer soorten volgen ("CAD ontwerp", ...)                      |
@@ -345,12 +347,13 @@ De groepering van putten, bouwwerken en leidingen.
 |----------------------|----------------------------|-------------------------------------------------|---|---|---------------------------------------------------------------|
 | Naam                 | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]              | A | A |                                                               |
 | NaamStelsel          | Naam stelsel of gebied     | rdfs:label bij [Stelsel] of [Gebied]            | A | A |                                                               |
-| Type                 | Type put of bouwwerk       | rdf:type [Put] of [Bouwwerk]                    | A | A |                                                               |
-| DatumInwinning       | Datum inwinning            | gwsw:hasValue [DatumInwinning]                  |   | A |                                                               |
-| WijzeVanInwinning    | Wijze van inwinning        | gwsw:hasReference [WijzeVanInwinningColl]       |   | A | Algemeen voor het object                                      |
-| Punt                 | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                            | A | A | \[GeoJSON Point\] Zie [Putorientatie] of [Bouwwerkorientatie] |
-| WijzeVanInwinningXY  | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl]       |   | A |                                                               |
-| WijzeVanInwinningZ   | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl]       |   | A |                                                               |
+| Type                 | Type put of bouwwerk       | rdf:type [Put] of [Bouwwerk]                    | A | O |                                                               |
+| DatumInwinning       | Datum inwinning            | gwsw:hasValue [DatumInwinning]                  | O | O |                                                               |
+| WijzeVanInwinning    | Wijze van inwinning        | gwsw:hasReference [WijzeVanInwinningColl]       | O | O | Algemeen voor het object                                      |
+| Punt                 | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                            | A | O | \[GeoJSON Point\] Zie [Putorientatie] of [Bouwwerkorientatie] |
+| Maaiveld             | Coördinaat X,Y,Z           | gwsw:hasValue [Punt]                            | O | O | \[GeoJSON Point\] Zie [Maaiveldorientatie]                    |
+| WijzeVanInwinningXY  | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl]       | O | O |                                                               |
+| WijzeVanInwinningZ   | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl]       |   | O | Niveau = binnenbovenkant middelpunt bodem                     |
 | Vorm                 | Vorm put of bouwwerk       | gwsw:hasReference [VormPutColl]                 | O | O |                                                               |
 | Lengte               | Lengte put of bouwwerk     | gwsw:hasValue [LengtePut] of [LengteBouwwerk]   | O | O |                                                               |
 | Breedte              | Breedte put of bouwwerk    | gwsw:hasValue [BreedtePut] of [BreedteBouwwerk] | O | O |                                                               |
@@ -366,6 +369,7 @@ De groepering van putten, bouwwerken en leidingen.
 
 [Putorientatie]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Putorientatie
 [Bouwwerkorientatie]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Bouwwerkorientatie
+[Maaiveldorientatie]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./Maaiveldorientatie
 
 ### Afdekking
 
@@ -377,7 +381,7 @@ De groepering van putten, bouwwerken en leidingen.
 | Type                | Type afdekking             | rdf:type [Afdekking]                        | A | A | Deksel, Luik, ...                        |
 | Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                        | O | A | \[GeoJSON Point\] Zie [Dekselorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl]   |   | A |                                          |
-| WijzeVanInwinningZ  | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl]   |   | A |                                          |
+| WijzeVanInwinningZ  | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl]   |   | A | Niveau = bovenkant middelpunt afdekking  |
 | Vorm                | Vorm afdekking             | gwsw:hasReference [VormDekselColl]          | O | O |                                          |
 | Lengte              | Lengte afdekking           | gwsw:hasValue [LengteDeksel]                | O | O |                                          |
 | Breedte             | Breedte afdekking          | gwsw:hasValue [BreedteDeksel]               | O | O |                                          |
@@ -399,7 +403,7 @@ De groepering van putten, bouwwerken en leidingen.
 | Type                | Type wand                  | rdf:type [Wand]                           | A | A | Overstortdrempel, Stuwmuur, ...             |
 | Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                      | A | A | \[GeoJSON Point\] Zie [Onderdeelorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl] |   | O |                                             |
-| WijzeVanInwinningZ  | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl] |   | A |                                             |
+| WijzeVanInwinningZ  | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl] |   | A | Niveau = bovenkant wand                     |
 | Breedte             | Breedte van de wand        | gwsw:hasValue [Drempelbreedte]            | O | O |                                             |
 | Opmerking           | Opmerking                  | gwsw:hasValue [Opmerking]                 |   | O |                                             |
 
@@ -416,7 +420,7 @@ De groepering van putten, bouwwerken en leidingen.
 | Type                | Type doorlaat              | rdf:type [Doorlaat]                       | A | A | OpeningInWand, Terugslagklep, ...           |
 | Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                      | A | A | \[GeoJSON Point\] Zie [Onderdeelorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl] |   | O |                                             |
-| WijzeVanInwinningZ  | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl] |   | A |                                             |
+| WijzeVanInwinningZ  | Wijze van inwinning niveau | gwsw:hasReference [WijzeVanInwinningColl] |   | A | Niveau = onderkant opening                  |
 | Vorm                | Vorm opening               | gwsw:hasReference [VormOpening]           | O | O |                                             |
 | Breedte             | Breedte opening            | gwsw:hasValue [BreedteOpening]            | O | O |                                             |
 | Hoogte              | Hoogte opening             | gwsw:hasValue [HoogteOpening]             | O | O |                                             |
@@ -440,8 +444,8 @@ De groepering van putten, bouwwerken en leidingen.
 | DatumInwinning      | Datum inwinning         | gwsw:hasValue [DatumInwinning]               |   | A |                                                                                |
 | WijzeVanInwinning   | Wijze van inwinning     | gwsw:hasReference [WijzeVanInwinningColl]    |   | A | Algemeen voor het object                                                       |
 | Lijn                | Coördinaatreeks X,Y(,Z) | gwsw:hasValue [Lijn]                         | A | O | \[GeoJSON LineString\] Zie [Leidingorientatie]. Toepasbaar bij goten enzo.     |
-| WijzeVanInwinningXY | Wijze van inwinning XY  | gwsw:hasReference [WijzeVanInwinningColl]    |   | O | Bijvoorbeeld                                                                   |
-| WijzeVanInwinningZ  | Wijze van inwinning bob | gwsw:hasReference [WijzeVanInwinningColl]    |   | O |                                                                                |
+| WijzeVanInwinningXY | Wijze van inwinning XY  | gwsw:hasReference [WijzeVanInwinningColl]    |   | O |                                                                                |
+| WijzeVanInwinningZ  | Wijze van inwinning bob | gwsw:hasReference [WijzeVanInwinningColl]    |   | O | Bob = binnenonderkant buis                                                     |
 | NaamKnooppuntBegin  | Naam knooppunt begin    | rdfs:label bij [Put] of [Bouwwerk]           | A | A |                                                                                |
 | NaamKnooppuntEind   | Naam knooppunt eind     | rdfs:label bij [Put] of [Bouwwerk]           | A | A |                                                                                |
 | BobKnooppuntBegin   | Bob bij knooppunt begin | gwsw:hasValue [BobBeginpuntLeiding]          | O | O | Zie [Leidingorientatie]                                                        |
