@@ -282,7 +282,7 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 **Formaten**  
 
 Enkele formaatregels bij **JSON** en **GeoJSON** (zie ook https://nl.wikipedia.org/wiki/JSON)
-- **Extensie** - De extensie van een JSON-bestand is ".json" *(altijd kleine letters)*.
+- **Extensie** - De extensie van een JSON-bestand is ".json" *(altijd kleine letters)*. **extensie .geojson ook gebruiken?**
 - **Velden** - De JSON-veldnamen zijn hoofdletter-gevoelig, gebruik de exacte Veldcode-naam uit de hierna volgende tabellen.
 - **String-waarden** - Noteren tussen aanhalingstekens (double quotation): `"tekst"`
 - **Datum-waarden** - Noteren als string met xsd:date opbouw: `"yyyy-mm-dd"`
