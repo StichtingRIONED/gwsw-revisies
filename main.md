@@ -266,15 +266,15 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 - Nieuwe groep Stelsel (ook bruikbaar voor Gebied)
 - Nieuwe groepen Wand en Doorlaat (meervoudige constructieonderdelen)
 - Veldcodes voor WijzeVanInwinning van projectniveau naar objectniveau (kan per object variëren)
-- Veldcode DatumInwinning vervalt in groep Afdekking (zie ook Uitgangspunten)
 - Veldcode TypeStelsel, HoogteStellaag, Drempelniveau, Drempelbreedte vervalt in groep Knooppunt
+- Veldcode DatumInwinning vervalt in groep Afdekking (zie ook Uitgangspunten)
+- Veldcode BbbKnooppuntBegin en BbbKnooppuntEind vervalt in groep Leiding en datamodel GWSW-Revisies
 - Veldcode HoogteStellaag verhuist naar groep Afdekking
 - Veldcodes X,Y,Z vervallen in groep Knooppunt en Deksel, zijn vervangen door Punt met GeoJSON-notatie "Point": \[X,Y(,Z)\]
 - Veldcode Lijn toegevoegd aan groep Leiding, met de GeoJSON-notatie "LineString": \[ \[X,Y(,Z)\], \[X,Y(,Z)\], \[X,Y(,Z)\] \]
 - In de CSV-vorm de arrays noteren conform de JSON-notatie, was pipe-teken, wordt \[..., ...\] (vanwege de meer complexe LineString-arrays, zie hiervoor)
 - Veldcode Maaiveld toegevoegd aan groep Knooppunt, met GeoJSON-notatie "Point": \[X,Y,Z\] (het punt met de meet-positie en gemeten niveau)
-- Veldcode Volgnummer toegevoegd aan groep Afdekking en Wand
-- Veldcode BbbKnooppuntBegin en BbbKnooppuntEind verwijderen??
+- Veldcode Volgnummer toegevoegd aan groep Afdekking, Doorlaat en Wand
 
 **Uitgangspunten:** 
 - Bij alleen metingen van onderdeel-groepen (bijvoorbeeld bij inmeten deksels, niet tillen) altijd ook de groep Stelsel (met daarin Naam) en de groep Knooppunt (met daarin Naam, NaamStelsel en DatumInwinning) vullen.
@@ -314,8 +314,8 @@ Enkele formaatregels bij **CSV**
 
 | Veldcode                       | Omschrijving                    | Waardetype (in RDF-termen)                      | H | T | Opmerking                                                     |
 |--------------------------------|---------------------------------|-------------------------------------------------|---|---|---------------------------------------------------------------|
-| Versie                         | Versie van dit formaat          | gwsw:hasValue "1.0.0"                           | A | A | Vigerende versie 1.0.0                                        |
 | Naam                           | Naam project                    | rdfs:label bij [Project]                        | A | A | Identificatie van het werk                                    |
+| Versie                         | Versie van dit formaat          | gwsw:hasValue "1.0.0"                           | A | A | Vigerende versie 1.0.0                                        |
 | Type                           | Type project                    | rdf:type [Project]                              | O |   | Nu vooral [Revisieproject]                                    |
 | Omschrijving                   | Omschrijving                    | rdfs:comment bij [Project]                      | O |   |                                                               |
 | Bestandstype                   | Soort uitwisseling              | "Revisie heen" of "Revisie terug"               | A | A | Meer soorten volgen ("CAD ontwerp", ...)                      |
@@ -380,7 +380,7 @@ De groepering van putten, bouwwerken en leidingen.
 | Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                  | H | T | Opmerking                                |
 |---------------------|----------------------------|---------------------------------------------|---|---|------------------------------------------|
 | Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]          | A | A |                                          |
-| Volgnummer          | Naam onderdeel             | rdfs:label bij [Afdekking]                  | A | A | Identificatie onderdeel                  |
+| Volgnummer          | Naam/volgnummer onderdeel  | rdfs:label bij [Afdekking]                  | O | O | Identificatie onderdeel                  |
 | Type                | Type afdekking             | rdf:type [Afdekking]                        | A | A | Deksel, Luik, ...                        |
 | Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                        | O | A | \[GeoJSON Point\] Zie [Dekselorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl]   |   | A |                                          |
@@ -403,7 +403,7 @@ De groepering van putten, bouwwerken en leidingen.
 | Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                | H | T | Opmerking                                   |
 |---------------------|----------------------------|-------------------------------------------|---|---|---------------------------------------------|
 | Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]        | A | A |                                             |
-| Volgnummer          | Naam onderdeel             | rdfs:label bij [Wand]                     | A | A | Identificatie onderdeel                     |
+| Volgnummer          | Naam/volgnummer onderdeel  | rdfs:label bij [Wand]                     | O | O | Identificatie onderdeel                     |
 | Type                | Type wand                  | rdf:type [Wand]                           | A | A | Overstortdrempel, Stuwmuur, ...             |
 | Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                      | A | A | \[GeoJSON Point\] Zie [Onderdeelorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl] |   | O |                                             |
@@ -421,7 +421,7 @@ De groepering van putten, bouwwerken en leidingen.
 | Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                | H | T | Opmerking                                   |
 |---------------------|----------------------------|-------------------------------------------|---|---|---------------------------------------------|
 | Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]        | A | A |                                             |
-| Volgnummer          | Naam onderdeel             | rdfs:label bij [Doorlaat]                 | A | A | Identificatie onderdeel                     |
+| Volgnummer          | Naam/volgnummer onderdeel  | rdfs:label bij [Doorlaat]                 | O | O | Identificatie onderdeel                     |
 | Type                | Type doorlaat              | rdf:type [Doorlaat]                       | A | A | OpeningInWand, Terugslagklep, ...           |
 | Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                      | A | A | \[GeoJSON Point\] Zie [Onderdeelorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl] |   | O |                                             |
@@ -455,8 +455,6 @@ De groepering van putten, bouwwerken en leidingen.
 | NaamKnooppuntEind   | Naam knooppunt eind     | rdfs:label bij [Put] of [Bouwwerk]           | A | A |                                                                                |
 | BobKnooppuntBegin   | Bob bij knooppunt begin | gwsw:hasValue [BobBeginpuntLeiding]          | O | O | Zie [Leidingorientatie]                                                        |
 | BobKnooppuntEind    | Bob bij knooppunt eind  | gwsw:hasValue [BobEindpuntLeiding]           | O | O |                                                                                |
-| BbbKnooppuntBegin   | Bbb bij knooppunt begin | gwsw:hasValue [BbbBeginpuntLeiding]          |   | O |                                                                                |
-| BbbKnooppuntEind    | Bbb bij knooppunt eind  | gwsw:hasValue [BbbEindpuntLeiding]           |   | O |                                                                                |
 | StatusFunctioneren  | Status functioneren     | gwsw:hasReference [StatusFunctionerenColl]   | O | O |                                                                                |
 | Vorm                | Vorm leiding            | gwsw:hasReference [VormLeidingColl]          | O | O |                                                                                |
 | Breedte             | Breedte leiding         | gwsw:hasValue [BreedteLeiding]               | O | O |                                                                                |
