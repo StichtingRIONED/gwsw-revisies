@@ -273,6 +273,8 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 - Veldcode Lijn toegevoegd aan groep Leiding, met de GeoJSON-notatie "LineString": \[ \[X,Y(,Z)\], \[X,Y(,Z)\], \[X,Y(,Z)\] \]
 - In de CSV-vorm de arrays noteren conform de JSON-notatie, was pipe-teken, wordt \[..., ...\] (vanwege de meer complexe LineString-arrays, zie hiervoor)
 - Veldcode Maaiveld toegevoegd aan groep Knooppunt, met GeoJSON-notatie "Point": \[X,Y,Z\] (het punt met de meet-positie en gemeten niveau)
+- Veldcode Volgnummer toegevoegd aan groep Afdekking en Wand
+- Veldcode BbbKnooppuntBegin en BbbKnooppuntEind verwijderen??
 
 **Uitgangspunten:** 
 - Bij alleen metingen van onderdeel-groepen (bijvoorbeeld bij inmeten deksels, niet tillen) altijd ook de groep Stelsel (met daarin Naam) en de groep Knooppunt (met daarin Naam, NaamStelsel en DatumInwinning) vullen.
@@ -378,6 +380,7 @@ De groepering van putten, bouwwerken en leidingen.
 | Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                  | H | T | Opmerking                                |
 |---------------------|----------------------------|---------------------------------------------|---|---|------------------------------------------|
 | Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]          | A | A |                                          |
+| Volgnummer          | Naam onderdeel             | rdfs:label bij [Afdekking]                  | A | A | Identificatie onderdeel                  |
 | Type                | Type afdekking             | rdf:type [Afdekking]                        | A | A | Deksel, Luik, ...                        |
 | Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                        | O | A | \[GeoJSON Point\] Zie [Dekselorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl]   |   | A |                                          |
@@ -400,6 +403,7 @@ De groepering van putten, bouwwerken en leidingen.
 | Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                | H | T | Opmerking                                   |
 |---------------------|----------------------------|-------------------------------------------|---|---|---------------------------------------------|
 | Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]        | A | A |                                             |
+| Volgnummer          | Naam onderdeel             | rdfs:label bij [Wand]                     | A | A | Identificatie onderdeel                     |
 | Type                | Type wand                  | rdf:type [Wand]                           | A | A | Overstortdrempel, Stuwmuur, ...             |
 | Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                      | A | A | \[GeoJSON Point\] Zie [Onderdeelorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl] |   | O |                                             |
@@ -417,6 +421,7 @@ De groepering van putten, bouwwerken en leidingen.
 | Veldcode            | Omschrijving               | Waardetype (in RDF-termen)                | H | T | Opmerking                                   |
 |---------------------|----------------------------|-------------------------------------------|---|---|---------------------------------------------|
 | Naam                | Naam put of bouwwerk       | rdfs:label bij [Put] of [Bouwwerk]        | A | A |                                             |
+| Volgnummer          | Naam onderdeel             | rdfs:label bij [Doorlaat]                 | A | A | Identificatie onderdeel                     |
 | Type                | Type doorlaat              | rdf:type [Doorlaat]                       | A | A | OpeningInWand, Terugslagklep, ...           |
 | Punt                | Coördinaat X,Y(,Z)         | gwsw:hasValue [Punt]                      | A | A | \[GeoJSON Point\] Zie [Onderdeelorientatie] |
 | WijzeVanInwinningXY | Wijze van inwinning XY     | gwsw:hasReference [WijzeVanInwinningColl] |   | O |                                             |
