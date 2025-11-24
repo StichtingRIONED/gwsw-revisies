@@ -9,13 +9,6 @@ Stichting RIONED is initiatiefnemer en eigenaar van dit GitHub-project, Eric Oos
 
 Vragen over deze website en het GWSW kunt u stellen via gwsw@rioned.org. 
 
-
-
-<a href="https:/data.gwsw.nl/totaal/Wadi" target="_blank">Wadi</a> (synoniem van Infiltratieveld)  
-<a href="https://data.gwsw.nl/totaal/Wadi" target="_blank">Wadi</a> (synoniem van Infiltratieveld)  
-test [Wadi](https://data.gwsw.nl/totaal/Wadi)
-
-
 # Inleiding
 Het inmeten van vaste gegevens is een activiteit die bijdraagt aan goed beheer van stedelijk watervoorzieningen. Door ontbrekende, foutieve of achterhaalde maatvoeringen (opnieuw) in te meten ontstaat een betrouwbaar beheerbestand waarmee kostbare besluiten onderbouwd kunnen worden, bijvoorbeeld als basis voor een hydrodynamisch rekenmodel dat wordt gebruikt om te bepalen of stelselaanpassingen nodig zijn. Een foutieve leidingdiameter of verouderde overstortdrempelhoogte in zettingsgevoelig gebied kan dan al snel leiden tot grote verschillen tussen theoretische modelberekeningen en wat buiten gebeurt tijdens hevige neerslag. De ligging van vaste gegevens op orde hebben is ook een belangrijk middel om graafschade door grondroerders te voorkomen.
 
