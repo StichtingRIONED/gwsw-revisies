@@ -13,7 +13,7 @@ Vragen over deze website en het GWSW kunt u stellen via gwsw@rioned.org.
 
 <a href="https:/data.gwsw.nl/totaal/Wadi" target="_blank">Wadi</a> (synoniem van Infiltratieveld)  
 <a href="https://data.gwsw.nl/totaal/Wadi" target="_blank">Wadi</a> (synoniem van Infiltratieveld)  
-[Wadi](https://data.gwsw.nl/totaal/Wadi)
+test [Wadi](https://data.gwsw.nl/totaal/Wadi)
 
 
 # Inleiding
