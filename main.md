@@ -260,7 +260,7 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 
 ## Voorstel nieuwe versie
 
-**Samenvatting wijzigingen:**
+**Samenvatting wijzigingen formaat:**
 - Groep Project wordt Algemeen (breder, ook voor niet-revisie uitwisseling)
 - Groep Deksel wordt Afdekking (breder, ook rooster, luik enzo)
 - Nieuwe groep Stelsel (ook bruikbaar voor Gebied)
@@ -268,13 +268,17 @@ Elk concept linkt via een URI naar het GWSW-datamodel (de deelmodellen onder htt
 - Veldcodes voor WijzeVanInwinning van projectniveau naar objectniveau (kan per object variëren)
 - Veldcode TypeStelsel, HoogteStellaag, Drempelniveau, Drempelbreedte vervalt in groep Knooppunt
 - Veldcode DatumInwinning vervalt in groep Afdekking (zie ook Uitgangspunten)
-- Veldcode BbbKnooppuntBegin en BbbKnooppuntEind vervalt in groep Leiding en datamodel GWSW-Revisies
+- Veldcode BbbKnooppuntBegin en BbbKnooppuntEind vervalt in groep Leiding
 - Veldcode HoogteStellaag verhuist naar groep Afdekking
 - Veldcodes X,Y,Z vervallen in groep Knooppunt en Deksel, zijn vervangen door Punt met GeoJSON-notatie "Point": \[X,Y(,Z)\]
 - Veldcode Lijn toegevoegd aan groep Leiding, met de GeoJSON-notatie "LineString": \[ \[X,Y(,Z)\], \[X,Y(,Z)\], \[X,Y(,Z)\] \]
 - In de CSV-vorm de arrays noteren conform de JSON-notatie, was pipe-teken, wordt \[..., ...\] (vanwege de meer complexe LineString-arrays, zie hiervoor)
 - Veldcode Maaiveld toegevoegd aan groep Knooppunt, met GeoJSON-notatie "Point": \[X,Y,Z\] (het punt met de meet-positie en gemeten niveau)
 - Veldcode Volgnummer toegevoegd aan groep Afdekking, Doorlaat en Wand
+
+**Samenvatting wijzigingen datamodel:**
+- Kenmerk Inwinning (met daarin datum en wijze) toevoegen aan InmetenKnooppunt en InmetenLeiding (20251209)
+- Kenmerken BbbKnooppuntBegin en BbbKnooppuntEind vervallen
 
 **Uitgangspunten:** 
 - Bij alleen metingen van onderdeel-groepen (bijvoorbeeld bij inmeten deksels, niet tillen) altijd ook de groep Stelsel (met daarin Naam) en de groep Knooppunt (met daarin Naam, NaamStelsel en DatumInwinning) vullen.
