@@ -5,27 +5,27 @@
   .symbol{width:30px;height:30px;margin-right:1em;vertical-align:middle}
 </style>
 
-Stichting RIONED is initiatiefnemer en eigenaar van dit GitHub-project, Eric Oosterom is de verantwoordelijk projectmanager. De inhoud van GWSW Revisies is in grote mate tot stand gekomen in samenwerking met GWSW-Opera B.V., die samen met een partners GWSW-Inmeten een aantal Proof-of-Concepts (PoC’s) heeft uitgevoerd. 
+Stichting RIONED is initiatiefnemer en eigenaar van dit GitHub-project. Eric Oosterom is de verantwoordelijk projectmanager. De inhoud van GWSW Revisies is in grote mate tot stand gekomen in samenwerking met het bedrijf GWSW-Opera B.V. (https://gwsw-opera.nl/), die samen met partners GWSW-Inmeten in een aantal Proof-of-Concepts (PoC’s) heeft helpen specificeren en uitproberen. 
 
 Vragen over deze website en het GWSW kunt u stellen via gwsw@rioned.org. 
 
 # Inleiding
-Het inmeten van vaste gegevens is een activiteit die bijdraagt aan goed beheer van stedelijk watervoorzieningen. Door ontbrekende, foutieve of achterhaalde maatvoeringen (opnieuw) in te meten ontstaat een betrouwbaar beheerbestand waarmee kostbare besluiten onderbouwd kunnen worden, bijvoorbeeld als basis voor een hydrodynamisch rekenmodel dat wordt gebruikt om te bepalen of stelselaanpassingen nodig zijn. Een foutieve leidingdiameter of verouderde overstortdrempelhoogte in zettingsgevoelig gebied kan dan al snel leiden tot grote verschillen tussen theoretische modelberekeningen en wat buiten gebeurt tijdens hevige neerslag. De ligging van vaste gegevens op orde hebben is ook een belangrijk middel om graafschade door grondroerders te voorkomen.
+Het inmeten van vaste gegevens is een activiteit die bijdraagt aan goed beheer van stedelijk watervoorzieningen. Door ontbrekende, foutieve of achterhaalde maatvoeringen (opnieuw) in te meten ontstaat een betrouwbaar beheerbestand waarmee kostbare keuzes over investeringen en beheer onderbouwd kunnen worden. Het beheerbestand is bijvoorbeeld de basis voor een hydrodynamisch rekenmodel dat wordt gebruikt om te bepalen of stelselaanpassingen nodig zijn. Een foutieve leidingdiameter of verouderde overstortdrempelhoogte in zettingsgevoelig gebied kan dan al snel leiden tot grote verschillen tussen theoretische modelberekeningen en wat buiten gebeurt tijdens hevige neerslag. De vaste liggingsgegevens op orde hebben is ook een belangrijk middel om graafschade door grondroerders te voorkomen.
 
-Door te werken met GWSW-conforme datasets van opdrachtgever naar landmeter over in te meten objecten en daarna vice versa met meetresultaten terug, ontstaat een efficiënte informatie-uitwisseling waar op eenvoudige wijze validatieregels aan toe te voegen zijn die controleren op volledigheid en eventueel foutieve metingen. 
+Door te werken met GWSW-conforme datasets van opdrachtgever naar landmeter over in te meten objecten en daarna vice versa met meetresultaten terug, ontstaat een efficiënte en eenduidige informatie-uitwisseling waar op eenvoudige wijze validatieregels aan toe te voegen zijn die controleren op volledigheid, consistentie en eventueel foutieve metingen. 
 
-Het initiatief voor dit deelmodel komt voor een belangrijk deel van de GWSW-Opera organisatie. De basis ligt bij een PoC gericht op het ontwikkelen en toetsen van het inmeetproces, dus de gegevensuitwisseling tussen landmeter en beheerder.
+Het initiatief voor dit deelmodel komt voor een belangrijk deel van het bedrijf GWSW-Opera B.V. De basis ligt bij een PoC gericht op het ontwikkelen en toetsen van het inmeetproces, dus de gegevensuitwisseling tussen landmeter en beheerder.
 
 ## Doel en toepassing
 
-Ondersteuning bij revisies en andere metingen van stedelijk water voorzieningen, vooral het efficiënt en effectief verwerken van inmetingen door de landmeter.
+Ondersteuning bij revisies en andere metingen van stedelijk-water-voorzieningen, vooral het efficiënt en effectief verwerken van inmetingen van rioleringsobjecten door landmeters.
 
 **Revisie**  
 De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aanleg (de realisatie van het ontwerp). Dit deelmodel heeft een bredere scope, ook het inmeten van al langer in gebruik zijnde objecten is een toepassing van dit deelmodel. 
 Denk dan bijvoorbeeld aan het verbeteren van de bestaande registratie of het actualiseren van gegevens na verzakkingen.
 
 ## Leeswijzer
-In hoofdstuk twee van dit ontwerpdocument wordt beschreven uit welke elementen een revisieproject bestaat en welke gegevens van de opdrachtgever (beheerder) naar de opdrachtnemer (landmeter) worden uitgewisseld en andersom. Hoofdstuk drie gaat over de uitwisselingsformaten (CSV, JSON, OroX) waarmee deze gegevens kunnen worden uitgewisseld. Tot slot beschrijft hoofdstuk vier de aanpassingen aan het GWSW datamodel. 
+In hoofdstuk twee van dit ontwerpdocument staat uit welke elementen een revisieproject bestaat en welke gegevens van de opdrachtgever (beheerder) naar de opdrachtnemer (landmeter) worden uitgewisseld en andersom. Hoofdstuk drie gaat over de uitwisselingsformaten (CSV, JSON, OroX) waarmee deze gegevens kunnen worden uitgewisseld. Tot slot beschrijft hoofdstuk vier de aanpassingen aan het GWSW datamodel. 
 
 # Projectmodel
 Dit hoofdstuk beschrijft de opbouw van een revisieproject. Een revisieproject bestaat uit de algemene kenmerken van een project (opdrachtgever, opdrachtnemer, projectreferentie, etc.), waaraan verschillende deelactiviteiten, oftewel acties, aan gekoppeld zijn (zie ook Figuur 2.1).
