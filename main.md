@@ -48,7 +48,23 @@ Volgens het GWSW Datamodel hebben die invoer- en uitvoer-vorm dezelfde objectnaa
 *Figuur 2.1 - Schematisatie revisieproject met de verschillende deelactiviteiten (acties)*
 
 # Gegevensuitwisseling
-Een revisieproject gebruikt de projectdefinitie en gegevens over de oorspronkelijke kenmerken van de in te meten objecten. Dit kunnen brongegevens zijn of gegevens afkomstig van de GWSW-server, zie ook Figuur 3.1. Als projectresultaat worden de inmetingen terug geleverd. Veelal wordt hierbij ook een verschilanalyse uitgevoerd en een rapportage opgeleverd. Uitwisseling van inmeetgegevens tussen de opdrachtgever en de opdrachtnemer geschiedt via een uitwisselingsformaat in OroX, JSON of CSV. Deze uitwisselingsformaten zijn in de onderstaande paragrafen uitgewerkt. 
+Een revisieproject gebruikt de projectdefinitie en gegevens over de oorspronkelijke kenmerken van de in te meten objecten.
+Dit kunnen brongegevens zijn of gegevens afkomstig van de GWSW-server, zie ook Figuur 3.1. Als projectresultaat worden de inmetingen terug geleverd.
+Veelal wordt hierbij ook een verschilanalyse uitgevoerd en een rapportage opgeleverd.
+
+<div class="box">
+<strong>Revisie op basis van rioleringsinspectie (formaat GWSW-RibX)</strong>
+
+Tijdens rioleringsinspecties worden ook kenmerken van putten en leidingen ingewonnen.
+Inspecties worden ook vaak als opleveringscontrole uitgevoerd.
+Voor die inspectie- en reinigingsprojecten wordt al jaren het uitwisselformaat GWSW-RibX gebruikt.  
+
+Dit XML-formaat is vooral gericht op inspectie en reiniging, voor inmeetprojecten is het minder geschikt. 
+Bijvoorbeeld ontbreekt in het RibX de uitgebreidere registratie van deksels en andere constructieonderdelen. 
+</div>
+
+Uitwisseling van inmeetgegevens tussen de opdrachtgever en de opdrachtnemer geschiedt via een uitwisselingsformaat in OroX, JSON of CSV.
+Deze uitwisselingsformaten zijn in de onderstaande paragrafen uitgewerkt. 
 
 <img src="media/Proces uitwisseling.png" style="width:80%;height:80%" />
 
@@ -479,15 +495,15 @@ Veel URI's staan al in het GWSW datamodel, voor het deelmodel Revisies zijn ook 
 
 Een overzicht van de nieuw toegevoegde concepten (vanaf concept-deelmodel GWSW-Revisies 1.6.1):
 
-| URI                          | Naam                              | Definitie                                                                                |
-|------------------------------|-----------------------------------|------------------------------------------------------------------------------------------|
-| [Revisieproject]             | Revisieproject                    |                                                                                          |
-| [InmetenKnooppunt]           | Inmeten knooppunt                 | Inmeten van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) |
-| [InmetenLeiding]             | Inmeten leiding                   | Inmeten van een leiding (deelactiviteit van Revisieproject)                              |
-| [MetingWaterstand]           | Meting waterstand                 | De gemeten waterstand tov de constructiebodem                                            |
-| [MeldingMetingKnooppuntColl] | Melding bij meting knooppunt      | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk                        |
-| [MeldingMetingDekselColl]    | Melding bij meting deksel         | Voorgedefinieerde meldingen bij de meting van een deksel                                 |
-| [MeldingMetingLeidingColl]   | Melding bij meting leiding        | Voorgedefinieerde meldingen bij de meting van een leiding                                |
+| URI                          | Naam                         | Definitie                                                                                |
+|------------------------------|------------------------------|------------------------------------------------------------------------------------------|
+| [Revisieproject]             | Revisieproject               |                                                                                          |
+| [InmetenKnooppunt]           | Inmeten knooppunt            | Inmeten van een put of bouwwerk met eventuele deksel (deelactiviteit van Revisieproject) |
+| [InmetenLeiding]             | Inmeten leiding              | Inmeten van een leiding (deelactiviteit van Revisieproject)                              |
+| [MetingWaterstand]           | Meting waterstand            | De gemeten waterstand tov de constructiebodem                                            |
+| [MeldingMetingKnooppuntColl] | Melding bij meting knooppunt | Voorgedefinieerde meldingen bij de meting van een put of bouwwerk                        |
+| [MeldingMetingDekselColl]    | Melding bij meting deksel    | Voorgedefinieerde meldingen bij de meting van een deksel                                 |
+| [MeldingMetingLeidingColl]   | Melding bij meting leiding   | Voorgedefinieerde meldingen bij de meting van een leiding                                |
 
 [InmetenKnooppunt]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./InmetenKnooppunt
 [InmetenLeiding]: https://data.gwsw.nl/Revisies/index.html?menu_item=classes&item=./InmetenLeiding
