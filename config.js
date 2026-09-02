@@ -14,6 +14,11 @@ var respecConfig =
     companyURL: "https://www.riool.net"
   }],
   authors: [{
+    name: "Bob Zwartendijk",
+    url: "mailto:bob.zwartendijk@nectaerra.com",
+    company: "NECTAERRA",
+    companyURL: "https://www.nectaerra.com/"
+  },{
     name: "Johan Post",
     url: "mailto:johan.post@urbanwater.nl",
     company: "Partners4UrbanWater",
