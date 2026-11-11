@@ -10,7 +10,11 @@ Stichting RIONED is initiatiefnemer en eigenaar van dit GitHub-project. Eric Oos
 Vragen over deze website en het GWSW kunt u stellen via gwsw@rioned.org. 
 
 # Inleiding
-Het inmeten van vaste gegevens is een activiteit die bijdraagt aan goed beheer van stedelijk watervoorzieningen. Door ontbrekende, foutieve of achterhaalde maatvoeringen (opnieuw) in te meten ontstaat een betrouwbaar beheerbestand waarmee kostbare keuzes over investeringen en beheer onderbouwd kunnen worden. Het beheerbestand is bijvoorbeeld de basis voor een hydrodynamisch rekenmodel dat wordt gebruikt om te bepalen of stelselaanpassingen nodig zijn. Een foutieve leidingdiameter of verouderde overstortdrempelhoogte in zettingsgevoelig gebied kan dan al snel leiden tot grote verschillen tussen theoretische modelberekeningen en wat buiten gebeurt tijdens hevige neerslag. De vaste liggingsgegevens op orde hebben is ook een belangrijk middel om graafschade door grondroerders te voorkomen.
+Het periodiek inmeten van gegevens is een activiteit die bijdraagt aan goed beheer van stedelijk-water-voorzieningen. 
+Door ontbrekende, foutieve of achterhaalde maatvoeringen (opnieuw) in te meten ontstaat een betrouwbaar beheerbestand waarmee kostbare keuzes over investeringen en beheer onderbouwd kunnen worden. 
+Het beheerbestand is bijvoorbeeld de basis voor een hydrodynamisch rekenmodel dat wordt gebruikt om te bepalen of stelselaanpassingen nodig zijn. 
+Een foutieve leidingdiameter of verouderde overstortdrempelhoogte in zettingsgevoelig gebied kan dan al snel leiden tot grote verschillen tussen theoretische modelberekeningen en wat buiten gebeurt tijdens hevige neerslag. 
+Het op orde hebben van liggingsgegevens ook een belangrijk middel om graafschade door grondroerders te voorkomen.
 
 Door te werken met GWSW-conforme datasets van opdrachtgever naar landmeter over in te meten objecten en daarna vice versa met meetresultaten terug, ontstaat een efficiënte en eenduidige informatie-uitwisseling waar op eenvoudige wijze validatieregels aan toe te voegen zijn die controleren op volledigheid, consistentie en eventueel foutieve metingen. 
 
@@ -18,10 +22,15 @@ Het initiatief voor dit deelmodel komt voor een belangrijk deel van het bedrijf 
 
 ## Doel en toepassing
 
-Ondersteuning bij revisies en andere metingen van stedelijk-water-voorzieningen, vooral het efficiënt en effectief verwerken van inmetingen van rioleringsobjecten door landmeters.
+[GWSW-Rib]: https://www.riool.net/applicaties/gegevenswoordenboek-stedelijk-water-gwsw/modulaire-opbouw-van-het-gwsw/gwsw-rib-en-ribx
+
+Aanvullend op rioleringsinspecties worden aanvullende gegevens doorgaans ingewonnen door landmeters. 
+GWSW Revisies richt zich op ondersteuning bij revisies en andere metingen van stedelijk-water-voorzieningen, zodat het werk van landmeters eenduidig en efficiënt worden verwerkt.  
+GWSW revisies is daarmee een aanvulling op - en géén vervanging van - rioleringsinspecties volgens het RibX-formaat conform de geldende normeringen (zie de RibX-documentatie op [GWSW-Rib]).
 
 **Revisie**  
-De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aanleg (de realisatie van het ontwerp). Dit deelmodel heeft een bredere scope, ook het inmeten van al langer in gebruik zijnde objecten is een toepassing van dit deelmodel. 
+De term "revisie" wordt gebruikt voor het inmeten van de objectgegevens na de aanleg, de realisatie van het ontwerp (bijvoorbeeld een NLCS-gebaseerd CAD-ontwerp).
+Dit deelmodel heeft een bredere scope, ook het inmeten van al langer in gebruik zijnde objecten is een toepassing van dit deelmodel. 
 Denk dan bijvoorbeeld aan het verbeteren van de bestaande registratie of het actualiseren van gegevens na verzakkingen.
 
 ## Leeswijzer
